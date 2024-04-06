@@ -5,7 +5,7 @@ import VendorModal from './components/VendorModal/VendorModal.jsx'
 import UserAuth from './components/UserAuthentication/UserAuth.jsx'
 import LandingPage from './components/LandingPage/LandingPage.jsx'
 import LiveChat from './components/LiveChat/LiveChat.jsx'
-import CalendarBooking from './components/CalendarBooking/CalendarBooking.jsx'
+import Booking from './components/Booking/Booking.jsx'
 import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 
@@ -25,7 +25,7 @@ function App() {
       <div>
         <Carousel />
         <VendorModal />
-        <CalendarBooking />
+        <Booking />
         <LiveChat />
         <ShoppingCart />
       </div>
