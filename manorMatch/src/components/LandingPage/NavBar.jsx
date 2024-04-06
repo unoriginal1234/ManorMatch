@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const NavBar = () => {
   return (
     <div className="bg-blue-500 w-screen">
@@ -13,7 +15,9 @@ const NavBar = () => {
         </div>
       </div>
       <div className="mx-2 flex justify-end">
+        <Link to="/login">
         Login
+        </Link>
       </div>
     </div>
   );
