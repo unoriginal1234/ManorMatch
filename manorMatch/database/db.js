@@ -53,8 +53,7 @@ const Booking = mongoose.model('Booking', bookingSchema);
 
 const Message = mongoose.model('Message', messageSchema);
 
-export {
-  db,
+export default {
   Customer,
   Vendor,
   Booking,
