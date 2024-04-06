@@ -10,12 +10,12 @@ const VendorModal = () => {
       <h2>Summary</h2>
       <p>Vendor Summary</p>
       <h2>Specialties:</h2>
-      <li>
-        <ul>Specialty 1</ul>
-        <ul>Specialty 2</ul>
-        <ul>Specialty 3</ul>
-        <ul>Specialty 4</ul>
-      </li>
+      <ul>
+        <li>Specialty 1</li>
+        <li>Specialty 2</li>
+        <li>Specialty 3</li>
+        <li>Specialty 4</li>
+      </ul>
 
 
     </div>
