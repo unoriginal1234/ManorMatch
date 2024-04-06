@@ -1,7 +1,8 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+import dotenv from 'dotenv';
+dotenv.config();
+import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}}`);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -51,10 +52,4 @@ const Booking = mongoose.model('Booking', bookingSchema);
 
 const Message = mongoose.model('Message', messageSchema);
 
-module.exports = {
-  db,
-  Customer,
-  Vendor,
-  Booking,
-  Message
-};
+export default { Customer, Vendor, Booking, Message };
