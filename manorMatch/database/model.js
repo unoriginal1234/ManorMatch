@@ -1,3 +1,3 @@
-const db = require('./db')
+import db  from './db.js';
 
 // export functions
