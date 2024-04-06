@@ -1,0 +1,60 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URI);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('database connected')
+});
+
+const customerSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  address1: String,
+  address2: String,
+  city: String,
+  state: String,
+  zip: String,
+  telephoneNumber: String,
+  email: String
+})
+
+const vendorSchema = new mongoose.Schema({
+  name: String,
+  serviceDescription: String,
+  category: String,
+  telephoneNumber: String,
+  email: String,
+  price: Number
+})
+
+const bookingSchema = new mongoose.Schema({
+  customerId: String,
+  vendorId: String,
+  jobDate: Date,
+  completed: Boolean
+})
+
+const messageSchema = new mongoose.Schema({
+  content: String,
+  sender: String,
+  createdAt: Date
+})
+
+const Customer = mongoose.model('Customer', customerSchema);
+
+const Vendor = mongoose.model('Vendor', vendorSchema);
+
+const Booking = mongoose.model('Booking', bookingSchema);
+
+const Message = mongoose.model('Message', messageSchema);
+
+module.exports = {
+  db,
+  Customer,
+  Vendor,
+  Booking,
+  Message
+};
