@@ -19,6 +19,11 @@ const Booking = () => {
     setModalPage(modalPage - 1);
   }
 
+  const handleClose = () => {
+    setModalIsOpen(false)
+    setModalPage(1)
+  }
+
   return (
     <div>
       <button onClick={() => setModalIsOpen(true)}>BOOK NOW</button>
@@ -59,7 +64,7 @@ const Booking = () => {
             <div>CONFIRMATION</div>
           </div>
         )}
-        <button onClick={() => setModalIsOpen(false)}>Close Modal</button>
+        <button onClick={() => handleClose()}>Close Modal</button>
       </Modal>
     </div>
   );
