@@ -17,7 +17,7 @@ async function seedDatabase() {
       await vendor.save();
       console.log('Vendor saved');
     } catch (err) {
-      cosnole.log(err);
+      console.log(err);
     }
   }
 }
