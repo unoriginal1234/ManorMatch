@@ -1,8 +1,10 @@
-require('dotenv').config();
-const path = require('path');
-const express = require('express');
-const axios = require('axios');
-const model = require('../database/model')
+import dotenv from 'dotenv';
+dotenv.config();
+
+import path from 'path';
+import express from 'express';
+import axios from 'axios';
+import model from '../database/model';
 
 const app = express();
 app.use(express.json());
