@@ -7,8 +7,13 @@ import axios from 'axios';
 
 import router from './routes/routes.js'
 
+import parseCookies from '../middleware/parseCookies.js'
+
 const app = express();
 app.use(express.json());
+
+app.use(parseCookies);
+app.use(Auth.createSession);
 
 app.use('/', router);
 

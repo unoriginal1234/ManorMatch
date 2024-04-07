@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const UserAuth = () => {
   // Your component logic goes here
 
@@ -7,10 +9,19 @@ const UserAuth = () => {
       <div className="">
         Login
         <form>
-
+          <div>
+            <label>Email Address:</label>
+            <input type="text"></input>
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="text"></input>
+          </div>
           <button type="submit">Login</button>
-          Don't have an account?
-          <a>Sign Up</a>
+          Don't have an account?&nbsp;
+          <Link>
+            Sign Up
+          </Link>
         </form>
       </div>
     </div>
