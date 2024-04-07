@@ -1,12 +1,11 @@
 import React from 'react';
-
+import CarouselImage from './CarouselImage';
 const CarouselTile = ({ imageUrl }) => {
   return (
-    <div className="relative">
-      <img src={imageUrl} alt="Carousel Image" className="w-full" />
-      <button className="absolute bottom-4 right-4 bg-blue-900 text-white px-4 py-2 rounded">
-        Button
-      </button>
+    <div className="bg-mmblue p-6 flex flex-col justify-center items-center">
+      <CarouselImage imageUrl={imageUrl} />
+      <br />
+      <p className="text-white text-center text-3xl">Description</p>
     </div>
   );
 };
