@@ -8,6 +8,7 @@ import LiveChat from './components/LiveChat/LiveChat.jsx'
 import Booking from './components/Booking/Booking.jsx'
 import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/login" element={<UserAuth />}></Route>
+            <Route path="/signup" element={<SignUpPage />}></Route>
             <Route path="/home" element={<HomePage />}></Route>
           </Routes>
         </Router>
