@@ -1,7 +1,6 @@
 import Slideshow from './Slideshow.jsx';
 import Testimonials from './Testimonials.jsx';
 import NavBar from './NavBar.jsx'
-import AnimationTest from './AnimationTest.jsx'
 
 
 const LandingPage = () => {
@@ -11,7 +10,6 @@ const LandingPage = () => {
       <NavBar />
       <Slideshow />
       <Testimonials />
-      <AnimationTest />
     </div>
   );
   };

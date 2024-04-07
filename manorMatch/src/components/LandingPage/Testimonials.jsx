@@ -10,7 +10,7 @@ const Testimonials = () => {
     {quote: 'I do declare this is the best thing ever', source: 'Sir Bool'},
     {quote: "I'm a cutie pie", source: "Anonymous"},
     {quote: 'My pool is sparkling!', source: "Andre SoCal"},
-    {quote: 'I do declare!', source: "Zacharia Dorito"}
+    {quote: 'I live a most extraordinary existence!', source: "Zacharia Dorito"}
   ]
 
   const nextTestimonial = () => {
@@ -23,11 +23,11 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="bg-mmblue text-mmsand p-4 w-screen text-center">
-      <p className="text-3xl font-bold">
+    <div className="bg-mmblue text-mmsand w-screen">
+      <p className="text-3xl font-bold text-center">
         {landingTestimonials[currentTestimonial].quote}
       </p>
-      <p className="text-xl">
+      <p className="text-xl text-center">
         -{landingTestimonials[currentTestimonial].source}
       </p>
     </div>
