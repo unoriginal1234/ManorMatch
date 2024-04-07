@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <div className="bg-mmblue text-mmsand w-screen">
+    <div className="bg-mmblue text-mmsand w-screen ">
       <div className="flex justify-between items-center">
-        <div className="text-4xl font-bold">
+        <p className="text-4xl">
           M | M
-        </div>
+        </p>
         <div className="mx-2">
           <Link to="/login" className="text-lg">
-            Login
+            Join / Login
           </Link>
         </div>
       </div>
