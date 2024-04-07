@@ -3,14 +3,16 @@ import { useState, useEffect } from 'react';
 const Testimonials = () => {
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [ moveLeft, setMoveLeft ] = useState(true)
 
   useEffect(()=> startTestimonials, [])
+  useEffect(()=> startTestimonialAnimation, [])
 
   const landingTestimonials = [
     {quote: 'I do declare this is the best thing ever', source: 'Sir Bool'},
-    {quote: "I'm a cutie pie", source: "Anonymous"},
+    {quote: "Exceptional property management", source: "Anonymous"},
     {quote: 'My pool is sparkling!', source: "Andre SoCal"},
-    {quote: 'I do declare!', source: "Zacharia Dorito"}
+    {quote: 'I live a most extraordinary existence!', source: "Zacharia Dorito"}
   ]
 
   const nextTestimonial = () => {
@@ -19,15 +21,23 @@ const Testimonials = () => {
   }
 
   const startTestimonials = () => {
-    return setInterval(()=> nextTestimonial(), 4000);
+    return setInterval(()=> {
+      nextTestimonial()}
+      , 4000);
+  }
+
+  const startTestimonialAnimation = () => {
+    return setInterval(()=> {
+      setMoveLeft((prevMoveLeft) => !prevMoveLeft);
+    }, 4000)
   }
 
   return (
-    <div className="bg-mmblue text-mmsand p-4 w-screen text-center">
-      <p className="text-3xl font-bold">
+    <div className="bg-mmblue text-mmsand w-screen">
+      <p className={`text-3xl font-bold text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-3000 translate-x-[25%]'}`}>
         {landingTestimonials[currentTestimonial].quote}
       </p>
-      <p className="text-xl">
+      <p className={`text-xl text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-3000 translate-x-[25%]'}`}>
         -{landingTestimonials[currentTestimonial].source}
       </p>
     </div>
