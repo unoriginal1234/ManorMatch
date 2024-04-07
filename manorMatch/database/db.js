@@ -2,7 +2,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 import mongoose from 'mongoose';
 
-mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}}`);
+
+const uri = `${process.env.MONGODB_URI}/${process.env.DB_NAME}`;
+console.log(uri); // Debugging: Ensure the URI looks correct
+mongoose.connect(uri);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
