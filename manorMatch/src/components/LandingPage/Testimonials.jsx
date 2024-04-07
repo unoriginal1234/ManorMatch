@@ -14,7 +14,8 @@ const Testimonials = () => {
   ]
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prevTestimonial) => (prevTestimonial + 1) % landingTestimonials.length)
+    setCurrentTestimonial((prevTestimonial) => (prevTestimonial + 1) % landingTestimonials.length);
+
   }
 
   const startTestimonials = () => {
@@ -22,9 +23,13 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="bg-mmblue text-mmsand p-4 w-screen text-right">
-      <p className="text-2xl font-bold">{landingTestimonials[currentTestimonial].quote}</p>
-      <p>-{landingTestimonials[currentTestimonial].source}</p>
+    <div className="bg-mmblue text-mmsand p-4 w-screen text-center">
+      <p className="text-3xl font-bold">
+        {landingTestimonials[currentTestimonial].quote}
+      </p>
+      <p className="text-xl">
+        -{landingTestimonials[currentTestimonial].source}
+      </p>
     </div>
   );
 };
