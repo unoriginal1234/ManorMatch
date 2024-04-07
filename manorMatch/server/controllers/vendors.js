@@ -1,10 +1,10 @@
-import Vendor from '../../database/db.js';
+import * as models from '../../database/models/index.js'
 
-const getVendorsByCategory = async (req, res) => {
-  console.log(req.params);
+const getVendors= async (req, res) => {
+  console.log(req.query);
   try {
-    const { category } = req.params;
-    const vendors = await Vendor.find({ category });
+    const { category } = req.query;
+    const vendors = models.vendors.getVendorsByCategory(category);
     res.status(200).json(vendors);
   } catch (error) {
     console.error(error);
@@ -12,4 +12,4 @@ const getVendorsByCategory = async (req, res) => {
   }
 };
 
-export { getVendorsByCategory };
+export { getVendors };
