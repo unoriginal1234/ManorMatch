@@ -2,6 +2,33 @@ import mongoose from 'mongoose';
 import db from './db.js';
 import { faker } from "@faker-js/faker";
 
+const vendorCategories = [
+  'Personal Chef',
+  'Au Pair',
+  'Estate Management',
+  'Butler',
+  'Housekeepers',
+  'Landscaper',
+  'Personal Assistant',
+  'Chauffeur',
+  'Security Personnel',
+  'Pool Maintenance Technician',
+  'Personal Trainer',
+  'Smart Home Technician',
+  'Sommelier',
+  'Private Tutor',
+  'Art Curator',
+  'Personal Stylist',
+  'Pillow Fluffer',
+  'LeetCode Tutor',
+  'Sconce Restorer',
+  'Toile Fabricator',
+];
+
+function getRandomVendorCategory() {
+  return vendorCategories[Math.floor(Math.random() * vendorCategories.length)];
+}
+
 async function seedCustomer() {
   for(let i = 0; i < 100; i++) {
     let customer = new db.Customer({
@@ -29,10 +56,11 @@ async function seedVendor() {
     let vendor = new db.Vendor({
       name: faker.company.name(),
       serviceDescription: faker.company.buzzPhrase(),
-      category: faker.commerce.department(),
+      category: getRandomVendorCategory(),
       telephoneNumber: faker.phone.number(),
       email: faker.internet.email(),
       price: faker.commerce.price(),
+      photo: faker.image.urlPicsumPhotos(),
     });
 
     try {
