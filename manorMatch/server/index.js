@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import router from './routes/routes.js'
 
-import parseCookies from '../middleware/parseCookies.js'
+import parseCookies from './middleware/parseCookies.js'
 
 const app = express();
 app.use(express.json());
