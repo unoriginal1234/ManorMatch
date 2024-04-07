@@ -4,4 +4,6 @@ const getUserInfo = () => {
   console.log('this happened')
 }
 
+const si
+
 export { getUserInfo };
