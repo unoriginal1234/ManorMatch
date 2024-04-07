@@ -4,9 +4,9 @@ const NavBar = () => {
   return (
     <div className="bg-mmblue text-mmsand w-screen ">
       <div className="flex justify-between items-center">
-        <p className="text-4xl">
+        <Link to='/home' className="text-4xl">
           M | M
-        </p>
+        </Link>
         <div className="mx-2">
           <Link to="/login" className="text-lg">
             Join / Login
