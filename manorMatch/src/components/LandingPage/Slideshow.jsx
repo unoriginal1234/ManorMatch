@@ -39,8 +39,16 @@ const Slideshow = () => {
     <div className="w-screen">
       <video src={videos[currentVideo]} alt="Mansion Video" autoPlay muted loop controls className="w-screen" />
       <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full flex justify-between">
-        <button onClick={previousVideo} className="text-mmblue text-4xl"><FaArrowAltCircleLeft /></button>
-        <button onClick={nextVideo} className="text-mmblue text-4xl"><FaArrowAltCircleRight /></button>
+        <button onClick={previousVideo} className="text-mmblue text-4xl">
+          <div className="bg-mmcream rounded-full p-1 transition-opacity duration-300 opacity-15 hover:opacity-100">
+            <FaArrowAltCircleLeft />
+          </div>
+        </button>
+        <button onClick={nextVideo} className="text-mmblue text-4xl">
+          <div className="bg-mmcream rounded-full p-1 transition-opacity duration-300 opacity-15 hover:opacity-100">
+            <FaArrowAltCircleRight />
+          </div>
+        </button>
       </div>
     </div>
   );
