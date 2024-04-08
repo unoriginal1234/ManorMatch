@@ -61,12 +61,12 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 4 && (
           <div>
-            <Vendors setSelectedVendor={setSelectedVendor} />
+            <Vendors setSelectedVendor={setSelectedVendor} goToNextPage={goToNextPage}/>
           </div>
         )}
         {modalPage === 5 && (
           <div>
-            <VendorModal selectedVendor={selectedVendor} />
+            <VendorModal selectedVendor={selectedVendor} goToNextPage={goToNextPage}/>
           </div>
         )}
         {modalPage === 6 && (
