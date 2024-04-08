@@ -27,7 +27,7 @@ function App() {
           <HomePage />
           {/* Currently all these components will be rendered on the "/home" path */}
           <Carousel />
-          <VendorModal />
+          {/* <VendorModal /> */}
           <Booking />
           <LiveChat />
           <Link to="/cart">
