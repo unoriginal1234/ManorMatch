@@ -20,9 +20,14 @@ const EnterAddress = ({ address, setAddress, goToNextPage }) => {
   }
 
   return (
-    <div>
-      <form>
-        <input placeholder="Address 1" value={address1} onChange={(e) => setAddress1(e.target.value)} />
+    <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+      <form className="text-black">
+        <input
+          placeholder="Address 1"
+          value={address1}
+          onChange={(e) => setAddress1(e.target.value)}
+          className="py-18"
+        />
         <input placeholder="Address 2" value={address2} onChange={(e) => setAddress2(e.target.value)} />
         <input placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
         <input placeholder="State" value={usState} onChange={(e) => setUsState(e.target.value)} />
