@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const UserAuth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -14,9 +16,11 @@ const UserAuth = () => {
     })
       .then((response) => {
         console.log(response.data);
+        navigate('/home');
       })
       .catch((error) => {
-        console.log(error);
+        console.log('failed')
+        console.error(error);
       })
   }
 

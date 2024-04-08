@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const SignUpPage = () => {
 
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -33,7 +35,9 @@ const SignUpPage = () => {
       return;
     } else {
       console.log('completed, going into post')
-      axios.post('http://localhost:3001/signup', {
+      axios.post('http://localhost:3000/signup', {
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: password1
       })
@@ -53,6 +57,14 @@ const SignUpPage = () => {
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUpSubmit}>
           <div>
+            <label>First Name:</label>
+            <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required></input>
+          </div>
+          <div>
+            <label>Last Name:</label>
+            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required></input>
+          </div>
+          <div>
             <label>Email Address:</label>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required></input>
           </div>
@@ -65,8 +77,8 @@ const SignUpPage = () => {
             <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} required></input>
           </div>
           {/* <Link to="/home" className="text-lg"> */}
-            <button type="submit">Sign Up</button>
-            {loginError ? <p className="text-red-500">{loginError}</p> : null}
+          <button type="submit">Sign Up</button>
+          {loginError ? <p className="text-red-500">{loginError}</p> : null}
           {/* </Link> */}
         </form>
       </div>
