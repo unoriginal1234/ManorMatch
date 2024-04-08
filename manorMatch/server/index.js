@@ -25,9 +25,6 @@ const io = new Server(server, {
   },
 });
 app.use(express.json());
-// app.use(cors({
-//   origin: 'http://localhost:3000'
-// }))
 app.use(morgan('dev'));
 
 app.use(cookieParser());
