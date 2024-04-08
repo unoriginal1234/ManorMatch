@@ -2,10 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import mongoose from 'mongoose';
 
-
-const uri = `${process.env.MONGODB_URI}/${process.env.DB_NAME}`;
-console.log(uri); // Debugging: Ensure the URI looks correct
-mongoose.connect(uri);
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -31,7 +28,13 @@ const vendorSchema = new mongoose.Schema({
   category: String,
   telephoneNumber: String,
   email: String,
-  price: Number
+  price: Number,
+  photo: String,
+  specialties: [{ specialty1: String,
+                  specialty2: String,
+                  specialty3: String,
+                  specialty4: String,
+                  specialty5: String}]
 })
 
 const bookingSchema = new mongoose.Schema({
