@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-const CarouselModal = ({ modalIsOpen, closeModal }) => {
+const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, category }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -15,6 +15,12 @@ const CarouselModal = ({ modalIsOpen, closeModal }) => {
 
   function handleClose() {
     closeModal();
+  }
+  function format(str) {
+    let result = str;
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+    result += '.';
+    return result;
   }
   return (
     <div>
@@ -35,21 +41,28 @@ const CarouselModal = ({ modalIsOpen, closeModal }) => {
 
             <div className="w-7/12 flex-col my-4 ml-4">
               <div className="w-fill">
-                <h1 className="text-4xl mb-5">Service Name</h1>
+                <h1 className="text-4xl mb-5">{category}</h1>
               </div>
               <div>
-                <h2 className="text-2xl mb-2">Details</h2>
+                <ul className="list-disc pl-4">
+                <h2 className="text-2xl mb-2">{Object.keys(serviceDetails).map((k)=>{
+                  return <li key={k}>{format(serviceDetails[k])}</li>
+                })}</h2></ul>
               </div>
               <ul className="list-disc list-inside"></ul>
             </div>
             <div className="serviceModal w-5/12 flex flex-col justify-center pl-10 m-10">
               <Slider {...settings}>
                 <img
-                  src="https://fakeimg.pl/250x250/b8a0a0/909090"
+                  src={imageUrl}
                   alt="Service Image"
                 />
-                <img
-                  src="https://fakeimg.pl/250x250/b84d4d/909090"
+                 <img
+                  src={imageUrl}
+                  alt="Service Image"
+                />
+                 <img
+                  src={imageUrl}
                   alt="Service Image"
                 />
               </Slider>
