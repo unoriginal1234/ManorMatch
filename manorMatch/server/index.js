@@ -1,17 +1,23 @@
 import dotenv from 'dotenv';
-dotenv.config();
-
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
-
 import router from './routes/routes.js'
-import { createServer } from 'http';
-import { Server } from 'socket.io';
+console.log("INDEX.JS RUNS >>>>  ")
+dotenv.config();
+
 
 const app = express();
-app.use(cors());
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
+// app.use(cors());
 app.use(express.json());
 
 app.use('/', router);
@@ -27,8 +33,10 @@ io.on('connection', (socket) => {
   })
  });
 
- const port = process.env.PORT || 5173;
+ const port = 5173;
 
-server.listen(port, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+ console.log("PORT >>>", port);
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
