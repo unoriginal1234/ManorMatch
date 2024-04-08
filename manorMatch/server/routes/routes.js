@@ -17,4 +17,6 @@ router.get('*', (req, res) => {
 });
 
 
+router.get('/vendors', controllers.vendors.getVendors)
+
 export default router;

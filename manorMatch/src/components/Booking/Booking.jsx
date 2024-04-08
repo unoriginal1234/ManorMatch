@@ -4,8 +4,8 @@ import AddressType from './AddressType';
 import EnterAddress from './EnterAddress';
 import SelectAddress from './SelectAddress';
 
-const Booking = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+const Booking = ({ modalIsOpen, setModalIsOpen }) => {
+  //const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPage, setModalPage] = useState(1);
 
   const [addressType, setAddressType] = useState('');
@@ -17,12 +17,12 @@ const Booking = () => {
 
   const goToPreviousPage = () => {
     setModalPage(modalPage - 1);
-  }
+  };
 
   const handleClose = () => {
-    setModalIsOpen(false)
-    setModalPage(1)
-  }
+    setModalIsOpen();
+    setModalPage(1);
+  };
 
   return (
     <div>
@@ -30,17 +30,16 @@ const Booking = () => {
       This is Calendar Booking
       <Modal isOpen={modalIsOpen}>
         {modalPage === 1 && (
-          <AddressType setAddressType={setAddressType} goToNextPage={goToNextPage}/>
+          <AddressType
+            setAddressType={setAddressType}
+            goToNextPage={goToNextPage}
+          />
         )}
         {modalPage === 2 && (
           <div>
             <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
-            {addressType === 'enter' && (
-              <EnterAddress />
-            )}
-            {addressType === 'select' && (
-              <SelectAddress />
-            )}
+            {addressType === 'enter' && <EnterAddress />}
+            {addressType === 'select' && <SelectAddress />}
             <button onClick={() => goToNextPage()}>NEXT</button>
           </div>
         )}

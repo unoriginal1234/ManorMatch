@@ -3,6 +3,7 @@ dotenv.config();
 
 import path from 'path';
 import express from 'express';
+import cors from 'cors';
 import axios from 'axios';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -14,6 +15,7 @@ import * as auth from './middleware/auth.js';
 
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:5173'
