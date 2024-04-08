@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import ChatRoom from './ChatRoom.jsx';
 import io from 'socket.io-client';
+import { socket } from '../../socket.js'; // This is the socket connection, specifically for the chat room
 
-const ChatModal = ({ toggleChatModal }) => {
+const ChatModal = ({ toggleChatModal, socket }) => {
   const [chatModal, setChatModal] = useState(false);
-  const [socket, setSocket] = useState(null);
+ //  const [socket, setSocket] = useState(null);
 
-  useEffect(() => {
-    const newSocket = io();
-    setSocket(newSocket);
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     console.log('socketID', socket.id); // x8WIv7-mJelg7on_ALbx
+  //   });
 
-    newSocket.on('connect', () => {
-      console.log('Connected to server');
-    });
-
-    return () => {
-      newSocket.off('connect');
-      newSocket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     socket.off('connect');
+  //   };
+  // }, []);
 
 
 

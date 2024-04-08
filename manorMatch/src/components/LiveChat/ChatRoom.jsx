@@ -21,21 +21,22 @@ function ChatRoom({ socket, toggleChatModal }) {
     return () => {
       socket.off('message', messageListener);
     };
-  }, [socket]);
+  }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
     console.log('Message sent: ', message);
-    socket.emit('message', message);
+    socket.emit('message', { id: socket.id.substring(0, 5), message });
     setMessage('');
   };
 
+  console.log('Socket connected333:', socket.connected);
   return (
     <div className="flex flex-col h-full">
-      <div id="chat-window" className="overflow-y-auto flex-grow p-4 ">
+      <div id="chat-window" className="bg-mmblue overflow-y-auto text-white flex-grow p-4 ">
 
         {chat.map((payload, index) => (
-          <p key={index} className="mb-2">{payload}</p>
+          <p key={index} className="mb-2">USER {payload.id}: {payload.message}</p>
         ))}
         <div ref={chatEndRef} />
       </div>

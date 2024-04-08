@@ -10,26 +10,24 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
-import io from 'socket.io-client';
+//import io from 'socket.io-client';
+import { socket } from './socket.js'
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
-  const [socket, setSocket] = useState(null);
+  // const [socket, setSocket] = useState(null);
 
-
-  useEffect(() => {
-    const newSocket = io.connect('http://localhost:5173');
-    setSocket(newSocket);
-    return () => newSocket.close();
-  }, []);
 
   useEffect(() => {
     if (socket) {
+      socket.on('connect', () => {
+        console.log('Socket connected!!!! ID:', socket.id.substring(0, 5))
+      });
       socket.on('message', (message) => {
         console.log('Received message:', message);
       });
     }
-  }, [socket]);
+  }, []);
 
   const toggleChatModal = () => {
     setIsChatModalOpen(prevState => !prevState);
@@ -63,7 +61,7 @@ function App() {
       </Routes>
       <div>
         <button onClick={toggleChatModal}>Toggle Chat</button>
-        {isChatModalOpen && <ChatModal toggleChatModal={toggleChatModal}/>}
+        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal}/>}
       </div>
     </Router>
 
