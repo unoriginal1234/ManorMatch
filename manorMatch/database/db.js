@@ -19,7 +19,8 @@ const customerSchema = new mongoose.Schema({
   state: String,
   zip: String,
   telephoneNumber: String,
-  email: String
+  email: String,
+  password: String
 })
 
 const vendorSchema = new mongoose.Schema({
