@@ -7,7 +7,6 @@ var router = express.Router();
 router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
-router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
@@ -18,6 +17,6 @@ router.get('*', (req, res) => {
 });
 
 
-
+router.get('/vendors', controllers.vendors.getVendors)
 
 export default router;
