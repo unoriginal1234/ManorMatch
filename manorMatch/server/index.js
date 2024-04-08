@@ -7,7 +7,6 @@ import cors from 'cors';
 import axios from 'axios';
 import cookieParser from 'cookie-parser';
 import router from './routes/routes.js';
-
 import morgan from 'morgan';
 
 import * as auth from './middleware/auth.js';
@@ -34,3 +33,4 @@ app.get('/clear-cookie', (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
 });
+
