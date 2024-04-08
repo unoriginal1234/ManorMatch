@@ -8,6 +8,8 @@ import Booking from './components/Booking/Booking.jsx'
 import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import SignUpPage from './components/UserAuthentication/SignUp.jsx'
+import { useState } from 'react';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
             <Link to="/home">Home</Link>
           </>
         } />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
           <>
+
           <HomePage />
           {/* Currently all these components will be rendered on the "/home" path */}
           <Carousel />
@@ -33,6 +37,7 @@ function App() {
             <CartIcon />
           </Link>
         </>
+
         } />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
