@@ -3,9 +3,12 @@ import { useState } from 'react';
 import AddressType from './AddressType';
 import EnterAddress from './EnterAddress';
 import SelectAddress from './SelectAddress';
+import Vendors from './Vendors';
 
 const Booking = ({ modalIsOpen, setModalIsOpen }) => {
+  // will need category passed down from carousel
   const [modalPage, setModalPage] = useState(1);
+  const [selectedVendor, setSelectedVendor] = useState({});
 
   const [addressType, setAddressType] = useState('');
   const [address, setAddress] = useState({
@@ -58,12 +61,15 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 4 && (
           <div>
-            <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
-            <div>VENDORS</div>
-            <button onClick={() => goToNextPage()}>NEXT</button>
+            <Vendors setSelectedVendor={setSelectedVendor} />
           </div>
         )}
         {modalPage === 5 && (
+          <div>
+            <VendorModal selectedVendor={selectedVendor} />
+          </div>
+        )}
+        {modalPage === 6 && (
           <div>
             <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
             <div>CONFIRMATION</div>
