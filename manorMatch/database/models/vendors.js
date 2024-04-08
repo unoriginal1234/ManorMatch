@@ -1,7 +1,8 @@
 import db from '../db.js';
 
-const getVendorsByCategory = (category) => {
-  return db.Vendor.find({category})
+const getVendorsByCategory = async (category) => {
+  const result = await db.Vendor.find({ category: category});
+  return result;
 }
 
 

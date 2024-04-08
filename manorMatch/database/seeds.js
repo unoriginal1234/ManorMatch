@@ -61,6 +61,14 @@ async function seedVendor() {
       email: faker.internet.email(),
       price: faker.commerce.price(),
       photo: faker.image.urlPicsumPhotos(),
+      specialties:
+        [{
+          specialty1: faker.company.buzzPhrase(),
+          specialty2: faker.company.buzzPhrase(),
+          specialty3: faker.company.buzzPhrase(),
+          specialty4: faker.company.buzzPhrase(),
+          specialty5: faker.company.buzzPhrase(),
+        }]
     });
 
     try {

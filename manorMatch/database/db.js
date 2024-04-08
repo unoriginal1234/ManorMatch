@@ -29,7 +29,12 @@ const vendorSchema = new mongoose.Schema({
   telephoneNumber: String,
   email: String,
   price: Number,
-  photo: String
+  photo: String,
+  specialties: [{ specialty1: String,
+                  specialty2: String,
+                  specialty3: String,
+                  specialty4: String,
+                  specialty5: String}]
 })
 
 const bookingSchema = new mongoose.Schema({
