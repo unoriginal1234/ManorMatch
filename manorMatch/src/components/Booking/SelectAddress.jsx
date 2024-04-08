@@ -1,5 +1,5 @@
 
-const SelectAddress = ({}) => {
+const SelectAddress = ({ goToNextPage }) => {
 
   return (
     <div>

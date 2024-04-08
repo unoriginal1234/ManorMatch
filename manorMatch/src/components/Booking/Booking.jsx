@@ -9,7 +9,13 @@ const Booking = () => {
   const [modalPage, setModalPage] = useState(1);
 
   const [addressType, setAddressType] = useState('');
-  const [address, setAddress] = useState({});
+  const [address, setAddress] = useState({
+    address1: '',
+    address2: '',
+    city: '',
+    usState: '',
+    zip: ''
+  });
 
   const goToNextPage = () => {
     setModalPage(modalPage + 1);
@@ -28,7 +34,7 @@ const Booking = () => {
     <div>
       <button onClick={() => setModalIsOpen(true)}>BOOK NOW</button>
       This is Calendar Booking
-      <Modal isOpen={modalIsOpen}>
+      <Modal isOpen={modalIsOpen} className='w-4/5'>
         {modalPage === 1 && (
           <AddressType setAddressType={setAddressType} goToNextPage={goToNextPage}/>
         )}
@@ -36,12 +42,11 @@ const Booking = () => {
           <div>
             <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
             {addressType === 'enter' && (
-              <EnterAddress />
+              <EnterAddress address={address} setAddress={setAddress} goToNextPage={goToNextPage}/>
             )}
             {addressType === 'select' && (
-              <SelectAddress />
+              <SelectAddress goToNextPage={goToNextPage}/>
             )}
-            <button onClick={() => goToNextPage()}>NEXT</button>
           </div>
         )}
         {modalPage === 3 && (
@@ -64,7 +69,7 @@ const Booking = () => {
             <div>CONFIRMATION</div>
           </div>
         )}
-        <button onClick={() => handleClose()}>Close Modal</button>
+        <button onClick={() => handleClose()}>X</button>
       </Modal>
     </div>
   );
