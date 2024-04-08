@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import CarouselModal from "./CarouselModal";
+import Booking from "../Booking/Booking.jsx";
 import { set } from "mongoose";
 
 const CarouselImage = ({ imageUrl }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const [detailsModalIsOpen, setDetailsModalIsOpen] = useState(false);
+  const closeDetailsModal = () => {
+    setDetailsModalIsOpen(false);
   };
   return (
     <div className='relative'>
       <div
         className='group'
         onClick={() => {
-          setModalIsOpen(true);
+          setDetailsModalIsOpen(true);
         }}
       >
         <img
@@ -30,11 +31,15 @@ const CarouselImage = ({ imageUrl }) => {
         className='absolute bottom-2 right-2 bg-mmblue text-white px-4 py-2 rounded hover:bg-black'
         onClick={() => {
           //setModalIsOpen(true);
+          <Booking />;
         }}
       >
         Reserve
       </button>
-      <CarouselModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <CarouselModal
+        modalIsOpen={detailsModalIsOpen}
+        closeModal={closeDetailsModal}
+      />
     </div>
   );
 };
