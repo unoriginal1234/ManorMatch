@@ -34,7 +34,7 @@ const Booking = () => {
     <div>
       <button onClick={() => setModalIsOpen(true)}>BOOK NOW</button>
       This is Calendar Booking
-      <Modal isOpen={modalIsOpen} className='w-4/5'>
+      <Modal isOpen={modalIsOpen}>
         {modalPage === 1 && (
           <AddressType setAddressType={setAddressType} goToNextPage={goToNextPage}/>
         )}
