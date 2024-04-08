@@ -13,7 +13,9 @@ const SelectAddress = ({ goToNextPage }) => {
   return (
     <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
       SELECT FROM YOUR SAVED ADDRESSES:
-      <select onChange={(e) => setSelectedAddress(e.target.value)}>
+      <select
+        onChange={(e) => setSelectedAddress(e.target.value)}
+        className="text-black">
         <option value='Select Address'>Select Address</option>
         <option value="address1">123 Main St</option>
         <option value="address2">456 Elm St</option>
