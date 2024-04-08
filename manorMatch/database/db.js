@@ -54,7 +54,7 @@ const messageSchema = new mongoose.Schema({
 const serviceSchema = new mongoose.Schema({
   category: String,
   description: String,
-  photo: String
+  photo: String,
   serviceDetails: { detail1: String,
                      detail2: String,
                      detail3: String,
