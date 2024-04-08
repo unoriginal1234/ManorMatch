@@ -18,9 +18,12 @@ const HomePage = () => {
           </Link>
         </NavBar>*/}
       <NavBar>
-        <Link to="/login" className="text-lg">
-          Logged in as Sir Bool
+        <span className="text-lg">
+        Logged in as Sir Bool /
+        <Link to="/login">
+            {" "}Sign Out
         </Link>
+        </span>
       </NavBar>
       <Carousel />
       <VendorModal />
