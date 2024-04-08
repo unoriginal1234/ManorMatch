@@ -54,6 +54,11 @@ const serviceSchema = new mongoose.Schema({
   category: String,
   description: String,
   photo: String
+  serviceDetails: { detail1: String,
+                     detail2: String,
+                     detail3: String,
+                     detail4: String,
+                     detail5: String }
 })
 
 const Customer = mongoose.model('Customer', customerSchema);

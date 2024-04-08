@@ -141,6 +141,13 @@ async function seedService() {
       category: vendorCategories[i],
       description: serviceDescriptions[i],
       photo: faker.image.url(),
+      serviceDetails: {
+        detail1: faker.company.buzzPhrase(),
+        detail2: faker.company.buzzPhrase(),
+        detail3: faker.company.buzzPhrase(),
+        detail4: faker.company.buzzPhrase(),
+        detail5: faker.company.buzzPhrase(),
+      }
     });
 
     try {
