@@ -17,10 +17,5 @@ export default {
       },
     },
   },
-  variants: {
-    extend: {
-      blur: ['hover'],
-    }
-  },
   plugins: [],
 }
