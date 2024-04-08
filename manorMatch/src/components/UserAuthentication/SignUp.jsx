@@ -11,6 +11,7 @@ const SignUpPage = () => {
 
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
+    console.log('in handlesignup')
     if (password1 !== password2) {
       setLoginError('Passwords do not match');
       return;
@@ -30,7 +31,8 @@ const SignUpPage = () => {
       setLoginError('Password must contain a lowercase letter');
       return;
     } else {
-      axios.post('http://localhost:3000/signup', {
+      axios.post('/signup', {
+        console.log('signup attempted')
         email: email,
         password: password1
       })

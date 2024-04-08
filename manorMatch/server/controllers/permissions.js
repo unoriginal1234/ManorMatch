@@ -20,5 +20,9 @@ const signup = (req, res) => {
   res.status(200).json({ message: 'Signup successful' });
 }
 
+const logout = (req, res) => {
+  console.log('logout in controllers received')
+  models.permissions.logout();
+}
 
-export { getUserInfo, login, signup };
+export { getUserInfo, login, signup, logout };

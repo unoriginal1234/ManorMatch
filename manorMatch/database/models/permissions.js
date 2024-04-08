@@ -1,7 +1,13 @@
 import db from '../db.js';
 
-const getUserInfo = () => {
-  console.log('this happened')
+export const getUserInfo = () => {
+  console.log('this happened');
 }
 
-export { getUserInfo };
+export const signup = () => {
+  console.log('signup recorded')
+}
+
+export const logout = () => {
+  console.log('logout attempted');
+}
