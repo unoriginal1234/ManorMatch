@@ -4,6 +4,7 @@ import AddressType from './AddressType';
 import EnterAddress from './EnterAddress';
 import SelectAddress from './SelectAddress';
 import Vendors from './Vendors';
+import VendorModal from './VendorModal';
 
 const Booking = ({ modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
@@ -61,12 +62,12 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 4 && (
           <div>
-            <Vendors setSelectedVendor={setSelectedVendor} />
+            <Vendors setSelectedVendor={setSelectedVendor} goToNextPage={goToNextPage}/>
           </div>
         )}
         {modalPage === 5 && (
           <div>
-            <VendorModal selectedVendor={selectedVendor} />
+            <VendorModal selectedVendor={selectedVendor} goToNextPage={goToNextPage}/>
           </div>
         )}
         {modalPage === 6 && (
