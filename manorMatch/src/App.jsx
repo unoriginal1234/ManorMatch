@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
 import UserAuth from './components/UserAuthentication/UserAuth.jsx'
@@ -10,42 +10,41 @@ import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 import { useState } from 'react';
-
+import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={
-          <>
-            <UserAuth />
-            {/* Sample link to the home page, could be replaced by login button later*/}
-            <Link to="/home">Home</Link>
-          </>
-        } />
+            <>
+              <UserAuth />
+              {/* Sample link to the home page, could be replaced by login button later*/}
+              <Link to="/home">Home</Link>
+            </>
+          }
+        />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
-          <>
-
-          <HomePage />
-          {/* Currently all these components will be rendered on the "/home" path */}
-          <Carousel />
-          {/* <VendorModal /> */}
-          <Booking />
-          <LiveChat />
-          <Link to="/cart">
-            <CartIcon />
-          </Link>
-        </>
-
-        } />
+            <>
+              <HomePage />
+              {/* Currently all these components will be rendered on the "/home" path */}
+              {/*
+              <Carousel />
+              <VendorModal />
+              <Booking />
+              <LiveChat />
+              <Link to="/cart">
+                <CartIcon />
+              </Link>*/}
+            </>
+          }
+        />
         <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/success" element={<PaymentSuccess />} />
       </Routes>
     </Router>
   );
 }
 
-
 export default App;
-
-
