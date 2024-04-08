@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChatRoom from './ChatRoom.jsx';
 import io from 'socket.io-client';
 
-const ChatModal = () => {
+const ChatModal = ({ toggleChatModal }) => {
   const [chatModal, setChatModal] = useState(false);
   const [socket, setSocket] = useState(null);
 
@@ -20,18 +20,16 @@ const ChatModal = () => {
     };
   }, []);
 
-  const toggleChatModal = () => {
-    setChatModal(!chatModal);
-  };
 
 
 console.log('chatModal')
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="chat-modal bg-white p-8 rounded-lg shadow-lg border-red-500 border-1">
-        {socket && <ChatRoom socket={socket} toggleChatModal={toggleChatModal}/>}
-      </div>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-00 flex justify-center items-center">
+    <div className="chat-modal bg-white p-8 rounded-lg shadow-lg border-red-500 border-1" style={{ width: '80%', height: '80%' }}>
+      {socket && <ChatRoom socket={socket} toggleChatModal={toggleChatModal}/>}
+      <button onClick={toggleChatModal}>Close Chat</button>
     </div>
+  </div>
   );
 };
 

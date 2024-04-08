@@ -21,13 +21,13 @@ function ChatRoom({ socket, toggleChatModal }) {
     return () => {
       socket.off('message', messageListener);
     };
-  }, [socket]); // Only re-run if socket changes
+  }, [socket]);
 
   const sendMessage = (e) => {
     e.preventDefault();
+    console.log('Message sent: ', message);
     socket.emit('message', message);
     setMessage('');
-    console.log('Message sent: ', message)
   };
 
   return (

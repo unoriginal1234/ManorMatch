@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
 import VendorModal from './components/VendorModal/VendorModal.jsx'
@@ -10,16 +10,32 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
+import io from 'socket.io-client';
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
+  const [socket, setSocket] = useState(null);
 
+
+  useEffect(() => {
+    const newSocket = io.connect('http://localhost:5173');
+    setSocket(newSocket);
+    return () => newSocket.close();
+  }, []);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on('message', (message) => {
+        console.log('Received message:', message);
+      });
+    }
+  }, [socket]);
 
   const toggleChatModal = () => {
     setIsChatModalOpen(prevState => !prevState);
-  console.log(isChatModalOpen)
-
   };
+
+
   return (
     <Router>
       <Routes>
@@ -45,7 +61,13 @@ function App() {
         } />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
+      <div>
+        <button onClick={toggleChatModal}>Toggle Chat</button>
+        {isChatModalOpen && <ChatModal toggleChatModal={toggleChatModal}/>}
+      </div>
     </Router>
+
+
   );
 }
 
