@@ -3,13 +3,13 @@ import { useState } from 'react';
 import AddressType from './AddressType';
 import EnterAddress from './EnterAddress';
 import SelectAddress from './SelectAddress';
+import Calendar from './Calendar';
 import Vendors from './Vendors';
 import VendorModal from './VendorModal';
 
 const Booking = ({ modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
   const [modalPage, setModalPage] = useState(1);
-  const [selectedVendor, setSelectedVendor] = useState({});
 
   const [addressType, setAddressType] = useState('');
   const [address, setAddress] = useState({
@@ -19,6 +19,11 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
     usState: '',
     zip: ''
   });
+
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedVendor, setSelectedVendor] = useState({});
+
 
   const goToNextPage = () => {
     setModalPage(modalPage + 1);
@@ -54,11 +59,12 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
           </div>
         )}
         {modalPage === 3 && (
-          <div>
-            <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
-            <div>CALENDAR</div>
-            <button onClick={() => goToNextPage()}>NEXT</button>
-          </div>
+          <Calendar
+            goToPreviousPage={goToPreviousPage}
+            setSelectedDate={setSelectedDate}
+            setSelectedTime={setSelectedTime}
+            goToNextPage={goToNextPage}
+          />
         )}
         {modalPage === 4 && (
           <div>
