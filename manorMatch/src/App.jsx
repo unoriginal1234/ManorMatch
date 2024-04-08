@@ -1,7 +1,6 @@
 import './App.css'
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
-import VendorModal from './components/VendorModal/VendorModal.jsx'
 import UserAuth from './components/UserAuthentication/UserAuth.jsx'
 import LandingPage from './components/LandingPage/LandingPage.jsx'
 import LiveChat from './components/LiveChat/LiveChat.jsx'
@@ -27,16 +26,18 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
           <>
-            <HomePage />
-            {/* Currently all these components will be rendered on the "/home" path */}
-            <Carousel />
-            <VendorModal />
-            <Booking />
-            <LiveChat />
-            <Link to="/cart">
-              <CartIcon />
-            </Link>
-          </>
+
+          <HomePage />
+          {/* Currently all these components will be rendered on the "/home" path */}
+          <Carousel />
+          {/* <VendorModal /> */}
+          <Booking />
+          <LiveChat />
+          <Link to="/cart">
+            <CartIcon />
+          </Link>
+        </>
+
         } />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
