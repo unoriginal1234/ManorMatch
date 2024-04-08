@@ -17,9 +17,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route
-          path="/login"
-          element={
+        <Route path="/login" element={
             <>
               <UserAuth />
               {/* Sample link to the home page, could be replaced by login button later*/}
@@ -28,9 +26,7 @@ function App() {
           }
         />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route
-          path="/home"
-          element={
+        <Route path="/home" element={
             <>
               <HomePage />
               {/* Currently all these components will be rendered on the "/home" path */}

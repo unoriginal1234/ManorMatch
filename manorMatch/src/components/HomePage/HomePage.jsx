@@ -25,7 +25,6 @@ const HomePage = () => {
       <Carousel />
       <VendorModal />
       <Booking />
-      <LiveChat />
       <Link to="/cart">
         <CartIcon />
       </Link>
