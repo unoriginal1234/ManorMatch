@@ -6,7 +6,6 @@ const CartService = ({ service, price, onRemove }) => {
     <div className='grid grid-cols-8 gap-4 border-b pt-2 pb-2 mb-4 items-center'>
       <div className='col-span-5 px-4 flex justify-between items-center'>
         <p className='font-semibold text-mmcream'>{service}</p>
-        {/* Empty div here to maintain the grid layout */}
       </div>
       <div className='col-span-2 text-right font-semibold text-mmcream'>
         ${price}
