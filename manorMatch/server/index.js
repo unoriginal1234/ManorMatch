@@ -5,7 +5,10 @@ import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
-import router from './routes/routes.js'
+import cookieParser from 'cookie-parser';
+import router from './routes/routes.js';
+import morgan from 'morgan';
+import * as auth from './middleware/auth.js';
 console.log("INDEX.JS RUNS >>>>  ")
 dotenv.config();
 
@@ -22,8 +25,27 @@ const io = new Server(server, {
   },
 });
 app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:5173'
+}))
+app.use(morgan('dev'));
+
+app.use(cookieParser());
+app.use(auth.createSession);
 
 app.use('/', router);
+
+app.get('/clear-cookie', (req, res) => {
+  res.cookie('s_id', '', { expires: new Date(0) });
+  res.send('Cookie cleared');
+});
+
+
+app.get('/clear-cookie', (req, res) => {
+  res.cookie('s_id', '', { expires: new Date(0) });
+  res.send('Cookie cleared');
+});
+
 
 
 io.on('connection', (socket) => {
@@ -41,3 +63,4 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
