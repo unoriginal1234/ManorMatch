@@ -25,7 +25,7 @@ const UserAuth = () => {
   }
 
   return (
-    <div>
+    <div className="bg-mmblue text-mmsand w-screen ">
       This is the User Authentication
       <div className="">
         Login

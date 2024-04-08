@@ -53,7 +53,7 @@ const SignUpPage = () => {
 
   return (
     <div>
-      <div>
+      <div className="bg-mmblue text-mmsand w-screen">
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUpSubmit}>
           <div>
