@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export const createSession = (req, res, next) => {
-  console.log('triggered')
   let cookieString = req.get("Cookie") || "";
   console.log(cookieString, 'req.get("Cookie")')
 
