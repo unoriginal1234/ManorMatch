@@ -6,6 +6,7 @@ import SelectAddress from './SelectAddress';
 import Calendar from './Calendar';
 import Vendors from './Vendors';
 import VendorModal from './VendorModal';
+import Confirmation from './Confirmation';
 
 const Booking = ({ modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
@@ -23,7 +24,6 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedVendor, setSelectedVendor] = useState({});
-
 
   const goToNextPage = () => {
     setModalPage(modalPage + 1);
@@ -49,12 +49,17 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 2 && (
           <div>
-            <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
             {addressType === 'enter' && (
-              <EnterAddress address={address} setAddress={setAddress} goToNextPage={goToNextPage}/>
+              <EnterAddress
+                goToPreviousPage={goToPreviousPage}
+                address={address}
+                setAddress={setAddress}
+                goToNextPage={goToNextPage}/>
             )}
             {addressType === 'select' && (
-              <SelectAddress goToNextPage={goToNextPage}/>
+              <SelectAddress
+                goToPreviousPage={goToPreviousPage}
+                goToNextPage={goToNextPage} />
             )}
           </div>
         )}
@@ -67,20 +72,15 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
           />
         )}
         {modalPage === 4 && (
-          <div>
-            <Vendors setSelectedVendor={setSelectedVendor} goToNextPage={goToNextPage}/>
-          </div>
+          <Vendors setSelectedVendor={setSelectedVendor} goToNextPage={goToNextPage}/>
         )}
         {modalPage === 5 && (
-          <div>
-            <VendorModal selectedVendor={selectedVendor} goToNextPage={goToNextPage}/>
-          </div>
+          <VendorModal selectedVendor={selectedVendor} goToNextPage={goToNextPage}/>
         )}
         {modalPage === 6 && (
-          <div>
-            <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
-            <div>CONFIRMATION</div>
-          </div>
+          <Confirmation
+            date={selectedDate}
+            time={selectedTime} />
         )}
         <button onClick={() => handleClose()}>X</button>
       </Modal>
