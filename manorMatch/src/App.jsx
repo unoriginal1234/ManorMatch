@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
 import UserAuth from './components/UserAuthentication/UserAuth.jsx'
@@ -17,28 +17,29 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={
-          <>
-            <UserAuth />
-            {/* Sample link to the home page, could be replaced by login button later*/}
-            <Link to="/home">Home</Link>
-          </>
-        } />
+            <>
+              <UserAuth />
+              {/* Sample link to the home page, could be replaced by login button later*/}
+              <Link to="/home">Home</Link>
+            </>
+          }
+        />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
-          <>
-
-          <HomePage />
-          {/* Currently all these components will be rendered on the "/home" path */}
-          <Carousel />
-          {/* <VendorModal /> */}
-          <Booking />
-          <LiveChat />
-          <Link to="/cart">
-            <CartIcon />
-          </Link>
-        </>
-
-        } />
+            <>
+              <HomePage />
+              {/* Currently all these components will be rendered on the "/home" path */}
+              {/*
+              <Carousel />
+              <VendorModal />
+              <Booking />
+              <LiveChat />
+              <Link to="/cart">
+                <CartIcon />
+              </Link>*/}
+            </>
+          }
+        />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
       </Routes>
@@ -46,7 +47,4 @@ function App() {
   );
 }
 
-
 export default App;
-
-
