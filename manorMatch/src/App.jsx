@@ -1,7 +1,6 @@
 import './App.css'
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
-import VendorModal from './components/VendorModal/VendorModal.jsx'
 import UserAuth from './components/UserAuthentication/UserAuth.jsx'
 import LandingPage from './components/LandingPage/LandingPage.jsx'
 import LiveChat from './components/LiveChat/LiveChat.jsx'
