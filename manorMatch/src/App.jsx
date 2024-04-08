@@ -24,18 +24,19 @@ function App() {
             <Link to="/home">Home</Link>
           </>
         } />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
           <>
-          <HomePage />
-          {/* Currently all these components will be rendered on the "/home" path */}
-          <Carousel />
-          <VendorModal />
-          <Booking />
-          <LiveChat />
-          <Link to="/cart">
-            <CartIcon />
-          </Link>
-        </>
+            <HomePage />
+            {/* Currently all these components will be rendered on the "/home" path */}
+            <Carousel />
+            <VendorModal />
+            <Booking />
+            <LiveChat />
+            <Link to="/cart">
+              <CartIcon />
+            </Link>
+          </>
         } />
         <Route path="/cart" element={<ShoppingCart />} />
       </Routes>

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const UserAuth = () => {
-  // Your component logic goes here
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,12 +12,12 @@ const UserAuth = () => {
       email: email,
       password: password
     })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   return (
@@ -35,11 +34,15 @@ const UserAuth = () => {
             <label>Password:</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required></input>
           </div>
-          <button type="submit">Login</button>
-          Don't have an account?&nbsp;
-          <Link to="/signup">
-            Sign Up
-          </Link>
+          <div>
+            <button type="submit">Login</button>
+          </div>
+          <div>
+            Don't have an account?&nbsp;
+            <Link to="/signup">
+              Sign Up
+            </Link>
+          </div>
         </form>
       </div>
     </div>

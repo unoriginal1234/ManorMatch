@@ -16,6 +16,7 @@ const login = (req, res) => {
 
 const signup = (req, res) => {
   const { email, password } = req.body;
+  console.log('signup in controllers')
   models.permissions.signup(email, password);
   res.status(200).json({ message: 'Signup successful' });
 }

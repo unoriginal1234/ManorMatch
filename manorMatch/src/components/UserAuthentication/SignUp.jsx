@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignUpPage = () => {
 
@@ -9,9 +9,10 @@ const SignUpPage = () => {
   const [password2, setPassword2] = useState('');
   const [loginError, setLoginError] = useState('');
 
+  const navigate = useNavigate();
+
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
-    console.log('in handlesignup')
     if (password1 !== password2) {
       setLoginError('Passwords do not match');
       return;
@@ -31,17 +32,18 @@ const SignUpPage = () => {
       setLoginError('Password must contain a lowercase letter');
       return;
     } else {
-      axios.post('/signup', {
-        console.log('signup attempted')
+      console.log('completed, going into post')
+      axios.post('http://localhost:3001/signup', {
         email: email,
         password: password1
       })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+        .then((response) => {
+          console.log(response.data);
+          navigate('/home');
+        })
+        .catch((error) => {
+          console.log(error);
+        })
     }
   }
 
@@ -52,18 +54,20 @@ const SignUpPage = () => {
         <form onSubmit={handleSignUpSubmit}>
           <div>
             <label>Email Address:</label>
-            <input type="text" value={email}  onChange={(e) => setEmail(e.target.value)} required></input>
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required></input>
           </div>
           <div>
             <label>Password:</label>
-            <input type="password" value={password1} onChange={(e) => setPassword1(e.target.value)}required></input>
+            <input type="password" value={password1} onChange={(e) => setPassword1(e.target.value)} required></input>
           </div>
           <div>
             <label>Confirm Password:</label>
-            <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)}required></input>
+            <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} required></input>
           </div>
-          <button type="submit">Sign Up</button>
-          {loginError ? <p className="text-red-500">{loginError}</p> : null}
+          {/* <Link to="/home" className="text-lg"> */}
+            <button type="submit">Sign Up</button>
+            {loginError ? <p className="text-red-500">{loginError}</p> : null}
+          {/* </Link> */}
         </form>
       </div>
     </div>
