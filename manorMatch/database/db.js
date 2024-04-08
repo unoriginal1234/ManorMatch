@@ -19,7 +19,8 @@ const customerSchema = new mongoose.Schema({
   state: String,
   zip: String,
   telephoneNumber: String,
-  email: String
+  email: String,
+  password: String
 })
 
 const vendorSchema = new mongoose.Schema({
@@ -50,6 +51,17 @@ const messageSchema = new mongoose.Schema({
   createdAt: Date
 })
 
+const serviceSchema = new mongoose.Schema({
+  category: String,
+  description: String,
+  photo: String,
+  serviceDetails: { detail1: String,
+                     detail2: String,
+                     detail3: String,
+                     detail4: String,
+                     detail5: String }
+})
+
 const Customer = mongoose.model('Customer', customerSchema);
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
@@ -58,4 +70,6 @@ const Booking = mongoose.model('Booking', bookingSchema);
 
 const Message = mongoose.model('Message', messageSchema);
 
-export default { Customer, Vendor, Booking, Message };
+const Service = mongoose.model('Service', serviceSchema);
+
+export default { Customer, Vendor, Booking, Message, Service };

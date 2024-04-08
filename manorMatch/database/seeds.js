@@ -25,6 +25,29 @@ const vendorCategories = [
   'Toile Fabricator',
 ];
 
+const serviceDescriptions = [
+  "Crafting personalized culinary experiences",
+  "Caring support for your family's needs",
+  "Effortless coordination of your estate",
+  "Discreet assistance with elegance",
+  "Maintaining impeccable living spaces",
+  "Creating stunning outdoor retreats",
+  "Your dedicated organizational ally",
+  "Smooth and luxurious transportation",
+  "Guardians of your peace of mind",
+  "Keeping your pool pristine",
+  "Tailored fitness empowerment",
+  "Intelligent living made easy",
+  "Curating exquisite wine experiences",
+  "Personalized learning guidance",
+  "Transforming spaces with curated art",
+  "Crafting your unique style",
+  "Ensuring plush comfort",
+  "Mastering coding challenges made simple",
+  "Preserving vintage lighting elegance",
+  "Crafting bespoke luxury fabrics",
+]
+
 function getRandomVendorCategory() {
   return vendorCategories[Math.floor(Math.random() * vendorCategories.length)];
 }
@@ -112,6 +135,29 @@ async function seedMessage() {
   }
 }
 
+async function seedService() {
+  for(let i = 0; i < vendorCategories.length; i++) {
+    let service = new db.Service({
+      category: vendorCategories[i],
+      description: serviceDescriptions[i],
+      photo: faker.image.url(),
+      serviceDetails: {
+        detail1: faker.company.buzzPhrase(),
+        detail2: faker.company.buzzPhrase(),
+        detail3: faker.company.buzzPhrase(),
+        detail4: faker.company.buzzPhrase(),
+        detail5: faker.company.buzzPhrase(),
+      }
+    });
+
+    try {
+      await service.save();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 const seedDatabase = async () => {
   await seedCustomer();
   console.log('Customer seeding complete');
@@ -121,6 +167,8 @@ const seedDatabase = async () => {
   console.log('Booking seeding complete');
   await seedMessage();
   console.log('Message seeding complete');
+  await seedService();
+  console.log('Service seeding complete');
 }
 
 seedDatabase();

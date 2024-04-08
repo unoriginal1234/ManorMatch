@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // import image1 from './images/image1.jpg'
 // import image2 from './images/image2.jpg'
 // import image3 from './images/image3.jpg'
-import mansion1 from './videos/mansion1.mp4';
-import mansion2 from './videos/mansion2.mp4';
-import mansion3 from './videos/mansion3.mp4';
+// import mansion1 from './videos/mansion1.mp4';
+// import mansion2 from './videos/mansion2.mp4';
+// import mansion3 from './videos/mansion3.mp4';
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import { FaRegCircle } from "react-icons/fa";
+// import { FaRegCircle } from "react-icons/fa";
 
 
 
