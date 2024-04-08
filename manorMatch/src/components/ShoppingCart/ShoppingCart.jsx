@@ -4,13 +4,19 @@ import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
 import NavBar from '../LandingPage/NavBar';
 import AddressInputs from './AddressInputs';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import Checkout from './Checkout';
+import axios from 'axios';
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const ShoppingCart = () => {
   // Sample data for services in the cart
   const [services, setServices] = useState([
-    { id: 1, name: 'Pool Cleaning', price: 1500 },
-    { id: 2, name: 'Gardening', price: 500 },
-    { id: 3, name: 'Housekeeping', price: 500 },
+    { id: 1, category: 'Personal Assistant', photo:"https://picsum.photos/seed/oHaiWgluV6/640/480", price: 1500 },
+    { id: 2, category: 'Housekeepers',photo: "https://picsum.photos/seed/l1nmI4o/640/480", price: 500 },
+    { id: 3, category: 'Landscaper',photo:"https://picsum.photos/seed/ZCayK0Kh/640/480", price: 500 },
   ]);
 
   const removeService = (serviceId) => {
@@ -22,12 +28,29 @@ const ShoppingCart = () => {
     return services.reduce((acc, service) => acc + service.price, 0);
   }, [services]);
 
-  const proceedToCheckOut = (e) => {
+  const proceedToCheckOut = async (e) => {
     e.preventDefault();
-    // would handle the checkout process by stripe
-    console.log('Proceeding to checkout');
-  };
+    try {
+      const stripe = await stripePromise;
 
+      const { data: session } = await axios.post('http://localhost:3000/checkout', {
+        totalAmount: total,
+      });
+      console.log(session);
+      console.log(session.sessionId);
+
+      // proceed with stripe.redirectToCheckout
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.sessionId,
+      });
+
+      if (result.error) {
+        console.error(result.error.message);
+      }
+    } catch (error) {
+      console.error("Failed to redirect to Stripe Checkout:", error.response || error.message || error);
+    }
+  };
 
   if (services.length === 0) {
     return (
@@ -60,7 +83,8 @@ const ShoppingCart = () => {
             {services.map(service => (
               <CartService
                 key={service.id}
-                service={service.name}
+                service={service.category}
+                photo={service.photo}
                 price={service.price}
                 onRemove={() => removeService(service.id)}
               />
