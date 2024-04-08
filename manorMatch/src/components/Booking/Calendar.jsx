@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
-
 const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNextPage }) => {
 
   const [date, setDate] = useState(null);
   const [time, setTime] = useState(null);
 
   const handleClick = () => {
-    if (date !== null && time !== null) {
+    if (date !== null && time !== null && time !== 'Select Time') {
       setSelectedDate(date);
       setSelectedTime(time);
       goToNextPage();
@@ -30,6 +29,7 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
         min={minDate}
         onChange={(e) => setDate(e.target.value)} />
       <select onChange={(e) => setTime(e.target.value)} className="text-black">
+        <option value='Select Time'>Select Time</option>
         <option value='8:00'>8:00 AM</option>
         <option value='9:00'>9:00 AM</option>
         <option value='10:00'>10:00 AM</option>
