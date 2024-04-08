@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
   })
  });
 
- const port = 5173;
+ const port = process.env.PORT || 5173;
 
  console.log("PORT >>>", port);
 
