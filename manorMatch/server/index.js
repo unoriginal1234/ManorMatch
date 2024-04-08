@@ -15,19 +15,19 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:5173',
 }));
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"]
   },
 });
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:5173'
-}))
+// app.use(cors({
+//   origin: 'http://localhost:3000'
+// }))
 app.use(morgan('dev'));
 
 app.use(cookieParser());
@@ -56,9 +56,9 @@ io.on('connection', (socket) => {
   })
  });
 
- const port = process.env.PORT || 5173;
+ const port = process.env.PORT || 3000;
 
- console.log("PORT >>>", port);
+ console.log("PORT >>>", 3000);
 
 server.listen(port, () => {
   console.log(`Listening on port ${port}`);

@@ -9,8 +9,8 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart.jsx'
 import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import SignUpPage from './components/UserAuthentication/SignUp.jsx'
-import { useState } from 'react';
-import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'import ChatModal from './components/LiveChat/ChatModal.jsx'
+import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
+import ChatModal from './components/LiveChat/ChatModal.jsx'
 //import io from 'socket.io-client';
 import { socket } from './socket.js'
 
