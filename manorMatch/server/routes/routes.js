@@ -20,7 +20,7 @@ router.get('*', (req, res) => {
 
 
 router.get('/vendors', controllers.vendors.getVendors)
-router.get('/services', controllers.services.getServices)
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
   try {
