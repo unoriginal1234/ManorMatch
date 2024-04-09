@@ -11,11 +11,6 @@ const HomePage = ({ }) => {
 
   return (
     <div>
-      {/*<NavBar>
-          <Link to="/login" className="text-lg">
-            Join / Login
-          </Link>
-        </NavBar>*/}
       <NavBar>
         <span className="text-lg flex items-center">
           Logged in as Sir Bool /
