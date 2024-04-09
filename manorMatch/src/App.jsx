@@ -1,4 +1,3 @@
-import './App.css'
 import { useState, useEffect } from 'react';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
@@ -17,7 +16,6 @@ import { socket } from './socket.js'
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   // const [socket, setSocket] = useState(null);
-
 
   useEffect(() => {
     if (socket) {
