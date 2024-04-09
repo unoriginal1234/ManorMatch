@@ -1,22 +1,10 @@
 import dotenv from 'dotenv';
-// dotenv.config();
+dotenv.config();
 import mongoose from 'mongoose';
 
-// mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`);
-
-
-import path from "path";
-
-const __dirname = import.meta.dirname;
-
-dotenv.config({ path: path.join(__dirname, "..", ".env") });
-
-const uri = `${process.env.MONGODB_URI}/${process.env.DB_NAME}`;
-console.log('uri', uri);
-mongoose.connect(uri)
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`);
 
 const db = mongoose.connection;
-
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log('database connected')
