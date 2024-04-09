@@ -1,4 +1,3 @@
-import './App.css'
 import { useState, useEffect } from 'react';
 import HomePage from './components/HomePage/HomePage.jsx';
 import Carousel from './components/Carousel/Carousel.jsx'
