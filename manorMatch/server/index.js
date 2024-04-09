@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import path from 'path';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
@@ -25,6 +26,11 @@ app.use(morgan('dev'));
 
 app.use(cookieParser());
 app.use(auth.createSession);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', router);
 
