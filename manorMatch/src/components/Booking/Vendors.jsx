@@ -18,7 +18,7 @@ const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNe
 
   useEffect(() => {
     if (category) {
-      console.log(category);
+      const apiUrl = import.meta.env.VITE_API_URL;
       axios.get('http://localhost:3000/vendors', {
         params: {
           category: `${category}`

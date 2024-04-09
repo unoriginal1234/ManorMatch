@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
-import NavBar from '../LandingPage/NavBar';
+import NavBar from '../../utils/NavBar.jsx';
 import AddressInputs from './AddressInputs';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -44,8 +44,8 @@ const ShoppingCart = ({ vendors }) => {
     e.preventDefault();
     try {
       const stripe = await stripePromise;
-
-      const { data: session } = await axios.post('http://localhost:3000/checkout', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const { data: session } = await axios.post(`${apiUrl}/checkout`, {
         totalAmount: total,
       });
       console.log(session);

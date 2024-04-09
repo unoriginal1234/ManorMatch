@@ -17,17 +17,17 @@ const HomePage = ({ vendors, setVendors }) => {
           </Link>
         </NavBar>*/}
       <NavBar>
-        <span className="text-lg">
-        Logged in as Sir Bool /
-        <Link to="/login">
-            {" "}Sign Out
-        </Link>
+        <span className="text-lg flex items-center">
+          Logged in as Sir Bool /
+          <Link to="/login" className="ml-2">
+            Sign Out
+          </Link>
+          <Link to="/cart" className="ml-4 mr-4">
+            <CartIcon />
+          </Link>
         </span>
       </NavBar>
       <Carousel vendors={vendors} setVendors={setVendors}/>
-      <Link to="/cart">
-        <CartIcon />
-      </Link>
     </div>
   );
 };
