@@ -21,7 +21,7 @@ function PrevArrow(props) {
   );
 }
 
-const Carousel = () => {
+const Carousel = ({}) => {
   const [serviceData, setServiceData] = useState([]);
   useEffect(() => {
   axios.get(`${apiUrl}/services`)
