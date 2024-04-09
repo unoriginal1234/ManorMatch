@@ -11,7 +11,6 @@ import router from './routes/routes.js';
 import morgan from 'morgan';
 import * as auth from './middleware/auth.js';
 
-
 const app = express();
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -36,14 +35,6 @@ app.get('/clear-cookie', (req, res) => {
   res.send('Cookie cleared');
 });
 
-
-app.get('/clear-cookie', (req, res) => {
-  res.cookie('s_id', '', { expires: new Date(0) });
-  res.send('Cookie cleared');
-});
-
-
-
 io.on('connection', (socket) => {
   console.log('New client connected');
   socket.on('message', (message) => {
@@ -52,9 +43,7 @@ io.on('connection', (socket) => {
   })
  });
 
- const port = process.env.PORT;
-
- console.log("PORT >>>", 3000);
+const port = process.env.PORT;
 
 server.listen(port, () => {
   console.log(`Listening on port ${port}`);
