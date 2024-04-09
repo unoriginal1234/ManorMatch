@@ -36,7 +36,7 @@ const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNe
     <div>
       <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
         <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto overflow-auto">
-          <h1 className="text-4xl">Select a Vendor:</h1>
+          <h1 className="text-4xl mb-8">Select a Vendor:</h1>
           <div className="grid grid-cols-3 gap-4 overflow-auto">
             {vendors.map((vendor, index) => {
               return (
@@ -49,7 +49,7 @@ const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNe
             })}
           </div>
           <button onClick={() => goToPreviousPage()}
-            className="text-3xl hover:scale-110 transform transition duration-200 ease-in-out"
+            className="text-3xl hover:scale-110 transform transition duration-200 ease-in-out mt-8"
           ><FaLongArrowAltLeft /></button>
         </view>
       </div>

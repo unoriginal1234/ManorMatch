@@ -12,11 +12,11 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
   }
 
   return (
-    <div className="w-full flex flex-col justify-between">
-      SELECT FROM YOUR SAVED ADDRESSES:
+    <div className="w-full flex flex-col justify-between items-center p-8 text-3xl">
+      Select from saved addresses:
       <select
         onChange={(e) => setSelectedAddress(e.target.value)}
-        className="text-black">
+        className="text-black w-1/2 h-1/6">
         <option value='Select Address'>Select Address</option>
         <option value="address1">123 Main St</option>
         <option value="address2">456 Elm St</option>
