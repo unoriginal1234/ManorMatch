@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 
-
 const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
   // Add your component logic here
     // const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Vendors = ({ setSelectedVendor, goToNextPage }) => {
+const Vendors = ({ goToPreviousPage, setSelectedVendor, goToNextPage }) => {
 
   // populate vendors
   // give each an onclick func
@@ -17,7 +17,7 @@ const Vendors = ({ setSelectedVendor, goToNextPage }) => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/vendors', {
+    axios.get('http://localhost:3007/vendors', {
       params: {
         category: 'Personal Chef'
       }
@@ -49,6 +49,7 @@ const Vendors = ({ setSelectedVendor, goToNextPage }) => {
               )
             })}
           </div>
+          <button onClick={() => goToPreviousPage()}>Back</button>
         </view>
       </div>
     </div>
