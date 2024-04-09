@@ -87,6 +87,7 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 6 && (
           <Confirmation
+            selectedVendor={selectedVendor}
             date={selectedDate}
             time={selectedTime} />
         )}
