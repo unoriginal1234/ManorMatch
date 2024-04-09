@@ -13,6 +13,7 @@ import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
 //import io from 'socket.io-client';
 import { socket } from './socket.js'
+import UserProfile from './components/UserProfile/UserProfile.jsx'
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
@@ -65,7 +66,7 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
-        {/* <Route path="/den" element={<UserProfile />} /> */}
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
       <div>
         <button onClick={toggleChatModal}>Toggle Chat</button>

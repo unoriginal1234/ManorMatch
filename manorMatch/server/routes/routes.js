@@ -6,11 +6,13 @@ import { verifyAuthorized } from '../middleware/auth.js';
 import Stripe from 'stripe';
 var router = express.Router();
 router.get('/services', controllers.services.getServices)
-router.get('/username', controllers.permissions.getUserInfo)
+// router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
 router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
+// TEMPORARY ROUTE FOR TESTING
+router.get('/user', controllers.user.getUserInfo)
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {

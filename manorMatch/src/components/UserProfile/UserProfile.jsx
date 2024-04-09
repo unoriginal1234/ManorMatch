@@ -1,8 +1,35 @@
+import NavBar from '../../utils/NavBar.jsx';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 const UserProfile = () => {
+
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const userEmail = 'Loy_Blick@gmail.com';
+    axios.get(`${apiUrl}/user`, {
+      params: {
+        email: userEmail
+    }})
+    .then((response) => {
+      setCurrentUser(response.data[0]);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+  , []);
+
+
   return (
+
+    // WHICH NAV BAR TO GRAB
     <>
-    <div>
-      <h1>Welcome home, User</h1>
+    <NavBar />
+    <div className="color-mmblue">
+      <h1>Welcome back, {currentUser.firstName} {currentUser.lastName}</h1>
     </div>
     <div>
       <h2>Your Current Bookings</h2>

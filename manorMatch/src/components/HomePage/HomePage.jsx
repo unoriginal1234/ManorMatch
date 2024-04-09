@@ -19,6 +19,9 @@ const HomePage = () => {
         </NavBar>*/}
       <NavBar>
         <span className="text-lg flex items-center">
+          <Link to="/profile" className="border-2 border-mmcream rounded px-4 py-1 mr-4">
+            The Den
+          </Link>
           Logged in as Sir Bool /
           <Link to="/login" className="ml-2">
             Sign Out
