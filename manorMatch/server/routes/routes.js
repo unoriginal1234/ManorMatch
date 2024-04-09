@@ -5,7 +5,7 @@ import * as controllers from '../controllers/index.js'
 import { verifyAuthorized } from '../middleware/auth.js';
 import Stripe from 'stripe';
 var router = express.Router();
-
+router.get('/services', controllers.services.getServices)
 router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
