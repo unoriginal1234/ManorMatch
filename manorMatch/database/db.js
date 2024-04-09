@@ -39,11 +39,16 @@ const vendorSchema = new mongoose.Schema({
 })
 
 const bookingSchema = new mongoose.Schema({
-  customerId: String,
-  vendorId: String,
+  customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
+  services: [{
+    vendorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vendor' },
+    category: String,
+    price: Number,
+  }],
   jobDate: Date,
-  completed: Boolean
-})
+  completed: Boolean,
+});
+
 
 const messageSchema = new mongoose.Schema({
   content: String,

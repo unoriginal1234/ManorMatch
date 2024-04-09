@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import path from 'path';
@@ -9,8 +10,6 @@ import cookieParser from 'cookie-parser';
 import router from './routes/routes.js';
 import morgan from 'morgan';
 import * as auth from './middleware/auth.js';
-console.log("INDEX.JS RUNS >>>>  ")
-dotenv.config();
 
 
 const app = express();
