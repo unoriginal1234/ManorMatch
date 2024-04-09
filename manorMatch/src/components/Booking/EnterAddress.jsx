@@ -54,9 +54,15 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
           className="pl-2"
         />
       </form>
-      <div className="flex w-full justify-between">
-        <button onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
-        <button onClick={() => handleClick()}><FaLongArrowAltRight /></button>
+      <div className="flex w-full justify-between text-3xl">
+        <button
+          onClick={() => goToPreviousPage()}
+          className="hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltLeft /></button>
+        <button
+          onClick={() => handleClick()}
+          className="hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltRight /></button>
       </div>
     </div>
   )

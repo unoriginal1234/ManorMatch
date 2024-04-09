@@ -96,7 +96,7 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
         )}
         <button
           onClick={() => handleClose()}
-          className="bg-mmcream text-black text-3xl absolute top-40 right-1/4 w-16 h-16 flex justify-center items-center rounded"
+          className="text-mmcream text-3xl absolute top-48 right-1/4 w-16 h-16 flex justify-center items-center rounded"
         ><MdClose /></button>
       </Modal>
     </div>

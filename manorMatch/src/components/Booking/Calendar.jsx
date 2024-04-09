@@ -42,9 +42,15 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
         <option value='3:00'>3 pm</option>
         <option value='4:00'>4 pm</option>
       </select>
-      <div className="flex w-full justify-between">
-        <button onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
-        <button onClick={() => handleClick()}><FaLongArrowAltRight /></button>
+      <div className="flex w-full justify-between text-3xl">
+        <button
+          onClick={() => goToPreviousPage()}
+          className="hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltLeft /></button>
+        <button
+          onClick={() => handleClick()}
+          className="hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltRight /></button>
       </div>
     </div>
   )
