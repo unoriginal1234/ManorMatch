@@ -1,5 +1,4 @@
 import Carousel from '../Carousel/Carousel.jsx';
-//import VendorModal from '../VendorModal/VendorModal.jsx';
 import UserAuth from '../UserAuthentication/UserAuth.jsx';
 import LiveChat from '../LiveChat/LiveChat.jsx';
 import Booking from '../Booking/Booking.jsx';
