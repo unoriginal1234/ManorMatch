@@ -1,5 +1,3 @@
-
-
 const AddressType = ({ setAddressType, goToNextPage }) => {
 
   const handleClick = (type) => {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
 
@@ -11,8 +12,7 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
   }
 
   return (
-    <div>
-      <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
+    <div className="w-full">
       SELECT FROM YOUR SAVED ADDRESSES:
       <select
         onChange={(e) => setSelectedAddress(e.target.value)}
@@ -22,7 +22,10 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
         <option value="address2">456 Elm St</option>
         <option value="address3">789 Oak St</option>
       </select>
-      <button onClick={handleClick}>NEXT</button>
+      <div className="flex w-full justify-between">
+        <button onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
+        <button onClick={() => handleClick()}><FaLongArrowAltRight /></button>
+      </div>
     </div>
   )
 }

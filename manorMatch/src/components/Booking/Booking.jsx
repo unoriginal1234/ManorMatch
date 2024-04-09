@@ -7,6 +7,7 @@ import Calendar from './Calendar';
 import Vendors from './Vendors';
 import VendorModal from './VendorModal';
 import Confirmation from './Confirmation';
+import { MdClose } from "react-icons/md";
 
 const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
@@ -94,8 +95,8 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
         )}
         <button
           onClick={() => handleClose()}
-          className="bg-white text-black absolute top-52 right-80 w-20 h-20"
-        >X</button>
+          className="bg-white text-black text-3xl absolute top-40 right-1/4 w-16 h-16 flex justify-center items-center rounded"
+        ><MdClose /></button>
       </Modal>
     </div>
   );

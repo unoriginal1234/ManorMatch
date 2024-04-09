@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) => {
 
@@ -20,8 +21,7 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
   }
 
   return (
-    <div>
-      <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
+    <div className="w-full">
       <form className="text-black">
         <input
           placeholder="Address 1"
@@ -54,7 +54,10 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
           className="pl-2"
         />
       </form>
-      <button onClick={() => handleClick()}>NEXT</button>
+      <div className="flex w-full justify-between">
+        <button onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
+        <button onClick={() => handleClick()}><FaLongArrowAltRight /></button>
+      </div>
     </div>
   )
 }

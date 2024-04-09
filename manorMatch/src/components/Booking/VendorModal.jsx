@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
   // Add your component logic here
@@ -53,7 +54,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                   </div>
                   <div>
                     <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => handleClick()}>Book Now</button>
-                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}>Back</button>
+                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
                   </div>
                 </div>
               </view>
