@@ -24,6 +24,14 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       })
     }
 
+    const handleClick = () => {
+      let currentVendors = JSON.parse(localStorage.getItem('vendors'));
+      currentVendors.push(selectedVendor);
+      console.log(currentVendors);
+      localStorage.setItem('vendors', JSON.stringify(currentVendors));
+      goToNextPage();
+    }
+
     return (
       // Add your JSX code here
       <div>
@@ -44,7 +52,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                     </ul>
                   </div>
                   <div>
-                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToNextPage()}>Book Now</button>
+                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => handleClick()}>Book Now</button>
                     <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}>Back</button>
                   </div>
                 </div>
