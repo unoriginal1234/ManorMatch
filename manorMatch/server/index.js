@@ -13,12 +13,12 @@ import * as auth from './middleware/auth.js';
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://66158a051c72c01bea162e3d--manormatch.netlify.app',
 }));
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: 'https://66158a051c72c01bea162e3d--manormatch.netlify.app',
     methods: ["GET", "POST"]
   },
 });
