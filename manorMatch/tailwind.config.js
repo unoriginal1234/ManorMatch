@@ -5,8 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'mmblue': '#053C5E',
+        'mmsand': '#DFB48C',
+        'mmcream': '#FFF4E0',
+        'mmred': '#D90429',
+      },
+      fontFamily: {
+        sans: ['Graphik', 'sans-serif'],
+        serif: ['PT', 'serif'],
+      },
+    },
   },
   plugins: [],
 }
-
