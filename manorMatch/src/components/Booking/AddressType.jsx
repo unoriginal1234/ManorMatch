@@ -1,5 +1,3 @@
-
-
 const AddressType = ({ setAddressType, goToNextPage }) => {
 
   const handleClick = (type) => {
@@ -8,7 +6,7 @@ const AddressType = ({ setAddressType, goToNextPage }) => {
   }
 
   return (
-      <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex flex-col items-center justify-center space-y-10">
+      <div className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex flex-col items-center justify-center space-y-10 border border-mmsand m-2">
           <button
             className="bg-mmcream text-black p-2 rounded h-20 w-64 text-2xl"
             onClick={() => handleClick('enter')}>
