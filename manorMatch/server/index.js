@@ -16,7 +16,7 @@ app.use(cors());
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'https://66158a051c72c01bea162e3d--manormatch.netlify.app',
+    origin: process.env.CORS_URL,
     methods: ["GET", "POST"]
   },
 });
