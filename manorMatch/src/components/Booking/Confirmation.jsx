@@ -1,13 +1,13 @@
 
 
-const Confirmation = ({ date, time}) => {
+const Confirmation = ({ selectedVendor, date, time}) => {
 
   return (
     <div>
       <div>Your reservation has been added to the cart!</div>
       <div>Details:</div>
-      <div>SERVICE NAME HERE</div>
-      <div>VENDOR NAME HERE</div>
+      <div>{selectedVendor.category}</div>
+      <div>{selectedVendor.name}</div>
       <div>{date}</div>
       <div>{time}</div>
       <button>Add More Services</button>
