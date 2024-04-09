@@ -30,7 +30,7 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
         className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto"
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
       >
-        <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+        <div className="relative w-8/12 h-fit bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
           <div className="w-full h-full border border-mmsand flex">
             <button
               onClick={() => handleClose()}
@@ -41,11 +41,11 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
 
             <div className="w-7/12 flex-col my-4 ml-4">
               <div className="w-fill">
-                <h1 className="text-4xl mb-5">{category}</h1>
+                <h1 className="text-4xl mb-5">{category.toUpperCase()}</h1>
               </div>
               <div>
                 <ul className="list-disc pl-4">
-                <h2 className="text-2xl mb-2">{Object.keys(serviceDetails).map((k)=>{
+                <h2 className="text-2xl mb-2 break-word">{Object.keys(serviceDetails).map((k)=>{
                   return <li key={k}>{format(serviceDetails[k])}</li>
                 })}</h2></ul>
               </div>
