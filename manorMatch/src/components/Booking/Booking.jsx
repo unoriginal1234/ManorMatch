@@ -89,13 +89,14 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 6 && (
           <Confirmation
+            handleClose={handleClose}
             selectedVendor={selectedVendor}
             date={selectedDate}
             time={selectedTime} />
         )}
         <button
           onClick={() => handleClose()}
-          className="bg-white text-black text-3xl absolute top-40 right-1/4 w-16 h-16 flex justify-center items-center rounded"
+          className="bg-mmcream text-black text-3xl absolute top-40 right-1/4 w-16 h-16 flex justify-center items-center rounded"
         ><MdClose /></button>
       </Modal>
     </div>
