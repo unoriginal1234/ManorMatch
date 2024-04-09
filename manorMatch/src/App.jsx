@@ -65,7 +65,7 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
-        <Route path="/den" element={<UserProfile />} />
+        {/* <Route path="/den" element={<UserProfile />} /> */}
       </Routes>
       <div>
         <button onClick={toggleChatModal}>Toggle Chat</button>
