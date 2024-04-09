@@ -13,6 +13,7 @@ router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
 // TEMPORARY ROUTE FOR TESTING
 router.get('/user', controllers.user.getUserInfo)
+router.get('/user/:id', controllers.user.getBookings)
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {
