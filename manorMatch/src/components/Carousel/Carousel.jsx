@@ -20,7 +20,7 @@ function PrevArrow(props) {
   );
 }
 
-const Carousel = () => {
+const Carousel = ({ vendors, setVendors }) => {
   const [serviceData, setServiceData] = useState([]);
   useEffect(() => {
   axios.get('http://localhost:3000/services')
@@ -78,7 +78,7 @@ const Carousel = () => {
        {serviceData.map((service) => {
          return (
            <div key={service._id} className="p-1">
-             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} />
+             <CarouselTile vendors={vendors} setVendors={setVendors} imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} />
            </div>
          );
        })}
