@@ -180,6 +180,12 @@ async function seedService() {
 }
 
 const seedDatabase = async () => {
+  await db.Customer.deleteMany({});
+  await db.Vendor.deleteMany({});
+  await db.Booking.deleteMany({});
+  await db.Message.deleteMany({});
+  await db.Service.deleteMany({});
+  console.log('Dropped all previous collections')
   await seedCustomer();
   console.log('Customer seeding complete');
   await seedVendor();
