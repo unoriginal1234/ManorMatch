@@ -25,9 +25,10 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
     }
 
     const handleClick = () => {
-      let currentVendors = localStorage.getItem('vendors');
+      let currentVendors = JSON.parse(localStorage.getItem('vendors'));
       currentVendors.push(selectedVendor);
-      localStorage.setItem('vendors', currentVendors);
+      console.log(currentVendors);
+      localStorage.setItem('vendors', JSON.stringify(currentVendors));
       goToNextPage();
     }
 

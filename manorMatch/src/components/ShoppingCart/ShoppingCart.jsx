@@ -16,24 +16,16 @@ const ShoppingCart = ({}) => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    let vendors = localStorage.getItem('vendors');
+    let vendors = JSON.parse(localStorage.getItem('vendors'));
     if (vendors.length > 0) {
       let copyOfServices = [...vendors];
-      vendors.forEach(vendor => {
-          copyOfServices.push({
-            id: vendor._id,
-            category: vendor.category,
-            price: vendor.price,
-            photo: vendor.photo,
-          });
-        });
       setServices(copyOfServices);
     }
   }, []);
 
 
   const removeService = (serviceId) => {
-    localStorage.setItem('vendors', vendors.filter(vendor => vendor._id !== serviceId));
+    localStorage.setItem('vendors', JSON.stringify(vendors.filter(vendor => vendor._id !== serviceId)));
     setServices(services.filter(service => service.id !== serviceId));
   };
 
