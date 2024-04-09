@@ -7,6 +7,8 @@ DB_NAME=''
 VITE_STRIPE_PUBLIC_KEY=
 STRIPE_SECRET_KEY=
 
+CORS_URL=http://127.0.0.1:5713
+
 VITE_API_URL=http://localhost:3000
 
 //in client side, import.meta.env.VITE_API_URL

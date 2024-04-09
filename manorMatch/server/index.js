@@ -12,13 +12,11 @@ import morgan from 'morgan';
 import * as auth from './middleware/auth.js';
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:5173',
-}));
+app.use(cors())
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.CORS_URL,
     methods: ["GET", "POST"]
   },
 });
@@ -43,7 +41,7 @@ io.on('connection', (socket) => {
   })
  });
 
-const port = process.env.PORT;
+ const port = process.env.PORT;
 
 server.listen(port, () => {
   console.log(`Listening on port ${port}`);
