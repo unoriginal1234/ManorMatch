@@ -32,8 +32,8 @@ const ShoppingCart = () => {
     e.preventDefault();
     try {
       const stripe = await stripePromise;
-
-      const { data: session } = await axios.post('http://localhost:3000/checkout', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const { data: session } = await axios.post(`${apiUrl}/checkout`, {
         totalAmount: total,
       });
       console.log(session);
