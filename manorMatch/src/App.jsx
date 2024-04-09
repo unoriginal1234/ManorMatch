@@ -18,6 +18,8 @@ function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   // const [socket, setSocket] = useState(null);
 
+  const [vendors, setVendors] = useState([]);
+
 
   useEffect(() => {
     if (socket) {
@@ -50,7 +52,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
             <>
-              <HomePage />
+              <HomePage vendors={vendors} setVendors={setVendors}/>
               {/* Currently all these components will be rendered on the "/home" path */}
               {/*
               <Carousel />
@@ -63,7 +65,7 @@ function App() {
             </>
           }
         />
-        <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/cart" element={<ShoppingCart vendors={vendors}/>} />
         <Route path="/success" element={<PaymentSuccess />} />
       </Routes>
       <div>

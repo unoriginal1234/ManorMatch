@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 
-const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
+const VendorModal = ({ vendors, setVendors, selectedVendor, goToNextPage, goToPreviousPage }) => {
   // Add your component logic here
     // const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -24,6 +24,14 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       })
     }
 
+    const handleClick = () => {
+      let currentVendors = [...vendors];
+      console.log(vendors);
+      currentVendors.push(selectedVendor);
+      setVendors(currentVendors);
+      goToNextPage();
+    }
+
     return (
       // Add your JSX code here
       <div>
@@ -44,7 +52,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                     </ul>
                   </div>
                   <div>
-                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToNextPage()}>Book Now</button>
+                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => handleClick()}>Book Now</button>
                     <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}>Back</button>
                   </div>
                 </div>

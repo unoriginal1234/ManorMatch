@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
@@ -11,13 +11,25 @@ import axios from 'axios';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ vendors }) => {
   // Sample data for services in the cart
-  const [services, setServices] = useState([
-    { id: 1, category: 'Personal Assistant', photo:"https://picsum.photos/seed/oHaiWgluV6/640/480", price: 1500 },
-    { id: 2, category: 'Housekeepers',photo: "https://picsum.photos/seed/l1nmI4o/640/480", price: 500 },
-    { id: 3, category: 'Landscaper',photo:"https://picsum.photos/seed/ZCayK0Kh/640/480", price: 500 },
-  ]);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    if (vendors) {
+      let copyOfServices = [...vendors];
+      vendors.forEach(vendor => {
+          copyOfServices.push({
+            id: vendor._id,
+            category: vendor.category,
+            price: vendor.price,
+            photo: vendor.photo,
+          });
+        });
+      setServices(copyOfServices);
+    }
+  }, [vendors]);
+
 
   const removeService = (serviceId) => {
     setServices(services.filter(service => service.id !== serviceId));

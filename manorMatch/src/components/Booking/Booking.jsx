@@ -8,7 +8,7 @@ import Vendors from './Vendors';
 import VendorModal from './VendorModal';
 import Confirmation from './Confirmation';
 
-const Booking = ({ modalIsOpen, setModalIsOpen }) => {
+const Booking = ({ category, vendors, setVendors, modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
   const [modalPage, setModalPage] = useState(1);
 
@@ -73,6 +73,7 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 4 && (
           <Vendors
+            selectedCategory={category}
             goToPreviousPage={goToPreviousPage}
             setSelectedVendor={setSelectedVendor}
             goToNextPage={goToNextPage}
@@ -80,6 +81,8 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 5 && (
           <VendorModal
+            vendors={vendors}
+            setVendors={setVendors}
             selectedVendor={selectedVendor}
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}
@@ -91,7 +94,10 @@ const Booking = ({ modalIsOpen, setModalIsOpen }) => {
             date={selectedDate}
             time={selectedTime} />
         )}
-        <button onClick={() => handleClose()}>X</button>
+        <button
+          onClick={() => handleClose()}
+          className="bg-white text-black absolute top-52 right-80 w-20 h-20"
+        >X</button>
       </Modal>
     </div>
   );

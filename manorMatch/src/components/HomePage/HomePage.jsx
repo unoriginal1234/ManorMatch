@@ -6,7 +6,7 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart.jsx';
 import CartIcon from '../ShoppingCart/icons/CartIcon.jsx';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
-const HomePage = () => {
+const HomePage = ({ vendors, setVendors }) => {
   // insert Carousel into return statement below
 
   return (
@@ -24,8 +24,7 @@ const HomePage = () => {
         </Link>
         </span>
       </NavBar>
-      <Carousel />
-      <Booking />
+      <Carousel vendors={vendors} setVendors={setVendors}/>
       <Link to="/cart">
         <CartIcon />
       </Link>
