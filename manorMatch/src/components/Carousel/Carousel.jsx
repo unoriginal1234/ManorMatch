@@ -1,25 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import CarouselTile from './CarouselTile.jsx';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-/*
-const NextArrow = ({ onClick }) => (
-  <div
-    className="slick-prev left-5 top-1/2 transform -translate-y-1/2"
-    onClick={onClick}
-  >
-    Next
-  </div>
-);
-const PrevArrow = ({ onClick }) => (
-  <div
-    className="slick-next right-0 top-1/2 transform -translate-y-1/2"
-    onClick={onClick}
-  >
-    Prev
-  </div>
-);*/
+
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -36,17 +21,36 @@ function PrevArrow(props) {
 }
 
 const Carousel = () => {
+  const [serviceData, setServiceData] = useState([]);
+  useEffect(() => {
+  axios.get('http://localhost:3000/services')
+  .then((response) => {
+    setServiceData(response.data);
+    console.log(response.data);
+  });
+
+  }, []);
   const settings = {
     dots: true,
     //customPaging: (i) => <div className="dot">{i + 1}</div>,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    rows:2,
+    slidesToScroll: 5,
     initialSlide: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -56,59 +60,28 @@ const Carousel = () => {
           dots: true,
         },
       },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
       // You can add more responsive settings
     ],
   };
+  //category, description, serviceDetails
   return (
     <Slider className="relative px-10" {...settings}>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b84d4d/909090" />
-      </div>
-      <div className="p-1">
-        <CarouselTile imageUrl="https://fakeimg.pl/200x250/b8a0a0/909090" />
-      </div>
+       {serviceData.map((service) => {
+         return (
+           <div key={service._id} className="p-1">
+             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} />
+           </div>
+         );
+       })}
     </Slider>
   );
 };
