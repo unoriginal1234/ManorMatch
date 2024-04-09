@@ -17,7 +17,8 @@ const Vendors = ({ goToPreviousPage, setSelectedVendor, goToNextPage }) => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3007/vendors', {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/vendors`, {
       params: {
         category: 'Personal Chef'
       }

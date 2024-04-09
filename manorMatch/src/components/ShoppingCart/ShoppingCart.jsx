@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
-import NavBar from '../LandingPage/NavBar';
+import NavBar from '../../utils/NavBar.jsx';
 import AddressInputs from './AddressInputs';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
