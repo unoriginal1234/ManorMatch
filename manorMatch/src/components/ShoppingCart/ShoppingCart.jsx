@@ -11,12 +11,13 @@ import axios from 'axios';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const ShoppingCart = ({ vendors }) => {
+const ShoppingCart = ({}) => {
   // Sample data for services in the cart
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    if (vendors) {
+    let vendors = localStorage.getItem('vendors');
+    if (vendors.length > 0) {
       let copyOfServices = [...vendors];
       vendors.forEach(vendor => {
           copyOfServices.push({
@@ -28,10 +29,11 @@ const ShoppingCart = ({ vendors }) => {
         });
       setServices(copyOfServices);
     }
-  }, [vendors]);
+  }, []);
 
 
   const removeService = (serviceId) => {
+    localStorage.setItem('vendors', vendors.filter(vendor => vendor._id !== serviceId));
     setServices(services.filter(service => service.id !== serviceId));
   };
 

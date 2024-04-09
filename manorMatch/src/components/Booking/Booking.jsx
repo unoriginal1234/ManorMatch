@@ -8,7 +8,7 @@ import Vendors from './Vendors';
 import VendorModal from './VendorModal';
 import Confirmation from './Confirmation';
 
-const Booking = ({ category, vendors, setVendors, modalIsOpen, setModalIsOpen }) => {
+const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
   const [modalPage, setModalPage] = useState(1);
 
@@ -81,8 +81,6 @@ const Booking = ({ category, vendors, setVendors, modalIsOpen, setModalIsOpen })
         )}
         {modalPage === 5 && (
           <VendorModal
-            vendors={vendors}
-            setVendors={setVendors}
             selectedVendor={selectedVendor}
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 
-const VendorModal = ({ vendors, setVendors, selectedVendor, goToNextPage, goToPreviousPage }) => {
+const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
   // Add your component logic here
     // const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -25,10 +25,9 @@ const VendorModal = ({ vendors, setVendors, selectedVendor, goToNextPage, goToPr
     }
 
     const handleClick = () => {
-      let currentVendors = [...vendors];
-      console.log(vendors);
+      let currentVendors = localStorage.getItem('vendors');
       currentVendors.push(selectedVendor);
-      setVendors(currentVendors);
+      localStorage.setItem('vendors', currentVendors);
       goToNextPage();
     }
 
