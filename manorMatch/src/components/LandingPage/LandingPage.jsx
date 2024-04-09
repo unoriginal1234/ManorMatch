@@ -1,18 +1,23 @@
 import Slideshow from './Slideshow.jsx';
 import Testimonials from './Testimonials.jsx';
-import NavBar from './NavBar.jsx'
+import NavBar from '../../utils/NavBar.jsx'
 import ChatStandIn from './ChatStandIn.jsx'
-
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
 
   return (
-    <div className="flex flex-col items-center justify-center bg-mmblue">
-      <NavBar />
-      <Slideshow />
-      <Testimonials />
-      <ChatStandIn />
-    </div>
+
+
+      <><NavBar>
+      <Link to="/login" className="text-lg mx-4">
+        Join / Login
+      </Link>
+    </NavBar><div className="flex flex-col items-center justify-center bg-mmblue">
+        <Slideshow />
+        <Testimonials />
+        <ChatStandIn />
+      </div></>
   );
   };
 
