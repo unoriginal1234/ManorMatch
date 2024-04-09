@@ -50,6 +50,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category }) => {
       </div>
       {checkoutModalIsOpen && (
         <Booking
+          category={category}
           modalIsOpen={checkoutModalIsOpen}
           setModalIsOpen={closeCheckoutModal}
         />

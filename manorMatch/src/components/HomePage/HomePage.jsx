@@ -6,29 +6,23 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart.jsx';
 import CartIcon from '../ShoppingCart/icons/CartIcon.jsx';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
-const HomePage = () => {
+const HomePage = ({ }) => {
   // insert Carousel into return statement below
 
   return (
     <div>
-      {/*<NavBar>
-          <Link to="/login" className="text-lg">
-            Join / Login
-          </Link>
-        </NavBar>*/}
       <NavBar>
-        <span className="text-lg">
-        Logged in as Sir Bool /
-        <Link to="/login">
-            {" "}Sign Out
-        </Link>
+        <span className="text-lg flex items-center">
+          Logged in as Sir Bool /
+          <Link to="/login" className="ml-2">
+            Sign Out
+          </Link>
+          <Link to="/cart" className="ml-4 mr-4">
+            <CartIcon />
+          </Link>
         </span>
       </NavBar>
       <Carousel />
-      <Booking />
-      <Link to="/cart">
-        <CartIcon />
-      </Link>
     </div>
   );
 };

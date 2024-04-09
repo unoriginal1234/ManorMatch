@@ -17,6 +17,10 @@ function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   // const [socket, setSocket] = useState(null);
 
+  if (!localStorage.getItem('vendors')) {
+    localStorage.setItem('vendors', '[]');
+  }
+
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {

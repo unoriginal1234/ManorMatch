@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
-import NavBar from '../LandingPage/NavBar';
+import NavBar from '../../utils/NavBar.jsx';
 import AddressInputs from './AddressInputs';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -11,17 +11,25 @@ import axios from 'axios';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const ShoppingCart = () => {
-  // Sample data for services in the cart
-  const [services, setServices] = useState([
-    { id: 1, category: 'Personal Assistant', photo:"https://picsum.photos/seed/oHaiWgluV6/640/480", price: 1500 },
-    { id: 2, category: 'Housekeepers',photo: "https://picsum.photos/seed/l1nmI4o/640/480", price: 500 },
-    { id: 3, category: 'Landscaper',photo:"https://picsum.photos/seed/ZCayK0Kh/640/480", price: 500 },
-  ]);
+const ShoppingCart = ({}) => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    let vendors = JSON.parse(localStorage.getItem('vendors'));
+    if (vendors.length > 0) {
+      let copyOfServices = [...vendors];
+      setServices(copyOfServices);
+    }
+  }, []);
 
   const removeService = (serviceId) => {
-    setServices(services.filter(service => service.id !== serviceId));
+    let vendors = JSON.parse(localStorage.getItem('vendors'));
+    let updatedVendors = vendors.filter(vendor => vendor._id !== serviceId);
+    localStorage.setItem('vendors', JSON.stringify(updatedVendors));
+    setServices(updatedVendors);
   };
+
+
 
   // Calculate the total amount of the services
   const total = useMemo(() => {
@@ -32,8 +40,8 @@ const ShoppingCart = () => {
     e.preventDefault();
     try {
       const stripe = await stripePromise;
-
-      const { data: session } = await axios.post('http://localhost:3000/checkout', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const { data: session } = await axios.post(`${apiUrl}/checkout`, {
         totalAmount: total,
       });
       console.log(session);
@@ -82,11 +90,11 @@ const ShoppingCart = () => {
           <div>
             {services.map(service => (
               <CartService
-                key={service.id}
+                key={service._id}
                 service={service.category}
                 photo={service.photo}
                 price={service.price}
-                onRemove={() => removeService(service.id)}
+                onRemove={() => removeService(service._id)}
               />
             ))}
               <div className='grid grid-cols-8 gap-4 pt-2 mt-4 items-center'>

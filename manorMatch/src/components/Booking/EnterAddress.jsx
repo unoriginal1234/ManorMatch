@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
 const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) => {
 
@@ -20,41 +21,48 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
   }
 
   return (
-    <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
-      <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
-      <form className="text-black">
-        <input
-          placeholder="Address 1"
-          value={address1}
-          onChange={(e) => setAddress1(e.target.value)}
-          className="pl-2"
-        />
-        <input
-          placeholder="Address 2"
-          value={address2}
-          onChange={(e) => setAddress2(e.target.value)}
-          className="pl-2"
-        />
-        <input
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          className="pl-2"
-        />
-        <input
-          placeholder="State"
-          value={usState}
-          onChange={(e) => setUsState(e.target.value)}
-          className="pl-2"
-        />
-        <input
-          placeholder="Zip"
-          value={zip}
-          onChange={(e) => setZip(e.target.value)}
-          className="pl-2"
-        />
-      </form>
-      <button onClick={() => handleClick()}>NEXT</button>
+    <div className="w-full p-8 flex flex-col justify-between items-center text-black">
+      <div className="text-mmcream text-3xl">Please fill in the address for servicing:</div>
+      <input
+        placeholder="Address 1"
+        value={address1}
+        onChange={(e) => setAddress1(e.target.value)}
+        className="pl-2 w-1/3 h-8"
+      />
+      <input
+        placeholder="Address 2"
+        value={address2}
+        onChange={(e) => setAddress2(e.target.value)}
+        className="pl-2 w-1/3 h-8"
+      />
+      <input
+        placeholder="City"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        className="pl-2 w-1/3 h-8"
+      />
+      <input
+        placeholder="State"
+        value={usState}
+        onChange={(e) => setUsState(e.target.value)}
+        className="pl-2 w-1/3 h-8"
+      />
+      <input
+        placeholder="Zip"
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+        className="pl-2 w-1/3 h-8"
+      />
+      <div className="flex w-full justify-between text-3xl">
+        <button
+          onClick={() => goToPreviousPage()}
+          className="text-mmcream hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltLeft /></button>
+        <button
+          onClick={() => handleClick()}
+          className="text-mmcream hover:scale-110 transform transition duration-200 ease-in-out"
+        ><FaLongArrowAltRight /></button>
+      </div>
     </div>
   )
 }

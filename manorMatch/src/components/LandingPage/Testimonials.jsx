@@ -33,14 +33,15 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="bg-mmblue text-mmsand w-screen">
+    <><div className="bg-mmblue h-12"></div><div className="bg-mmblue text-mmsand w-screen flex-col justify-center"></div><div className="bg-mmblue text-mmsand w-screen">
       <p className={`text-3xl font-bold text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-10000 translate-x-[25%]'}`}>
         {landingTestimonials[currentTestimonial].quote}
       </p>
       <p className={`text-xl text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-10000 translate-x-[25%]'}`}>
         -{landingTestimonials[currentTestimonial].source}
       </p>
-    </div>
+      <div className="bg-mmblue h-12"></div><div className="bg-mmblue text-mmsand w-screen flex-col justify-center"></div><div className="bg-mmblue text-mmsand w-screen"></div>
+    </div></>
   );
 };
 
