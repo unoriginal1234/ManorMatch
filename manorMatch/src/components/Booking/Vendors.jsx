@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Vendors = ({ goToPreviousPage, setSelectedVendor, goToNextPage }) => {
+const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNextPage }) => {
 
   // populate vendors
   // give each an onclick func
   // update state with selected vendor
 
   const [vendors, setVendors] = useState([]);
-  const [category, setCategory] = useState('Personal Chef');
+  const [category, setCategory] = useState(selectedCategory);
 
   const handleVendorClick = (vendor) => {
     setSelectedVendor(vendor);
@@ -17,19 +17,21 @@ const Vendors = ({ goToPreviousPage, setSelectedVendor, goToNextPage }) => {
   }
 
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    axios.get(`${apiUrl}/vendors`, {
-      params: {
-        category: 'Personal Chef'
-      }
-    })
-    .then((response) => {
-    // setModalIsOpen(true);
-    setVendors(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    if (category) {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      axios.get('http://localhost:3000/vendors', {
+        params: {
+          category: `${category}`
+        }
+      })
+      .then((response) => {
+      // setModalIsOpen(true);
+      setVendors(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
   }, []);
 
   // on hover of photo set border

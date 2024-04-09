@@ -12,9 +12,7 @@ import morgan from 'morgan';
 import * as auth from './middleware/auth.js';
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:5173',
-}));
+app.use(cors());
 const server = createServer(app);
 const io = new Server(server, {
   cors: {

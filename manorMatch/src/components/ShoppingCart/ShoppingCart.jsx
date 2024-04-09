@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
 import CartService from './CartService';
 import { ChevronLeftIcon } from './icons/ChevronLeftIcon';
@@ -11,15 +11,21 @@ import axios from 'axios';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const ShoppingCart = () => {
+const ShoppingCart = ({}) => {
   // Sample data for services in the cart
-  const [services, setServices] = useState([
-    { id: 1, category: 'Personal Assistant', photo:"https://picsum.photos/seed/oHaiWgluV6/640/480", price: 1500 },
-    { id: 2, category: 'Housekeepers',photo: "https://picsum.photos/seed/l1nmI4o/640/480", price: 500 },
-    { id: 3, category: 'Landscaper',photo:"https://picsum.photos/seed/ZCayK0Kh/640/480", price: 500 },
-  ]);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    let vendors = JSON.parse(localStorage.getItem('vendors'));
+    if (vendors.length > 0) {
+      let copyOfServices = [...vendors];
+      setServices(copyOfServices);
+    }
+  }, []);
+
 
   const removeService = (serviceId) => {
+    localStorage.setItem('vendors', JSON.stringify(vendors.filter(vendor => vendor._id !== serviceId)));
     setServices(services.filter(service => service.id !== serviceId));
   };
 
@@ -32,8 +38,8 @@ const ShoppingCart = () => {
     e.preventDefault();
     try {
       const stripe = await stripePromise;
-
-      const { data: session } = await axios.post('http://localhost:3000/checkout', {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const { data: session } = await axios.post(`${apiUrl}/checkout`, {
         totalAmount: total,
       });
       console.log(session);
