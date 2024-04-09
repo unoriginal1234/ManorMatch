@@ -12,7 +12,6 @@ import axios from 'axios';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const ShoppingCart = ({}) => {
-  // Sample data for services in the cart
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -23,11 +22,14 @@ const ShoppingCart = ({}) => {
     }
   }, []);
 
-
   const removeService = (serviceId) => {
-    localStorage.setItem('vendors', JSON.stringify(vendors.filter(vendor => vendor._id !== serviceId)));
-    setServices(services.filter(service => service.id !== serviceId));
+    let vendors = JSON.parse(localStorage.getItem('vendors'));
+    let updatedVendors = vendors.filter(vendor => vendor._id !== serviceId);
+    localStorage.setItem('vendors', JSON.stringify(updatedVendors));
+    setServices(updatedVendors);
   };
+
+
 
   // Calculate the total amount of the services
   const total = useMemo(() => {
@@ -88,11 +90,11 @@ const ShoppingCart = ({}) => {
           <div>
             {services.map(service => (
               <CartService
-                key={service.id}
+                key={service._id}
                 service={service.category}
                 photo={service.photo}
                 price={service.price}
-                onRemove={() => removeService(service.id)}
+                onRemove={() => removeService(service._id)}
               />
             ))}
               <div className='grid grid-cols-8 gap-4 pt-2 mt-4 items-center'>
