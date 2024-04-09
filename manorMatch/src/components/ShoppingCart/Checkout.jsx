@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const CheckoutForm = () => {
+const Checkout = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
@@ -17,10 +17,11 @@ const CheckoutForm = () => {
       name: event.target.name.value,
       email: event.target.email.value,
       address: {
-        line1: event.target.address.value,
+        address1: event.target.address1.value,
+        address2: event.target.address2.value,
         city: event.target.city.value,
         state: event.target.state.value,
-        postal_code: event.target.zip.value,
+        zip: event.target.zip.value,
       },
     };
 
@@ -38,7 +39,6 @@ const CheckoutForm = () => {
     } else if (paymentIntent.status === 'succeeded') {
       setPaymentError(null);
       console.log('[PaymentIntent]', paymentIntent);
-      // may add redirect to a success page)
     }
   };
 
@@ -46,7 +46,8 @@ const CheckoutForm = () => {
     <form onSubmit={handleSubmit}>
       <input name="name" type="text" placeholder="Name" required />
       <input name="email" type="email" placeholder="Email" required />
-      <input name="address" type="text" placeholder="Address" required />
+      <input name="address1" type="text" placeholder="Address1" required />
+      <input name="address2" type="text" placeholder="Address2" required />
       <input name="city" type="text" placeholder="City" required />
       <input name="state" type="text" placeholder="State" required />
       <input name="zip" type="text" placeholder="Zip" required />
@@ -64,4 +65,4 @@ const CheckoutForm = () => {
   );
 };
 
-export default CheckoutForm;
+export default Checkout;

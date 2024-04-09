@@ -103,10 +103,30 @@ async function seedVendor() {
 }
 
 async function seedBooking() {
-  for(let i = 0; i < 100; i++) {
+  // Fetch all customer IDs and vendor IDs first
+  const customers = await db.Customer.find().select('_id');
+  const vendors = await db.Vendor.find().select('_id category price');
+
+  for (let i = 0; i < 100; i++) {
+    // Randomly select a customer and a random number of services from the vendors
+    const randomCustomerIndex = Math.floor(Math.random() * customers.length);
+    const selectedCustomer = customers[randomCustomerIndex];
+
+    const servicesCount = Math.floor(Math.random() * 5) + 1;
+    let services = [];
+    for (let j = 0; j < servicesCount; j++) {
+      const randomVendorIndex = Math.floor(Math.random() * vendors.length);
+      const selectedVendor = vendors[randomVendorIndex];
+      services.push({
+        vendorId: selectedVendor._id,
+        category: selectedVendor.category,
+        price: selectedVendor.price,
+      });
+    }
+
     let booking = new db.Booking({
-      customerId: faker.number.bigInt(),
-      vendorId: faker.number.bigInt(),
+      customerId: selectedCustomer._id,
+      services: services,
       jobDate: faker.date.future(),
       completed: faker.datatype.boolean(),
     });
@@ -118,6 +138,7 @@ async function seedBooking() {
     }
   }
 }
+
 
 async function seedMessage() {
   for(let i = 0; i < 100; i++) {
