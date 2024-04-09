@@ -43,7 +43,7 @@ const Slideshow = () => {
     <div className="w-screen">
 
       <div style={{"position":"absolute","top":"50%","left":"50%","transform":"translate(-50%, -50%)"}}>
-        <div className="animate-bounce text-center text-mmcream text-8xl -z-9">M | M</div>
+        <div className="animate-bounce text-center text-mmcream text-8xl -z-9 font-serif">M | M</div>
       </div>
 
       <div className="z-1" style={{"padding":"56.25% 0 0 0","position":"relative"}}>
