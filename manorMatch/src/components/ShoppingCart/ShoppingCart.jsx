@@ -113,7 +113,7 @@ const ShoppingCart = ({}) => {
           <div className='rounded-xl p-6 bg-mmsand text-mmblue'>
             <form onSubmit={proceedToCheckOut} className="flex flex-col gap-6">
               <AddressInputs />
-              <Button type='submit' color='primary' fullWidth className="bg-mmblue border border-mmblue text-mmcream">Submit Payment</Button>
+              <Button type='submit' color='primary' fullWidth className="bg-mmblue border border-mmblue font-semibold text-mmcream">Submit Payment</Button>
             </form>
           </div>
         </div>
