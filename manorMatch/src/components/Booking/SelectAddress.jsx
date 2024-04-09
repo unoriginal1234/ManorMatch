@@ -11,7 +11,7 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
   }
 
   return (
-    <div className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+    <div>
       <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
       SELECT FROM YOUR SAVED ADDRESSES:
       <select

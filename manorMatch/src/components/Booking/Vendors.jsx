@@ -39,7 +39,7 @@ const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNe
   return (
     <div>
       <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
-        <view className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto overflow-auto">
+        <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto overflow-auto">
           <h1 className="text-4xl">Select a {category}</h1>
           <div className="grid grid-cols-3 gap-4 overflow-auto">
             {vendors.map((vendor, index) => {

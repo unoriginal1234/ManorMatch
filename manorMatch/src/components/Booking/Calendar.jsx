@@ -18,7 +18,7 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
    const minDate = tomorrow.toISOString().split('T')[0];
 
   return (
-    <div className="bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+    <div className="w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
       <button onClick={() => goToPreviousPage()}>PREVIOUS</button>
       <div>
         Please choose a date and time for service:
