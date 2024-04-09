@@ -10,14 +10,14 @@ import 'slick-carousel/slick/slick-theme.css';
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="slick-next !bg-black !right-1 z-20" onClick={onClick} />
+    <div className="slick-next !bg-black !right-1 z-20 rounded-3xl" onClick={onClick} />
   );
 }
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
   return (
-    <div className="slick-prev !bg-black !left-2 z-20" onClick={onClick} />
+    <div className="slick-prev !bg-black !left-2 z-20 rounded-3xl" onClick={onClick} />
   );
 }
 

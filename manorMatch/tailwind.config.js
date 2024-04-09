@@ -12,8 +12,11 @@ export default {
         'mmcream': '#FFF4E0',
       },
       fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        serif: ['PT', 'serif'],
+        sans: ['Helvetica', 'sans-serif'],
+        serif: ['PT Serif', 'serif'],
+        light: ['Raleway Light', 'sans-serif'],
+        extralight: ['Raleway ExtraLight', 'sans-serif'],
+        thin: ['Raleway Thin', 'sans-serif'],
       },
     },
   },

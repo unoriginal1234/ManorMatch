@@ -5,7 +5,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className="font-serif">
+    <div className="font-extralight">
       <App />
     </div>
   </React.StrictMode>
