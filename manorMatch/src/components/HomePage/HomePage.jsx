@@ -7,6 +7,7 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart.jsx';
 import CartIcon from '../ShoppingCart/icons/CartIcon.jsx';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
+
 const HomePage = () => {
   // insert Carousel into return statement below
 

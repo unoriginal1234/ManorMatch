@@ -10,7 +10,9 @@ import CartIcon from './components/ShoppingCart/icons/CartIcon.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 import { useState } from 'react';
-import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
+import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx';
+import UserProfile from './components/UserProfile/UserProfile.jsx';
+
 function App() {
   return (
     <Router>
@@ -42,6 +44,7 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
+        <Route path="/den" element={<UserProfile />} />
       </Routes>
     </Router>
   );
