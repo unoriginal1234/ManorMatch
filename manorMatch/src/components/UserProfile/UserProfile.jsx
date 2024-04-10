@@ -9,6 +9,7 @@ const UserProfile = () => {
   const [bookings, setBookings] = useState([]);
   const [previousBookings, setPreviousBookings] = useState([]);
   const [upcomingBookings, setUpcomingBookings] = useState([]);
+  const [activeTab, setActiveTab] = useState('upcoming');
 
   const getBookings = (id) => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -79,10 +80,20 @@ const UserProfile = () => {
       <div className="font-bold text-3xl mb-2 text-center px-6 py-4 text-mmblue">
         <h1>Welcome back, {currentUser.firstName} {currentUser.lastName}. </h1>
       </div>
+      <div>
+        <button onClick={() => setActiveTab('upcoming')} className={`p-2 rounded ${activeTab === 'upcoming' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Upcoming Bookings</button>
+
+        <button onClick={() => setActiveTab('previous')} className={`p-2 rounded ${activeTab === 'previous' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Previous Bookings</button>
+        <button onClick={() => setActiveTab('favorites')} className={`p-2 rounded ${activeTab === 'favorites' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Favorite Vendors</button>
+        <button onClick={() => setActiveTab('addresses')} className={`p-2 rounded ${activeTab === 'addresses' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Estates</button>
+      </div>
       <div className="flex">
-      <BookingHistory title="Upcoming Bookings" bookings={upcomingBookings} />
-      <BookingHistory title="Previous Bookings" bookings={previousBookings} />
-    </div>
+        {activeTab === 'upcoming' && <BookingHistory title="Upcoming Bookings" bookings={upcomingBookings} />}
+        {activeTab === 'previous' && <BookingHistory title="Previous Bookings" bookings={previousBookings} />}
+        {activeTab === 'favorites' && <div>Favorite Vendors</div>}
+        {activeTab === 'addresses' && <UserEstates currentUser={currentUser}/>}
+      </div>
+
   </div>
   // FAVORITE VENDORS
   );
