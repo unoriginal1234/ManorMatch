@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
   // Add your component logic here
@@ -36,7 +37,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       // Add your JSX code here
       <div>
           <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
-            <view className="relative w-1/2 h-1/2 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+            <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
                 <div className="w-full h-full border border-mmsand flex">
                 {/* <button onClick={() => setModalIsOpen(false)} className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue">X</button> */}
                   <div className="w-2/5 flex flex-col justify-center pl-10">
@@ -53,7 +54,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                   </div>
                   <div>
                     <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => handleClick()}>Book Now</button>
-                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}>Back</button>
+                    <button className="bg-mmcream text-mmblue p-2 rounded" onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
                   </div>
                 </div>
               </view>

@@ -17,6 +17,7 @@ export default {
         light: ['Raleway Light', 'sans-serif'],
         extralight: ['Raleway ExtraLight', 'sans-serif'],
         thin: ['Raleway Thin', 'sans-serif'],
+        semibold: ['Raleway SemiBold', 'sans-serif'],
       },
     },
   },

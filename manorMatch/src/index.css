@@ -14,5 +14,9 @@
     font-family: 'Raleway Thin';
     src: url('./assets/raleway/Raleway-Thin.ttf') format('truetype');
   }
+  @font-face {
+    font-family: 'Raleway SemiBold';
+    src: url('./assets/raleway/Raleway-SemiBold.ttf') format('truetype');
+  }
 
 }
