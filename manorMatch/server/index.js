@@ -17,7 +17,7 @@ app.use(cors());
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_URL,
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"]
   },
 });
