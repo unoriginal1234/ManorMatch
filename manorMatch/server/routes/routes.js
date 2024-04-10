@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 var router = express.Router();
-router.use(express.static(path.resolve(__dirname, '../dist')));
+router.use(express.static(path.join(__dirname, '../dist')));
 
 router.get('/services', controllers.services.getServices)
 router.get('/username', controllers.permissions.getUserInfo)
