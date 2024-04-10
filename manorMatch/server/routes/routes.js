@@ -27,7 +27,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
   try {
     const { totalAmount } = req.body;
-    const frontendPort = process.env.FRONTEND_PORT || 5173;
+    const frontendPort = process.env.FRONTEND_PORT || 3000;
     const baseUrl = `${req.protocol}://${req.hostname}:${frontendPort}`;
 
     const session = await stripe.checkout.sessions.create({

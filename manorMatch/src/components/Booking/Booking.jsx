@@ -7,6 +7,7 @@ import Calendar from './Calendar';
 import Vendors from './Vendors';
 import VendorModal from './VendorModal';
 import Confirmation from './Confirmation';
+import { MdClose } from "react-icons/md";
 
 const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
   // will need category passed down from carousel
@@ -40,7 +41,7 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
 
   return (
     <div>
-      <Modal isOpen={modalIsOpen} className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto" overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <Modal isOpen={modalIsOpen} className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto" overlayClassName="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
         {modalPage === 1 && (
           <AddressType
             setAddressType={setAddressType}
@@ -48,7 +49,7 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
             />
         )}
         {modalPage === 2 && (
-          <div>
+          <div className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
             {addressType === 'enter' && (
               <EnterAddress
                 goToPreviousPage={goToPreviousPage}
@@ -88,14 +89,15 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen }) => {
         )}
         {modalPage === 6 && (
           <Confirmation
+            handleClose={handleClose}
             selectedVendor={selectedVendor}
             date={selectedDate}
             time={selectedTime} />
         )}
         <button
           onClick={() => handleClose()}
-          className="bg-white text-black absolute top-52 right-80 w-20 h-20"
-        >X</button>
+          className="text-mmcream text-3xl absolute top-48 right-1/4 w-16 h-16 flex justify-center items-center rounded"
+        ><MdClose /></button>
       </Modal>
     </div>
   );
