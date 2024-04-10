@@ -27,10 +27,10 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(auth.createSession);
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', router);
 
