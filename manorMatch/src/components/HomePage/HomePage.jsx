@@ -11,9 +11,9 @@ const HomePage = ({ }) => {
   const vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <NavBar>
-        <span className="text-lg flex items-center">
+        <span className="text-lg flex items-center height-fit">
           Logged in as Sir Bool /
           <Link to="/login" className="ml-2">
             Sign Out
