@@ -11,11 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 var router = express.Router();
-router.use(express.static(path.resolve(__dirname, '../dist'), {
-  setHeaders: (res, path) => {
-    console.log(`Serving static file: ${path}`);
-  }
-}));
+router.use(express.static(path.join(__dirname, '../dist')));
 
 router.get('/services', controllers.services.getServices)
 router.get('/username', controllers.permissions.getUserInfo)
@@ -25,14 +21,13 @@ router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
 
 router.get('*', (req, res) => {
-  console.log('extra route detected')
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {
-    return res.redirect('/login'); // need to update to render the login page correctly
+    return res.redirect('/login');
   } else {
     res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
       if (!res.headersSent) {
-        res.status(500).send('Server error');
+        res.status(500).send(err);
       }
     });
   }
