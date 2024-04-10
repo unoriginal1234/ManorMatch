@@ -61,24 +61,24 @@ const SignUpPage = () => {
           <h1 className="text-center">Sign Up</h1>
           <form onSubmit={handleSignUpSubmit}>
             <div className="py-2">
-              <label className="block py-2 mb-2 text-2xl font-large text-gray-900 dark:text-white">First Name:</label>
-              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="your first name" required></input>
+              <label className="block py-2 mb-2 text-2xl font-large text-white">First Name:</label>
+              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="bg-gray-50 border border-gray-300 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="your first name" required></input>
             </div>
             <div className="py-2">
-              <label className="block py-2 mb-2 text-2xl font-large text-gray-900 dark:text-white">Last Name:</label>
-              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="your last name" required></input>
+              <label className="block py-2 mb-2 text-2xl font-large text-white">Last Name:</label>
+              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="bg-gray-50 border border-gray-300 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="your last name" required></input>
             </div>
             <div className="py-2">
-              <label className="block py-2 mb-2 text-2xl font-large text-gray-900 dark:text-white">Email Address:</label>
-              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="name@example.com" required></input>
+              <label className="block py-2 mb-2 text-2xl font-large text-white">Email Address:</label>
+              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-gray-50 border border-gray-300 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="name@example.com" required></input>
             </div>
             <div className="py-2">
-              <label className="block py-2 mb-2 text-2xl font-large text-gray-900 dark:text-white">Password:</label>
-              <input type="password" value={password1} onChange={(e) => setPassword1(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="********" required></input>
+              <label className="block py-2 mb-2 text-2xl font-large text-white">Password:</label>
+              <input type="password" value={password1} onChange={(e) => setPassword1(e.target.value)} className="bg-gray-50 border border-gray-300 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="********" required></input>
             </div>
             <div className="py-2">
-              <label className="block py-2 mb-2 text-2xl font-large text-gray-900 dark:text-white">Confirm Password:</label>
-              <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="********" required></input>
+              <label className="block py-2 mb-2 text-2xl font-large text-white">Confirm Password:</label>
+              <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} className="bg-gray-50 border border-gray-300 sm:text-2xl rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700  placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="********" required></input>
             </div>
             <div className="py-6">
             <button type="submit" className="w-full text-gray-900 text-2xl bg-mmsand hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg px-5 py-2.5 text-center">Sign Up</button>
