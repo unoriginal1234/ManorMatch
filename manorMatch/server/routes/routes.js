@@ -27,7 +27,7 @@ router.get('*', (req, res) => {
   } else {
     res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
       if (!res.headersSent) {
-        res.status(500).send('Server error');
+        res.status(500).send(err);
       }
     });
   }
