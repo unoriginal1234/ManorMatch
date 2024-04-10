@@ -15,9 +15,10 @@ import * as auth from './middleware/auth.js';
 const app = express();
 app.use(cors());
 const server = createServer(app);
+console.log(dotenv.config(), 'config')
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_URL,
+    origin: 'http://localhost:5173',
     methods: ["GET", "POST"]
   },
 });
@@ -27,10 +28,10 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(auth.createSession);
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '../dist')));
+// app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', router);
 

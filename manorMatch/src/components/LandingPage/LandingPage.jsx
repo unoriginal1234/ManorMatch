@@ -16,7 +16,6 @@ const LandingPage = () => {
     </NavBar><div className="flex flex-col items-center justify-center bg-mmblue">
         <Slideshow />
         <Testimonials />
-        <ChatStandIn />
       </div></>
   );
   };

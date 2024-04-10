@@ -5,7 +5,7 @@ import { socket } from '../../socket.js'; // This is the socket connection, spec
 
 const ChatModal = ({ toggleChatModal, socket }) => {
   const [chatModal, setChatModal] = useState(false);
- //  const [socket, setSocket] = useState(null);
+  //  const [socket, setSocket] = useState(null);
 
   // useEffect(() => {
   //   socket.on("connect", () => {
@@ -19,15 +19,17 @@ const ChatModal = ({ toggleChatModal, socket }) => {
 
 
 
-console.log('chatModal')
+  console.log('chatModal')
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-00 flex justify-center items-center">
-    <div className="chat-modal bg-white p-8 rounded-lg shadow-lg border-red-500 border-1" style={{ width: '80%', height: '80%' }}>
-      {socket && <ChatRoom socket={socket} toggleChatModal={toggleChatModal}/>}
-      <button onClick={toggleChatModal}>Close Chat</button>
+    <div className="fixed inset-0 bg-mmsand-600 bg-opacity-00 flex justify-center items-center">
+      <div className="chat-modal bg-white pt-0 pr-8 pb-8 pl-8 rounded-lg shadow-lg border-mmwblue border-1" style={{ width: '30%', height: '80%' }}>
+
+        {socket && <ChatRoom socket={socket} toggleChatModal={toggleChatModal} />}
+        <button onClick={toggleChatModal}>Close Chat</button>
+      </div>
     </div>
-  </div>
   );
 };
+
 
 export default ChatModal;
