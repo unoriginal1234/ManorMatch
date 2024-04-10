@@ -4,24 +4,41 @@ import express from 'express';
 import * as controllers from '../controllers/index.js'
 import { verifyAuthorized } from '../middleware/auth.js';
 import Stripe from 'stripe';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 var router = express.Router();
+router.use(express.static(path.resolve(__dirname, '../dist'), {
+  setHeaders: (res, path) => {
+    console.log(`Serving static file: ${path}`);
+  }
+}));
+
 router.get('/services', controllers.services.getServices)
 router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
 router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
+
 router.get('*', (req, res) => {
   console.log('extra route detected')
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {
     return res.redirect('/login'); // need to update to render the login page correctly
   } else {
-    console.log('in here')
-    return res.redirect('/');
+    res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
+      if (!res.headersSent) {
+        res.status(500).send('Server error');
+      }
+    });
   }
-  res.status(404).send('Page not found');
 });
+
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
