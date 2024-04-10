@@ -25,10 +25,9 @@ router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
 
 router.get('*', (req, res) => {
-  console.log('extra route detected')
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {
-    return res.redirect('/login'); // need to update to render the login page correctly
+    return res.redirect('/login');
   } else {
     res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
       if (!res.headersSent) {
