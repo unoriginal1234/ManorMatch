@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
 
@@ -6,6 +6,13 @@ const PaymentSuccess = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const sessionId = searchParams.get('session_id');
+
+  useEffect(() => {
+    if (sessionId) {
+      localStorage.setItem('vendors', JSON.stringify([]));
+    }
+  }, [sessionId]);
+
 
   return (
     <>
