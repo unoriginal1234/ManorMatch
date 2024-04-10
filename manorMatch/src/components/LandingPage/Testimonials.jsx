@@ -5,8 +5,8 @@ const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [ moveLeft, setMoveLeft ] = useState(true)
 
-  useEffect(()=> startTestimonials, [])
-  useEffect(()=> startTestimonialAnimation, [])
+  useEffect(()=> {startTestimonials()}, [])
+  useEffect(()=> {startTestimonialAnimation()}, [])
 
   const landingTestimonials = [
     {quote: 'I do declare this is the best thing ever', source: 'Sir Bool'},
