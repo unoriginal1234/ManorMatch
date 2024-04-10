@@ -13,6 +13,7 @@ export const getUserInfo = async (req, res) => {
 
 export const getBookings = async (req, res) => {
   const { userId } = req.query;
+  console.log('userId', userId);
   await models.user.getBookings(userId)
   .then(response => {
     res.status(200).json(response)

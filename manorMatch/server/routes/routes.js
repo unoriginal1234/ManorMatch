@@ -9,11 +9,12 @@ router.get('/services', controllers.services.getServices)
 // router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
+router.get('/vendorinfo', controllers.vendors.getVendorInfo)
 router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
 // TEMPORARY ROUTE FOR TESTING
 router.get('/user', controllers.user.getUserInfo)
-router.get('/user/:id', controllers.user.getBookings)
+router.get('/bookings', controllers.user.getBookings)
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {

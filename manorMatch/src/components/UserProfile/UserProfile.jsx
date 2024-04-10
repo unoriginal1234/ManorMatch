@@ -1,30 +1,58 @@
 import NavBar from '../../utils/NavBar.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import BookingHistory from './BookingHistory.jsx';
 
 const UserProfile = () => {
 
   const [currentUser, setCurrentUser] = useState({});
+  const [bookings, setBookings] = useState([]);
+  const [previousBookings, setPreviousBookings] = useState([]);
+  const [upcomingBookings, setUpcomingBookings] = useState([]);
 
   const getBookings = (id) => {
     const apiUrl = import.meta.env.VITE_API_URL;
-    axios.get(`${apiUrl}/user`, {
+    axios.get(`${apiUrl}/bookings`, {
       params: {
         userId: id
     }})
     .then((response) => {
-      console.log(response.data);
+      const bookings = response.data
+
+      const vendorPromises = bookings.map((booking) => {
+        return booking.services.map((service) => {
+          return axios.get(`${apiUrl}/vendorInfo`, {
+            params: {
+              id: service.vendorId
+            }
+          })
+          .then((vendorResponse) => {
+            service.vendorPhoto = vendorResponse.data.photo;
+            service.vendorName = vendorResponse.data.name;
+          })
+        })
+      })
+
+      return Promise.all(vendorPromises.flat()).then(() => bookings);
     })
+    .then((bookings) => {
+      const upcomingBookings = bookings.filter((booking) => new Date(booking.jobDate) > new Date());
+      const previousBookings = bookings.filter((booking) => new Date(booking.jobDate) < new Date());
+
+      setBookings(bookings);
+      setPreviousBookings(previousBookings);
+      setUpcomingBookings(upcomingBookings);
+    })
+
     .catch((error) => {
       console.error('Error:', error);
     })
-  }
-
+}
 
   useEffect(() => {
     const getUserAndBookings = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
-      const userEmail = 'Brenden_Cummerata@yahoo.com';
+      const userEmail = 'Naomie_Fadel65@yahoo.com';
       axios.get(`${apiUrl}/user`, {
         params: {
           email: userEmail
@@ -46,52 +74,16 @@ const UserProfile = () => {
 
   return (
 
-    // WHICH NAV BAR TO GRAB
-    <>
-    <NavBar />
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 color-mmblue">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white">
-        <div className="font-bold text-xl mb-2 text-center px-6 py-4">
-          <h1>Welcome back, {currentUser.firstName} {currentUser.lastName}.</h1>
-        </div>
-
-    </div>
-    <div className="px-6 pt-4 pb-2">
-      <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 bg-gray-200">
-      <h2 >Your Current Bookings</h2>
-      <div>
-        <h3>Booking 1</h3>
-        <p>Vendor: Vendor Name</p>
-        <p>Service: Service Name</p>
-        <p>Date: Date</p>
-        </div>
-      </span>
-
-      <div>
-        <h3>Booking 2</h3>
-        <p>Vendor: Vendor Name</p>
-        <p>Service: Service Name</p>
-        <p>Date: Date</p>
-      </div>
-    </div>
     <div>
-      <h2>Previous Bookings</h2>
-      <div>
-        <h3>Booking 1</h3>
-        <p>Vendor: Vendor Name</p>
-        <p>Service: Service Name</p>
-        <p>Date: Date</p>
+      <NavBar />
+      <div className="font-bold text-3xl mb-2 text-center px-6 py-4 text-mmblue">
+        <h1>Welcome back, {currentUser.firstName} {currentUser.lastName}. </h1>
       </div>
-      <div>
-        <h3>Booking 2</h3>
-        <p>Vendor: Vendor Name</p>
-        <p>Service: Service Name</p>
-        <p>Date: Date</p>
-      </div>
-      </div>
+      <div className="flex">
+      <BookingHistory title="Upcoming Bookings" bookings={upcomingBookings} />
+      <BookingHistory title="Previous Bookings" bookings={previousBookings} />
     </div>
-    </>
-
+  </div>
   // FAVORITE VENDORS
   );
 }
