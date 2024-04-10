@@ -15,10 +15,9 @@ import * as auth from './middleware/auth.js';
 const app = express();
 app.use(cors());
 const server = createServer(app);
-console.log(dotenv.config(), 'config')
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"]
   },
 });
