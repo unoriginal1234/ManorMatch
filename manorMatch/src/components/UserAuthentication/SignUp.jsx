@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
 import NavBar from '../../utils/NavBar.jsx';
@@ -44,8 +44,13 @@ const SignUpPage = () => {
         password: password1
       })
         .then((response) => {
-          localStorage.setItem("userEmail", email);
-          navigate('/home');
+          return new Promise((resolve) => {
+            localStorage.setItem("userEmail", email);
+            resolve();
+          })
+          .then(() => {
+            navigate('/home');
+          })
         })
         .catch((error) => {
           console.log(error);
