@@ -24,6 +24,6 @@ export const signup = (req, res) => {
 }
 
 export const logout = (req, res) => {
-  console.log('logout in controllers received')
-  models.permissions.logout();
+  res.clearCookie('loggedIn');
+  res.redirect('/')
 }
