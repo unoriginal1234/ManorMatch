@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import  CartIcon  from '../ShoppingCart/icons/CartIcon.jsx';
 
 const Confirmation = ({ handleClose, selectedVendor, date, time}) => {
 
@@ -10,13 +11,19 @@ const Confirmation = ({ handleClose, selectedVendor, date, time}) => {
       <div>{selectedVendor.name}</div>
       <div>{date}</div>
       <div>{time}</div>
-      <button
-        className="bg-mmcream text-mmblue"
-        onClick={() => handleClose()}
-      >Add More Services</button>
-      <Link to='/cart'>
-        <button className="bg-mmcream text-mmblue">View Cart</button>
-      </Link>
+      <div className="flex flex-col items-center">
+        <button
+          className="bg-mmcream text-mmblue px-4 py-2 mb-4 rounded hover:bg-mmsand"
+          onClick={() => handleClose()}
+        >
+          Add More Services
+        </button>
+        <Link to="/cart" className="text-mmcream hover:text-mmsand">
+          <CartIcon />
+        </Link>
+      </div>
+      <div className="absolute top-4 right-4">
+      </div>
     </div>
   )
 }
