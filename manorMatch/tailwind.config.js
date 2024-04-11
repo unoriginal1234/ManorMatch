@@ -20,7 +20,7 @@ export default {
         semibold: ['Raleway SemiBold', 'sans-serif'],
       },
       boxShadow: {
-        'landinglogin': '2px 3px 0px 1px #020025',
+        'landinglogin': '2px 4px 0px 1px rgba(0,0,0,0.76);',
       },
     },
   },
