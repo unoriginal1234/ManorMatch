@@ -5,12 +5,15 @@ const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [ moveLeft, setMoveLeft ] = useState(true)
 
-  useEffect(()=> {
-    return startTestimonials
-  }, [])
-  useEffect(()=> {
-    return startTestimonialAnimation
-  }, [])
+  useEffect(() => {
+    const testimonialsInterval = startTestimonials();
+    const animationInterval = startTestimonialAnimation();
+
+    return () => {
+      clearInterval(testimonialsInterval);
+      clearInterval(animationInterval);
+    };
+  }, []);
 
   const landingTestimonials = [
     {quote: 'I do declare this is the best thing ever', source: 'Sir Bool'},
