@@ -1,23 +1,24 @@
 import Slideshow from './Slideshow.jsx';
 import Testimonials from './Testimonials.jsx';
-import NavBar from '../../utils/NavBar.jsx'
 import ChatStandIn from './ChatStandIn.jsx'
 import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
 
   return (
-
-
-      <><NavBar>
-      <Link to="/login" className="text-lg mx-4">
-        Join / Login
+    <div className="w-full">
+      <Link to='/home' className="font-serif absolute z-10 text-mmcream left-20 top-12 font-normal text-5xl">
+          M | M
       </Link>
-    </NavBar><div className="flex flex-col items-center justify-center bg-mmblue">
+      <Link to="/login">
+        <button className="bg-mmblue text-2xl text-white font-bold px-8 py-3 absolute z-10 top-12 right-20 rounded-xl hover:scale-110 duration-200 tracking-wider shadow-landinglogin">Log in</button>
+      </Link>
+      <div className="flex flex-col items-center justify-center bg-mmblue">
         <Slideshow />
         <Testimonials />
-      </div></>
-  );
-  };
+      </div>
+    </div>
+  )
+};
 
 export default LandingPage;

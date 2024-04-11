@@ -10,28 +10,26 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
-//import io from 'socket.io-client';
 import { MdOutlineRealEstateAgent } from 'react-icons/md';
 import { socket } from './socket.js'
+import UserProfile from './components/UserProfile/UserProfile.jsx'
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
-  // const [socket, setSocket] = useState(null);
+  const [buttonStyle, setButtonStyle] = useState("bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
+
+
+  useEffect(() => {
+    if (isChatModalOpen) {
+      setButtonStyle("bg-mmpurple text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg  text-xl border-2 border-white-500");
+    } else {
+      setButtonStyle("bg-mmblue hover:opacity-90 hover:bg-mmpurple text-white  py-4 px-8 rounded-full inline-flex items-center shadow-lg text-xl border-2 border-white-500");
+    }
+  }, [isChatModalOpen]);
 
   if (!localStorage.getItem('vendors')) {
     localStorage.setItem('vendors', '[]');
   }
-
-  useEffect(() => {
-    if (socket) {
-      socket.on('connect', () => {
-        console.log('Socket connected!!!! ID:', socket.id.substring(0, 5))
-      });
-      socket.on('message', (message) => {
-        console.log('Received message:', message);
-      });
-    }
-  }, []);
 
   const toggleChatModal = () => {
     setIsChatModalOpen(prevState => !prevState);
@@ -68,11 +66,14 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
       <div>
-      <button onClick={toggleChatModal} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center opacity-70"><MdOutlineRealEstateAgent size={24} />
-<span className="text-lg">Talk to concierge</span></button>
-        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal}/>}
+      <button onClick={toggleChatModal} className={`${buttonStyle} absolute left-34 bottom-20`}>
+  <MdOutlineRealEstateAgent size={24} />
+  <span className="text-lg">Talk to Concierge</span>
+</button>
+        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal} setIsChatModalOpen={setIsChatModalOpen}/>}
       </div>
     </Router>
 

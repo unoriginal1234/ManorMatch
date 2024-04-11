@@ -10,6 +10,7 @@ export default {
         'mmblue': '#053C5E',
         'mmsand': '#DFB48C',
         'mmcream': '#FFF4E0',
+        'mmpurple': '#30011E'
       },
       fontFamily: {
         sans: ['Helvetica', 'sans-serif'],
@@ -18,6 +19,9 @@ export default {
         extralight: ['Raleway ExtraLight', 'sans-serif'],
         thin: ['Raleway Thin', 'sans-serif'],
         semibold: ['Raleway SemiBold', 'sans-serif'],
+      },
+      boxShadow: {
+        'landinglogin': '2px 3px 0px 1px #020025',
       },
     },
   },

@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-function ChatRoom({ socket, toggleChatModal }) {
+function ChatRoom({ socket, toggleChatModal, setIsChatModalOpen }) {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const chatEndRef = useRef(null);
@@ -52,7 +52,7 @@ function ChatRoom({ socket, toggleChatModal }) {
         /><FaTimes
         onClick={() => {
           toggleChatModal();
-          console.log('clicked!')
+          setIsChatModalOpen(false);
         }}
         className="absolute top-2 right-2 cursor-pointer fa-2x"
         />
