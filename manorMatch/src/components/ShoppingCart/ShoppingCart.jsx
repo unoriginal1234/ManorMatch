@@ -66,7 +66,7 @@ const ShoppingCart = ({}) => {
       <NavBar />
       <section className='bg-mmblue min-h-screen'>
         <div className='my-4 flex flex-col gap-4 items-center'>
-          <p className='text-3xl font-semibold text-mmcream'>Your Service Cart is Empty</p>
+          <p className='text-3xl font-semibold text-mmcream mt-6'>Your Service Cart is Empty</p>
           <Link href='/home' className='text-primary font-semibold text-mmcream'>
             Continue Booking
           </Link>
@@ -81,9 +81,9 @@ const ShoppingCart = ({}) => {
     <NavBar />
     <section className="bg-mmblue min-h-screen px-8">
       <div className="flex justify-between gap-8">
-        <div className="w-full lg:w-2/3 xl:w-1/2">
-          <Link href='/home' className='text-primary font-semibold flex items-center text-mmcream'>
-            <ChevronLeftIcon className={'w-4 mr-2'} />
+        <div className="w-full lg:w-2/3 xl:w-1/2 mt-6">
+          <Link href='/home' className='text-primary font-semibold flex items-center text-mmcream '>
+            <ChevronLeftIcon className={'w-4 mr-2 '} />
             Continue Booking
           </Link>
           <h2 className='text-xl font-semibold text-mmcream my-4'>Selected Services</h2>
