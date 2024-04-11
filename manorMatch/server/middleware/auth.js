@@ -1,8 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-
-export const createSession = (req, res, next) => {
+export const verifyAuthorized = (req, res, next) => {
   let cookieString = req.get("Cookie") || "";
-  console.log(cookieString, 'req.get("Cookie")')
 
   let parsedCookies = cookieString.split("; ").reduce((cookies, cookie) => {
     if (cookie.length) {
@@ -14,35 +11,11 @@ export const createSession = (req, res, next) => {
     return cookies;
   }, {});
 
-  if (parsedCookies.s_id) {
-    req.session_id = parsedCookies.s_id;
-  } else {
-    req.session_id = uuidv4();
-    res.cookie("s_id", req.session_id);
-  };
-
-  next();
-};
-
-export const verifyAuthorized = (req, res, next) => {
-  console.log('verifyAuthorized attempted', req.session_id)
-
-  // const isProtectedRoute = req.path !== '/' && req.path !== '/login' && req.path !== '/signup';
-
-  // const isLoggedIn = req.cookies.user_id || false;
-
-  // console.log(isProtectedRoute, !isLoggedIn)
-
-  // if (isProtectedRoute && !isLoggedIn) {
-  //   console.log('cant access route')
-  //   res.redirect('/login');
-  // }
-  if (!req.session_id || !req.cookies.user_id) {
-    if (req.xhr) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    } else {
-      return res.redirect('/login');
-    }
+  const restrictedRoutes = ['/logout', '/home', '/cart', '/profile', '/success'];
+  if (!parsedCookies.loggedIn && (req.path !== '/' && req.path !== '/login' && req.path !== '/signup') ) {
+    return res.redirect('/login');
+  } else if (parsedCookies.loggedIn && !restrictedRoutes.includes(req.path)) {
+    return res.redirect('/home');
   }
   next();
 };

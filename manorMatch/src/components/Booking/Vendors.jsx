@@ -41,11 +41,11 @@ const Vendors = ({ selectedCategory, goToPreviousPage, setSelectedVendor, goToNe
       <div className="text-mmcream fixed inset-0 flex items-center justify-center outline-none overflow-auto">
         <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto overflow-auto">
           <h1 className="text-4xl font-thin mb-8 border-b">Select a Vendor</h1>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="flex flex-wrap justify-evenly gap-5">
             {vendors.map((vendor, index) => {
               return (
-                <div key={index} onClick={() => handleVendorClick(vendor)} className="flex-none w-64 bg-white text-mmblue hover:scale-110 transition duration-200 text-center hover:border hover:border-mmcream z-10">
-                  <img src={vendor.photo} alt="Vendor Logo" />
+                <div key={index} onClick={() => handleVendorClick(vendor)} className="flex-none w-64 bg-white text-mmblue hover:scale-110 transition duration-200 text-center hover:border hover:border-mmcream z-10 rounded-lg cursor-pointer">
+                  <img className="rounded-md" src={vendor.photo} alt="Vendor Logo" />
                   <h1 className="font-bold">{vendor.name}</h1>
                   <h2>{capitalize(vendor.serviceDescription)}</h2>
                 </div>
