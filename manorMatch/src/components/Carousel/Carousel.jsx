@@ -34,7 +34,7 @@ function PrevArrow({className, style, onClick}) {
   )
 }
 
-const Carousel = ({ addresses, currentUser }) => {
+const Carousel = ({ currentUser }) => {
   const [serviceData, setServiceData] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
@@ -95,7 +95,7 @@ const handlePageChange = (current) => {
        {serviceData.map((service) => {
          return (
            <div key={service._id} className="px-[2rem] py-[1rem]">
-             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} addresses={addresses} currentUser={currentUser}/>
+             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} currentUser={currentUser}/>
            </div>
          );
        })}

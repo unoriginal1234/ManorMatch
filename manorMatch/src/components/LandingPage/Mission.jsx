@@ -7,13 +7,13 @@ const Mission = () => {
 
   return (
       <div className="flex flex-col items-center justify-center w-full h-full bg-mmcream  relative bottom-32 px-16 border-t-8 border-mmblue">
-        <h1 className="text-5xl font-serif font-bold text-mmblue pt-36 pb-4">ManorMatch</h1>
+        <h1 className="text-5xl font-serif font-bold text-mmblue pt-36 pb-4 tracking-wide">ManorMatch</h1>
         <div className="flex text-mmblue mt-8 gap-8">
           <FaCircle />
           <FaCircle />
           <FaCircle />
         </div>
-        <p className="text-2xl text-center font-serif text-mmblue w-1/2 py-12 z-100">At ManorMatch, we pride ourselves on delivering unparalleled property management services tailored to the needs of homeowners with luxury estates and historic properties. Our commitment to excellence ensures that every aspect of upscale home management and maintenance is seamlessly executed through our sophisticated user portal, offering a comprehensive array of services at your fingertips. With a focus on quality, discretion, and personalized attention, we strive to alleviate any concerns you may have, providing peace of mind and allowing you to fully enjoy the splendor of your estate. </p>
+        <p className="text-2xl text-center font-serif text-mmgrey w-1/2 py-12 z-100 tracking-wide">At ManorMatch, we pride ourselves on delivering unparalleled property management services tailored to the needs of homeowners with luxury estates and historic properties. Our commitment to excellence ensures that every aspect of upscale home management and maintenance is seamlessly executed through our sophisticated user portal, offering a comprehensive array of services at your fingertips. With a focus on quality, discretion, and personalized attention, we strive to alleviate your concerns, providing peace of mind and allowing you to fully enjoy the splendor of your estate. </p>
         <div className="h-32 pt-8 flex justify-center items-center text-mmblue font-bold pl-8 gap-40">
           <div className="flex flex-col items-center justify-center">
             <MdVpnKey size={64}/>

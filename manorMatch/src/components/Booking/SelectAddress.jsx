@@ -1,15 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import axios from 'axios';
 
-const SelectAddress = ({ goToPreviousPage, goToNextPage, addresses }) => {
+const SelectAddress = ({ goToPreviousPage, goToNextPage, currentUser }) => {
 
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [addresses, setAddresses] = useState(null);
 
   const handleClick = () => {
     if (selectedAddress !== null && selectedAddress !== 'Select Address' && selectedAddress !== 'No Addresses') {
       goToNextPage();
     }
   }
+
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  useEffect(() => {
+    getAddresses(currentUser._id);
+  }, [currentUser._id]);
 
   return (
     <div className="font-thin w-full flex flex-col justify-between items-center p-8 text-3xl">
