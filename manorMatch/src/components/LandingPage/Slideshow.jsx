@@ -21,14 +21,14 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="w-screen">
+    <div className="w-full bg-mmblue">
 
       <div style={{"position":"absolute","top":"50%","left":"50%","transform":"translate(-50%, -50%)"}}>
         <div className="animate-bounce text-center text-mmcream text-8xl -z-9 font-serif">M | M</div>
       </div>
 
       <div className="z-1" style={{"padding":"56.25% 0 0 0","position":"relative"}}>
-        <iframe src={`${videos[currentVideo]}&background=1&autoplay=1&loop=1&autopause=0?&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style={{"position":"absolute","top":"-5%","left":"0","width":"100%","height":"100%"}} title="mansion1"></iframe>
+        <iframe src={`${videos[currentVideo]}&background=1&autoplay=1&loop=1&autopause=0?&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style={{"position":"absolute","top":"-4%","left":"0","width":"100%","height":"100%"}} title="mansion1"></iframe>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
 
@@ -43,7 +43,6 @@ const Slideshow = () => {
             <MdArrowForwardIos />
           </div>
         </button>
-
       </div>
     </div>
   );

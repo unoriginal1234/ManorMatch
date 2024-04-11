@@ -10,7 +10,8 @@ export default {
         'mmblue': '#053C5E',
         'mmsand': '#DFB48C',
         'mmcream': '#FFF4E0',
-        'mmpurple': '#30011E'
+        'mmpurple': '#30011E',
+        'mmgrey': '#2c2c2c'
       },
       fontFamily: {
         sans: ['Helvetica', 'sans-serif'],
@@ -21,9 +22,18 @@ export default {
         semibold: ['Raleway SemiBold', 'sans-serif'],
       },
       boxShadow: {
-        'landinglogin': '2px 3px 0px 1px #020025',
+        'landinglogin': '2px 4px 0px 1px rgba(0,0,0,0.76);',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-outline': {
+          textShadow: '0 0 2px #000, 0 0 3px #000',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }

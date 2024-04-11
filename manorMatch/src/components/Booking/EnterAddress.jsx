@@ -1,23 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import axios from 'axios';
 
-const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) => {
+const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage, currentUser }) => {
 
   const [address1, setAddress1] = useState(address.address1);
   const [address2, setAddress2] = useState(address.address2);
   const [city, setCity] = useState(address.city);
   const [usState, setUsState] = useState(address.usState);
   const [zip, setZip] = useState(address.zip);
+  const [submit, setSubmit] = useState(false);
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (submit) {
+      axios.post(`${apiUrl}/address`, { address })
+        .then((response) => {
+          console.log('Address saved successfuly');
+          setSubmit(false);
+          goToNextPage();
+        })
+        .catch((error) => {
+          console.log('Error saving address', error);
+          setSubmit(false)
+        })
+    }
+  }, [submit, address, goToNextPage])
 
   const handleClick = () => {
     setAddress({
+      userId: currentUser._id,
       address1: address1,
       address2: address2,
       city: city,
       usState: usState,
       zip: zip
     });
-    goToNextPage();
+    setSubmit(true);
   }
 
   return (

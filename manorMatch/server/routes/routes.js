@@ -22,6 +22,8 @@ router.get('/logout', verifyAuthorized, controllers.permissions.logout)
 router.get('/authtest', verifyAuthorized, controllers.permissions.logout)
 router.get('/user', controllers.user.getUserInfo)
 router.get('/bookings', controllers.user.getBookings)
+router.get('/addresses', controllers.user.getAddresses)
+router.post('/address', controllers.user.createAddress)
 
 router.get('*', verifyAuthorized, (req, res) => {
     console.log('routed to req.path', req.path)

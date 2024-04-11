@@ -1,26 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import axios from 'axios';
 
-const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
+const SelectAddress = ({ goToPreviousPage, goToNextPage, currentUser }) => {
 
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [addresses, setAddresses] = useState(null);
 
   const handleClick = () => {
-    if (selectedAddress !== null && selectedAddress !== 'Select Address') {
+    if (selectedAddress !== null && selectedAddress !== 'Select Address' && selectedAddress !== 'No Addresses') {
       goToNextPage();
     }
   }
+
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  useEffect(() => {
+    getAddresses(currentUser._id);
+  }, [currentUser._id]);
 
   return (
     <div className="font-thin w-full flex flex-col justify-between items-center p-8 text-3xl">
       Select from saved addresses:
       <select
         onChange={(e) => setSelectedAddress(e.target.value)}
-        className="text-black w-1/2 h-1/8">
-        <option value='Select Address'><span className="text-xs">Select Address</span></option>
-        <option value="address1">123 Main St</option>
-        <option value="address2">456 Elm St</option>
-        <option value="address3">789 Oak St</option>
+        className="text-black w-3/5 h-1/8 text-m">
+        <option value='Select Address'><span>Select Address</span></option>
+        {addresses ? addresses.map((address, index) => {
+          return (
+            <option key={index} value={address._id}>
+              {address.address1}, {address.city}, {address.state}
+            </option>
+          )
+        }) : <option value='No Addresses'>No Saved Addresses</option>}
       </select>
       <div className="flex w-full justify-between text-3xl">
         <button

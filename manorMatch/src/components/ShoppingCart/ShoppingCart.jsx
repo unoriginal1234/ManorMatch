@@ -67,7 +67,8 @@ const ShoppingCart = ({}) => {
       <section className='bg-mmblue min-h-screen'>
         <div className='my-4 flex flex-col gap-4 items-center'>
           <p className='text-3xl font-semibold text-mmcream mt-6'>Your Service Cart is Empty</p>
-          <Link href='/home' className='text-primary font-semibold text-mmcream'>
+          <Link href='/home' className='text-2xl font-semibold text-mmcream'>
+            <ChevronLeftIcon className={'w-4 mr-2 '} />
             Continue Booking
           </Link>
         </div>
