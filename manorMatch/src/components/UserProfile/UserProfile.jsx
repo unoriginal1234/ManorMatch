@@ -2,6 +2,7 @@ import NavBar from '../../utils/NavBar.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import BookingHistory from './BookingHistory.jsx';
+import UserEstates from './UserEstates.jsx';
 
 const UserProfile = () => {
 
@@ -53,7 +54,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getUserAndBookings = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
-      const userEmail = 'Naomie_Fadel65@yahoo.com';
+      const userEmail = localStorage.getItem('userEmail');
       axios.get(`${apiUrl}/user`, {
         params: {
           email: userEmail
