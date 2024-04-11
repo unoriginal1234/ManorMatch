@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const createSession = (req, res, next) => {
+export const createLogin = (req, res, next) => {
   let cookieString = req.get("Cookie") || "";
   console.log(cookieString, 'req.get("Cookie")')
 
@@ -14,19 +14,15 @@ export const createSession = (req, res, next) => {
     return cookies;
   }, {});
 
-  if (parsedCookies.s_id) {
-    req.session_id = parsedCookies.s_id;
+  if (parsedCookies.loggedIn) {
+    req.loggedIn = parsedCookies.loggedIn;
   } else {
-    req.session_id = uuidv4();
-    res.cookie("s_id", req.session_id);
-  };
-
+    res.cookie("loggedIn", req.loggedIn);
+  }
   next();
 };
 
 export const verifyAuthorized = (req, res, next) => {
-  console.log('verifyAuthorized attempted', req.session_id)
-
   // const isProtectedRoute = req.path !== '/' && req.path !== '/login' && req.path !== '/signup';
 
   // const isLoggedIn = req.cookies.user_id || false;
@@ -46,3 +42,6 @@ export const verifyAuthorized = (req, res, next) => {
   }
   next();
 };
+
+options:
+look at

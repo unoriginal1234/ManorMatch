@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(cookieParser());
-app.use(auth.createSession);
+app.use(auth.createLogin);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
