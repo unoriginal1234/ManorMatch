@@ -27,7 +27,7 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
         <label htmlFor="date" className="mr-4">Date:</label>
         <input
           id="date"
-          className="text-black w-1/3 h-8"
+          className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
           type="date"
           min={minDate}
           onChange={(e) => setDate(e.target.value)}
@@ -38,7 +38,7 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
         <select
           id="time"
           onChange={(e) => setTime(e.target.value)}
-          className="text-black w-1/3 h-8"
+          className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
         >
           <option value='Select Time'>Select Time</option>
           <option value='8:00'>8 am</option>
