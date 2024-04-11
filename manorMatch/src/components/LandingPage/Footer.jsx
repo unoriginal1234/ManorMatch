@@ -8,13 +8,13 @@ const Footer = () => {
         M | M
       </div>
       <div className="flex w-1/4 justify-between">
-        <div>
+        <div className="cursor-pointer">
           About Us
         </div>
-        <p>
+        <p className="cursor-pointer">
           Press
         </p>
-        <div className="flex items-center tracking-wider gap-2">
+        <div className="flex items-center tracking-wider gap-2 cursor-pointer">
           Contact Us
           <FaLongArrowAltRight />
         </div>
