@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { MdClose } from "react-icons/md";
 const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, category }) => {
   const settings = {
     dots: true,
@@ -34,9 +35,9 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
           <div className="w-full h-full border border-mmsand flex">
             <button
               onClick={() => handleClose()}
-              className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue"
+              className="absolute top-6 right-6 p-1 rounded text-3xl text-mmcream"
             >
-              X
+              < MdClose />
             </button>
 
             <div className="w-7/12 flex-col my-4 ml-4">
