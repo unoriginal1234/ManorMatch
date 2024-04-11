@@ -49,7 +49,7 @@ useEffect(() => {
 
 
   return (
-    <div className='overflow-visible bg-mmblue'>
+    <><div className='overflow-visible bg-gray-900 h-[95vh] w-[95wh]'>
       <NavBar>
         <span className="text-lg flex items-center height-fit">
           <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">
@@ -63,13 +63,24 @@ useEffect(() => {
             {vendors.length > 0 &&
               <span className='w-5 h-5 rounded-full bg-mmsand text-mmblue hover:bg-mmcream text-xs flex items-center justify-center absolute -right-2 -top-2 text-center'>
                 {vendors.length}
-              </span>
-            }
-        </Link>
+              </span>}
+          </Link>
         </span>
       </NavBar>
+<<<<<<< HEAD
+      <div className='h-40 relative flex items-center justify-center'>
+        <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
+          style={{ objectPosition: 'center 47%' }} />
+        <div className="absolute inset-0 flex items-center justify-center font-thin">
+          <h1 className="text-white text-4xl font-bold">Truly refined services await.</h1>
+        </div>
+      </div>
+      <Carousel />
+    </div><div className='bg-gray-900 h-20'></div></>
+=======
       <Carousel addresses={addresses} currentUser={currentUser} />
     </div>
+>>>>>>> dev
   );
 };
 
