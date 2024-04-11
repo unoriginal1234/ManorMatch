@@ -18,16 +18,16 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage, cur
         .then((response) => {
           console.log('Address saved successfuly');
           setSubmit(false);
+          goToNextPage();
         })
         .catch((error) => {
           console.log('Error saving address', error);
           setSubmit(false)
         })
     }
-  }, [submit, address])
+  }, [submit, address, goToNextPage])
 
   const handleClick = () => {
-    console.log(currentUser);
     setAddress({
       userId: currentUser._id,
       address1: address1,
@@ -36,7 +36,7 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage, cur
       usState: usState,
       zip: zip
     });
-    goToNextPage();
+    setSubmit(true);
   }
 
   return (

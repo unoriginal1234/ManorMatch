@@ -79,7 +79,7 @@ const Carousel = ({ addresses, currentUser }) => {
        {serviceData.map((service) => {
          return (
            <div key={service._id} className="px-[8rem] py-[1rem]">
-             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} addresses={addresses} currentUser={currentUser}/>
+             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} currentUser={currentUser}/>
            </div>
          );
        })}
