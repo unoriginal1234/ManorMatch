@@ -6,7 +6,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
-
+import './pageAllignOverride.css';
 function NextArrow({ className, style, onClick } ) {
   return (
     <div className="absolute top-1/2 left-0 w-full flex-col justify-between origin-center">
@@ -36,6 +36,7 @@ function PrevArrow({className, style, onClick}) {
 
 const Carousel = ({ addresses, currentUser }) => {
   const [serviceData, setServiceData] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
   axios.get(`${apiUrl}/services`)
   .then((response) => {
@@ -43,9 +44,21 @@ const Carousel = ({ addresses, currentUser }) => {
   });
 
   }, []);
+  //style={{ color: i === currentSlide ? 'white' : 'grey' }
+const handlePageChange = (current) => {
+  const currentPage = Math.ceil(current / settings.slidesToShow);
+  console.log(currentPage);
+  setCurrentSlide(currentPage);
+}
   const settings = {
     dots: true,
-    customPaging: (i) => <div className="text-white">{i + 1}</div>,
+  afterChange: (current) => {handlePageChange(current)},
+  customPaging: (i) => (
+    <div className={i === currentSlide ? "text-white text-3xl my-10 mt-4" : "text-gray-500 text-2xl my-10 mt-4"}>
+      {i + 1}
+    </div>
+  ),
+
     infinite: true,
     speed: 500,
     slidesToShow: 4,
