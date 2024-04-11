@@ -10,7 +10,6 @@ import axios from 'axios';
 import cookieParser from 'cookie-parser';
 import router from './routes/routes.js';
 import morgan from 'morgan';
-import * as auth from './middleware/auth.js';
 
 const app = express();
 app.use(cors());
@@ -20,7 +19,6 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(cookieParser());
-app.use(auth.createSession);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,11 +26,6 @@ const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', router);
-
-app.get('/clear-cookie', (req, res) => {
-  res.cookie('s_id', '', { expires: new Date(0) });
-  res.send('Cookie cleared');
-});
 
 io.on('connection', (socket) => {
   console.log('New client connected');
