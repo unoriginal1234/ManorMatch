@@ -67,7 +67,6 @@ useEffect(() => {
           </Link>
         </span>
       </NavBar>
-<<<<<<< HEAD
       <div className='h-40 relative flex items-center justify-center'>
         <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
           style={{ objectPosition: 'center 47%' }} />
@@ -75,12 +74,9 @@ useEffect(() => {
           <h1 className="text-white text-4xl font-bold">Truly refined services await.</h1>
         </div>
       </div>
-      <Carousel />
-    </div><div className='bg-gray-900 h-20'></div></>
-=======
       <Carousel addresses={addresses} currentUser={currentUser} />
-    </div>
->>>>>>> dev
+    </div><div className='bg-gray-900 h-20'></div>
+    </>
   );
 };
 
