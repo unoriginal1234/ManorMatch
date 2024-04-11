@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { signOut } from '../UserAuthentication/SignOut.jsx'
 
 
 const HomePage = ({}) => {
@@ -31,7 +32,6 @@ useEffect(() => {
 })
 }, []);
 
-
   return (
     <><div className='overflow-visible bg-gray-900 h-[95vh] w-[95wh]'>
       <NavBar>
@@ -39,7 +39,7 @@ useEffect(() => {
           <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">
           Welcome, {currentUser.firstName} {currentUser.lastName}
           </Link>
-          <Link to="/login" className="ml-2">
+          <Link to="/" className="ml-2" onClick={signOut}>
             Sign Out
           </Link>
           <Link to="/cart" className="ml-4 mr-4 relative hover:text-mmcream">
