@@ -179,12 +179,34 @@ async function seedService() {
   }
 }
 
+async function seedAddress() {
+  const customers = await db.Customer.find().limit(50).select('_id');
+
+  for(let i = 0; i < 300; i++) {
+    let address = new db.Address({
+      customerId: faker.helpers.arrayElement(customers),
+      address1: faker.location.streetAddress(),
+      address2: faker.location.secondaryAddress(),
+      city: faker.location.city(),
+      state: faker.location.state({ abbreviated: true }),
+      zip: faker.location.zipCode(),
+    });
+
+    try {
+      await address.save();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 const seedDatabase = async () => {
   await db.Customer.deleteMany({});
   await db.Vendor.deleteMany({});
   await db.Booking.deleteMany({});
   await db.Message.deleteMany({});
   await db.Service.deleteMany({});
+  await db.Address.deleteMany({});
   console.log('Dropped all previous collections')
   await seedCustomer();
   console.log('Customer seeding complete');
@@ -196,6 +218,8 @@ const seedDatabase = async () => {
   console.log('Message seeding complete');
   await seedService();
   console.log('Service seeding complete');
+  await seedAddress();
+  console.log('Address seeding complete');
 }
 
 seedDatabase();
