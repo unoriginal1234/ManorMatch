@@ -11,6 +11,7 @@ import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
 //import io from 'socket.io-client';
+import { MdOutlineRealEstateAgent } from 'react-icons/md';
 import { socket } from './socket.js'
 
 function App() {
@@ -69,7 +70,8 @@ function App() {
         <Route path="/success" element={<PaymentSuccess />} />
       </Routes>
       <div>
-        <button onClick={toggleChatModal}>Toggle Chat</button>
+      <button onClick={toggleChatModal} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center opacity-70"><MdOutlineRealEstateAgent size={24} />
+<span className="text-lg">Talk to concierge</span></button>
         {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal}/>}
       </div>
     </Router>
