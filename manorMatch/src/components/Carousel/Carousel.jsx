@@ -27,7 +27,7 @@ const Carousel = ({}) => {
   axios.get(`${apiUrl}/services`)
   .then((response) => {
     setServiceData(response.data);
-    console.log(response.data);
+    console.log('Am i getting this back?', response.data);
   });
 
   }, []);

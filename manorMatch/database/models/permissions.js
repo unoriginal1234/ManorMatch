@@ -1,9 +1,5 @@
 import db from '../db.js';
 
-export const getUserInfo = () => {
-  console.log('this happened');
-}
-
 export const login = async (email, password) => {
   try {
     const dbFind = await db.Customer.find({ email: email });

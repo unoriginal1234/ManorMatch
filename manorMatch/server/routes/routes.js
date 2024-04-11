@@ -4,20 +4,39 @@ import express from 'express';
 import * as controllers from '../controllers/index.js'
 import { verifyAuthorized } from '../middleware/auth.js';
 import Stripe from 'stripe';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 var router = express.Router();
+router.use(express.static(path.join(__dirname, '../dist')));
+
 router.get('/services', controllers.services.getServices)
-router.get('/username', controllers.permissions.getUserInfo)
+// router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
+router.get('/vendorinfo', controllers.vendors.getVendorInfo)
 router.get('/vendors', controllers.vendors.getVendors)
 router.post('/logout', verifyAuthorized, controllers.permissions.logout)
+router.get('/user', controllers.user.getUserInfo)
+router.get('/bookings', controllers.user.getBookings)
+
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
   if (restrictedRoutes.includes(req.path)) {
-    return res.redirect('/login'); // need to update to render the login page correctly
+    return res.redirect('/login');
+  } else {
+    res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
+      if (!res.headersSent) {
+        res.status(500).send(err);
+      }
+    });
   }
-  res.status(404).send('Page not found');
 });
+
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
