@@ -3,7 +3,7 @@ import CarouselModal from './CarouselModal';
 import Booking from '../Booking/Booking.jsx';
 import { set } from 'mongoose';
 
-const CarouselImage = ({ imageUrl, description, serviceDetails, category }) => {
+const CarouselImage = ({ imageUrl, description, serviceDetails, category, addresses }) => {
   const [detailsModalIsOpen, setDetailsModalIsOpen] = useState(false);
   const [checkoutModalIsOpen, setCheckoutModalIsOpen] = useState(false);
   const closeDetailsModal = () => {
@@ -53,6 +53,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category }) => {
           category={category}
           modalIsOpen={checkoutModalIsOpen}
           setModalIsOpen={closeCheckoutModal}
+          addresses={addresses}
         />
       )}
     </>
