@@ -5,5 +5,10 @@ const getVendorsByCategory = async (category) => {
   return result;
 }
 
+const getVendorInfo = async (id) => {
+  const result = await db.Vendor.findById(id);
+  return result;
+}
 
-export { getVendorsByCategory };
+
+export { getVendorsByCategory, getVendorInfo };
