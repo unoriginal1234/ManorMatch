@@ -21,7 +21,7 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="w-screen">
+    <div className="w-full bg-mmblue">
 
       <div style={{"position":"absolute","top":"50%","left":"50%","transform":"translate(-50%, -50%)"}}>
         <div className="animate-bounce text-center text-mmcream text-8xl -z-9 font-serif">M | M</div>
