@@ -12,4 +12,16 @@ const getVendors= async (req, res) => {
     })
 };
 
-export { getVendors };
+const getVendorInfo = async (req, res) => {
+  const { id } = req.query;
+  models.vendors.getVendorInfo(id)
+    .then((vendor) => {
+      res.status(200).send(vendor);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send({ message: 'Server Error' });
+    })
+}
+
+export { getVendors, getVendorInfo };

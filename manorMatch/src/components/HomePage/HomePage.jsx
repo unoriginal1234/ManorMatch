@@ -9,11 +9,11 @@ import NavBar from '../../utils/NavBar.jsx';
 const HomePage = ({ }) => {
   // insert Carousel into return statement below
   const vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
-
+//#30011E
   return (
-    <div>
+    <div className='overflow-visible bg-mmblue'>
       <NavBar>
-        <span className="text-lg flex items-center">
+        <span className="text-lg flex items-center height-fit">
           Logged in as Sir Bool /
           <Link to="/login" className="ml-2">
             Sign Out

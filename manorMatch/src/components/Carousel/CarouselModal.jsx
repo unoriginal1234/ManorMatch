@@ -27,7 +27,7 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto"
+        className="text-mmcream fixed inset-0 flex items-center justify-center outline-none overflow-auto"
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
       >
         <div className="relative w-8/12 h-fit bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
@@ -45,7 +45,7 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
               </div>
               <div>
                 <ul className="list-disc pl-4">
-                <h2 className="text-2xl mb-2 break-word">{Object.keys(serviceDetails).map((k)=>{
+                <h2 className="text-2xl mb-2 break-word font-thin">{Object.keys(serviceDetails).map((k)=>{
                   return <li key={k}>{format(serviceDetails[k])}</li>
                 })}</h2></ul>
               </div>

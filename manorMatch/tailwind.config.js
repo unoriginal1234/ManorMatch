@@ -19,6 +19,9 @@ export default {
         thin: ['Raleway Thin', 'sans-serif'],
         semibold: ['Raleway SemiBold', 'sans-serif'],
       },
+      boxShadow: {
+        'landinglogin': '2px 3px 0px 1px #020025',
+      },
     },
   },
   plugins: [],

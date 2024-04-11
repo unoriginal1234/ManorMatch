@@ -1,9 +1,5 @@
 import * as models from '../../database/models/index.js'
 
-export const getUserInfo = (req, res) => {
-  models.permissions.getUserInfo()
-};
-
 export const login = async (req, res) => {
   const { email, password } = req.body;
   await models.permissions.login(email, password)
