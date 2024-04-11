@@ -14,31 +14,25 @@ var router = express.Router();
 router.use(express.static(path.join(__dirname, '../dist')));
 
 router.get('/services', controllers.services.getServices)
-// router.get('/username', controllers.permissions.getUserInfo)
 router.post('/login', controllers.permissions.login)
 router.post('/signup', controllers.permissions.signup)
 router.get('/vendorinfo', controllers.vendors.getVendorInfo)
 router.get('/vendors', controllers.vendors.getVendors)
-router.post('/logout', verifyAuthorized, controllers.permissions.logout)
+router.post('/logout', controllers.permissions.logout)
+router.get('/authtest', verifyAuthorized, controllers.permissions.logout)
 router.get('/user', controllers.user.getUserInfo)
 router.get('/bookings', controllers.user.getBookings)
 router.get('/addresses', controllers.user.getAddresses)
 router.post('/address', controllers.user.createAddress)
 
-router.get('*', (req, res) => {
-  const restrictedRoutes = ['/logout'];
-  if (restrictedRoutes.includes(req.path)) {
-    return res.redirect('/login');
-  } else {
+router.get('*', verifyAuthorized, (req, res) => {
+    console.log('routed to req.path', req.path)
     res.sendFile(path.join(__dirname, '../../dist/index.html'), (err) => {
-      if (!res.headersSent) {
-        res.status(500).send(err);
+      if (err) {
+        console.log(err, 'error')
       }
     });
-  }
 });
-
-
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
