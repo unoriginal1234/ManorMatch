@@ -54,6 +54,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category, addres
           modalIsOpen={checkoutModalIsOpen}
           setModalIsOpen={closeCheckoutModal}
           addresses={addresses}
+          currentUser={currentUser}
         />
       )}
     </>

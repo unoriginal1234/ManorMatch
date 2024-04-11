@@ -9,7 +9,7 @@ import VendorModal from './VendorModal';
 import Confirmation from './Confirmation';
 import { MdClose } from "react-icons/md";
 
-const Booking = ({ category, modalIsOpen, setModalIsOpen, addresses }) => {
+const Booking = ({ category, modalIsOpen, setModalIsOpen, addresses, currentUser }) => {
   // will need category passed down from carousel
   const [modalPage, setModalPage] = useState(1);
 
@@ -55,7 +55,8 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen, addresses }) => {
                 goToPreviousPage={goToPreviousPage}
                 address={address}
                 setAddress={setAddress}
-                goToNextPage={goToNextPage}/>
+                goToNextPage={goToNextPage}
+                currentUser={currentUser}/>
             )}
             {addressType === 'select' && (
               <SelectAddress

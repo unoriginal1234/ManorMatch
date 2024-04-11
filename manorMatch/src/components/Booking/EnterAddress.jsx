@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import axios from 'axios';
 
-const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) => {
+const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage, currentUser }) => {
 
   const [address1, setAddress1] = useState(address.address1);
   const [address2, setAddress2] = useState(address.address2);
@@ -27,7 +27,9 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
   }, [submit, address])
 
   const handleClick = () => {
+    console.log(currentUser);
     setAddress({
+      userId: currentUser._id,
       address1: address1,
       address2: address2,
       city: city,
