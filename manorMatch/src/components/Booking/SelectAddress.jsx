@@ -18,7 +18,7 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage, addresses }) => {
         onChange={(e) => setSelectedAddress(e.target.value)}
         className="text-black w-3/5 h-1/8 text-m">
         <option value='Select Address'><span>Select Address</span></option>
-        {addresses.length > 0 ? addresses.map((address, index) => {
+        {addresses ? addresses.map((address, index) => {
           return (
             <option key={index} value={address._id}>
               {address.address1}, {address.city}, {address.state}

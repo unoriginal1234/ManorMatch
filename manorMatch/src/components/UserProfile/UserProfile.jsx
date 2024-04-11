@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import BookingHistory from './BookingHistory.jsx';
 import UserEstates from './UserEstates.jsx';
 
-const UserProfile = () => {
+const UserProfile = ({ currentUser, addresses }) => {
 
-  const [currentUser, setCurrentUser] = useState({});
   const [bookings, setBookings] = useState([]);
   const [previousBookings, setPreviousBookings] = useState([]);
   const [upcomingBookings, setUpcomingBookings] = useState([]);
@@ -52,7 +51,7 @@ const UserProfile = () => {
 }
 
   useEffect(() => {
-      getBookings(user._id)
+      getBookings(currentUser._id)
     }
   , []);
 

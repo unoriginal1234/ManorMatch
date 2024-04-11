@@ -10,41 +10,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 
-const HomePage = ({ }) => {
+const HomePage = ({ currentUser, addresses }) => {
   // insert Carousel into return statement below
-  const [currentUser, setCurrentUser] = useState({});
-  const [addresses, setAddresses] = useState([]);
   const vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
 //#30011E
 
-  const getAddresses = (id) => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    axios.get(`${apiUrl}/addresses`, {
-      params: {
-        userId: id
-    }})
-    .then((response) => {
-      const addresses = response.data;
-      setAddresses(addresses);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    })
-  }
-
-  useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const userEmail = localStorage.getItem('userEmail');
-    axios.get(`${apiUrl}/user`, {
-      params: {
-        email: userEmail
-    }})
-    .then((response) => {
-      const user = response.data[0];
-      setCurrentUser(user);
-      getAddresses(user._id);
-    })
-  }, [])
 
   return (
     <div className='overflow-visible bg-mmblue'>
