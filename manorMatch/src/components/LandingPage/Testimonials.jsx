@@ -15,8 +15,8 @@ const Testimonials = () => {
   const landingTestimonials = [
     {quote: 'I do declare this is the best thing ever', source: 'Sir Bool'},
     {quote: "Exceptional property management", source: "Anonymous"},
-    {quote: 'My pool is sparkling!', source: "Andre SoCal"},
-    {quote: 'I live a most extraordinary existence!', source: "Zacharia Dorito"}
+    {quote: 'My pool is sparkling!', source: "Andre"},
+    {quote: 'I live a most extraordinary existence!', source: "Zacharia"}
   ]
 
   const nextTestimonial = () => {
