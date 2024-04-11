@@ -1,6 +1,6 @@
 import Slideshow from './Slideshow.jsx';
 import Testimonials from './Testimonials.jsx';
-import ChatStandIn from './ChatStandIn.jsx'
+import Mission from './Mission.jsx';
 import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
@@ -16,6 +16,7 @@ const LandingPage = () => {
       <div className="flex flex-col items-center justify-center bg-mmblue">
         <Slideshow />
         <Testimonials />
+        <Mission />
       </div>
     </div>
   )
