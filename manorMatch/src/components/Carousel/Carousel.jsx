@@ -5,24 +5,38 @@ import Slider from 'react-slick';
 const apiUrl = import.meta.env.VITE_API_URL;
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-
-function NextArrow(props) {
-  const { className, style, onClick } = props;
+import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
+import './pageAlignOverride.css';
+function NextArrow({ className, style, onClick } ) {
   return (
-    <div className="slick-next !bg-black !right-1 z-20 rounded-3xl" onClick={onClick} />
+    <div className="absolute top-1/2 left-0 w-full flex-col justify-between origin-center">
+    <MdArrowForwardIos
+      className={`${className} h-10 w-10 text-white hover:scale-150 hover:-translate-y-5  duration-200`}
+      style={{ ...style, display: "block", color: "white"}}
+      onClick={onClick}
+      /></div>
+
+
   );
 }
 
-function PrevArrow(props) {
-  const { className, style, onClick } = props;
+function PrevArrow({className, style, onClick}) {
+   {/*<div className="slick-prev !bg-red-500 !left-2 z-20 rounded-3xl" onClick={onClick} />*/}
   return (
-    <div className="slick-prev !bg-black !left-2 z-20 rounded-3xl" onClick={onClick} />
-  );
+     <div className="absolute top-1/2 left-0 w-full flex-col justify-between origin-center">
+      <MdArrowBackIosNew
+      className={`${className} h-10 w-10 text-white  hover:scale-150  hover:-translate-y-5 duration-200 origin-center`}
+      style={{ ...style, display: "flex", color: "white" }}
+      onClick={onClick}
+      />
+    </div>
+
+  )
 }
 
 const Carousel = ({ currentUser }) => {
   const [serviceData, setServiceData] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
   axios.get(`${apiUrl}/services`)
   .then((response) => {
@@ -30,9 +44,21 @@ const Carousel = ({ currentUser }) => {
   });
 
   }, []);
+  //style={{ color: i === currentSlide ? 'white' : 'grey' }
+const handlePageChange = (current) => {
+  const currentPage = Math.ceil(current / settings.slidesToShow);
+  console.log(currentPage);
+  setCurrentSlide(currentPage);
+}
   const settings = {
     dots: true,
-    customPaging: (i) => <div className="text-white">{i + 1}</div>,
+  afterChange: (current) => {handlePageChange(current)},
+  customPaging: (i) => (
+    <div className={i === currentSlide ? "text-white text-3xl my-10 mt-4" : "text-gray-500 text-2xl my-10 mt-4"}>
+      {i + 1}
+    </div>
+  ),
+
     infinite: true,
     speed: 500,
     slidesToShow: 4,
