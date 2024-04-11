@@ -15,7 +15,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
 
     useEffect(() => {
       setServiceDescription(capitalize(selectedVendor.serviceDescription));
-      setSpecialties(Object.values(selectedVendor.specialties[0]).filter((specialty) => !/d/.test(specialty)).map((specialty) => capitalize(specialty)));
+      setSpecialties(Object.values(selectedVendor.specialties[0]).filter((specialty) => !/\d/.test(specialty)).map((specialty) => capitalize(specialty)));
     }, [selectedVendor]);
 
     const getListOfSpecialties = () => {
@@ -25,11 +25,12 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       })
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
       let currentVendors = JSON.parse(localStorage.getItem('vendors'));
       currentVendors.push(selectedVendor);
       console.log(currentVendors);
       localStorage.setItem('vendors', JSON.stringify(currentVendors));
+      
       goToNextPage();
     }
 
