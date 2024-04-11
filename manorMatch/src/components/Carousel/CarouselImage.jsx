@@ -27,7 +27,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category, addres
             alt="Carousel Image"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-white text-center text-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 bg-black rounded-lg m-5 p-5">
+            <span className="text-white text-center text-lg opacity-0 border border-mmcream group-hover:opacity-70 transition-opacity duration-300 bg-black rounded-lg m-5 p-5">
               {description}
             </span>
           </div>
@@ -54,7 +54,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category, addres
           category={category}
           modalIsOpen={checkoutModalIsOpen}
           setModalIsOpen={closeCheckoutModal}
-          addresses={addresses}
+          currentUser={currentUser}
         />
       )}
     </>
