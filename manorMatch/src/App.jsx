@@ -101,13 +101,23 @@ function App() {
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/profile" element={<UserProfile currentUser={currentUser} addresses={addresses}/>} />
       </Routes>
-      <div>
-      <button onClick={toggleChatModal} className={`${buttonStyle} absolute left-34 bottom-20`}>
-  <MdOutlineRealEstateAgent size={24} />
-  <span className="text-lg">Talk to Concierge</span>
-</button>
-        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal} setIsChatModalOpen={setIsChatModalOpen}/>}
-      </div>
+    <div>
+      <button
+    onClick={toggleChatModal}
+    className={`${buttonStyle} fixed left-34 bottom-20`}
+  >
+    <MdOutlineRealEstateAgent size={24} />
+    <span className="text-lg">Talk to Concierge</span>
+  </button>
+
+          {isChatModalOpen && (
+            <ChatModal
+              socket={socket}
+              toggleChatModal={toggleChatModal}
+              setIsChatModalOpen={setIsChatModalOpen}
+            />
+          )}
+    </div>
     </Router>
 
 
