@@ -23,22 +23,24 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
       <div className="font-light text-3xl">
         Please choose a date and time for service:
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center font-light">
         <label htmlFor="date" className="mr-4">Date:</label>
         <input
           id="date"
-          className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          // className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
           type="date"
           min={minDate}
           onChange={(e) => setDate(e.target.value)}
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center font-light">
         <label htmlFor="time" className="mr-4">Time:</label>
         <select
           id="time"
           onChange={(e) => setTime(e.target.value)}
-          className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          // className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
         >
           <option value='Select Time'>Select Time</option>
           <option value='8:00'>8 am</option>
