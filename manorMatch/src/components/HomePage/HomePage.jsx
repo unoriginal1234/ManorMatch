@@ -10,10 +10,42 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 
-const HomePage = ({ currentUser, addresses }) => {
+const HomePage = ({}) => {
   // insert Carousel into return statement below
   const vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
+  const [addresses, setAddresses] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
 //#30011E
+
+ // FUNCTION TO GET ADDRESSES, CURRENT USER, AND SET THEM TO STATE --> PASSED TO BOOKING
+const getAddresses = (id) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  axios.get(`${apiUrl}/addresses`, {
+    params: {
+      userId: id
+  }})
+  .then((response) => {
+    const addresses = response.data;
+    setAddresses(addresses);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  })
+}
+
+useEffect(() => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const userEmail = localStorage.getItem('userEmail');
+  axios.get(`${apiUrl}/user`, {
+    params: {
+      email: userEmail
+  }})
+  .then((response) => {
+    const user = response.data[0];
+    setCurrentUser(user);
+    getAddresses(user._id);
+})
+}, []);
 
 
   return (
@@ -36,7 +68,7 @@ const HomePage = ({ currentUser, addresses }) => {
         </Link>
         </span>
       </NavBar>
-      <Carousel addresses={addresses} />
+      <Carousel addresses={addresses} currentUser={currentUser} />
     </div>
   );
 };

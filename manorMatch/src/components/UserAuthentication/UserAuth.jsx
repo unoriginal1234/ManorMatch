@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../../utils/NavBar.jsx';
 
@@ -16,10 +16,15 @@ const UserAuth = () => {
       email: email,
       password: password
     })
-      .then((response) => {
+    .then((response) => {
+      return new Promise((resolve) => {
         localStorage.setItem("userEmail", email);
+        resolve();
+      })
+      .then(() => {
         navigate('/home');
       })
+    })
       .catch((error) => {
         console.log('failed')
         console.error(error);
