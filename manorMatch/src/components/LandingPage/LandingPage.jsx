@@ -2,6 +2,8 @@ import Slideshow from './Slideshow.jsx';
 import Testimonials from './Testimonials.jsx';
 import Mission from './Mission.jsx';
 import Services from './Services.jsx';
+import Footer from './Footer.jsx';
+
 import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
@@ -19,6 +21,7 @@ const LandingPage = () => {
       <Mission />
       <div className="bg-mmcream h-40 w-full relative bottom-32"></div>
       <Services />
+      <Footer />
     </div>
   )
 };
