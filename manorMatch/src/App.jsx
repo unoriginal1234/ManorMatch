@@ -15,14 +15,14 @@ import { socket } from './socket.js'
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
-  const [buttonStyle, setButtonStyle] = useState("bg-blue-500 hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
+  const [buttonStyle, setButtonStyle] = useState("bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
 
 
   useEffect(() => {
     if (isChatModalOpen) {
-      setButtonStyle("bg-yellow-500 text-blue font-bold py-4 px-8 rounded-lg inline-flex items-center shadow-lg opacity-100 text-xl border-3 border-yellow-500");
+      setButtonStyle("bg-mmpurple text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg  text-xl border-2 border-white-500");
     } else {
-      setButtonStyle("bg-blue-500 hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
+      setButtonStyle("bg-mmblue hover:opacity-90 hover:bg-mmpurple text-white  py-4 px-8 rounded-full inline-flex items-center shadow-lg text-xl border-2 border-white-500");
     }
   }, [isChatModalOpen]);
 
