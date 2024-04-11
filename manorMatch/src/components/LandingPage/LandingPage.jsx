@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const LandingPage = () => {
 
   return (
-    <div className="w-full m-0">
+    <div className="w-full">
       <Link to='/home' className="font-serif absolute z-10 text-mmcream left-20 top-12 font-normal text-5xl">
           M | M
       </Link>
