@@ -13,11 +13,6 @@ db.once('open', function () {
 const customerSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  address1: String,
-  address2: String,
-  city: String,
-  state: String,
-  zip: String,
   telephoneNumber: String,
   email: String,
   password: String
@@ -67,6 +62,15 @@ const serviceSchema = new mongoose.Schema({
                      detail5: String }
 })
 
+const addressSchema = new mongoose.Schema({
+  customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
+  address1: String,
+  address2: String,
+  city: String,
+  state: String,
+  zip: String,
+})
+
 const Customer = mongoose.model('Customer', customerSchema);
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
@@ -77,4 +81,6 @@ const Message = mongoose.model('Message', messageSchema);
 
 const Service = mongoose.model('Service', serviceSchema);
 
-export default { Customer, Vendor, Booking, Message, Service };
+const Address = mongoose.model('Address', addressSchema);
+
+export default { Customer, Vendor, Booking, Message, Service, Address };
