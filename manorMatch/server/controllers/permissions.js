@@ -5,6 +5,7 @@ export const login = async (req, res) => {
   await models.permissions.login(email, password)
   .then(response => {
     if (response) {
+      res.cookie('loggedIn', true);
       res.status(200).json(response)
     } else {
       res.status(500).json({message: 'login failed'})
@@ -18,6 +19,7 @@ export const login = async (req, res) => {
 export const signup = (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   models.permissions.signup(firstName, lastName, email, password);
+  res.cookie('loggedIn', true);
   res.status(200).json({ message: 'Signup successful' });
 }
 
