@@ -22,18 +22,19 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category }) => {
           }}
         >
           <img
-            className="w-[15rem] h-[15rem] object-cover object-center transition occacity-100 duration-500 ease-in-out group-hover:blur  group-hover:opacity-80"
+            className="w-[30rem] h-[30rem] object-cover object-center transition occacity-100 duration-500 ease-in-out group-hover:blur  group-hover:opacity-100 rounded-lg"
             src={imageUrl}
             alt="Carousel Image"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-white text-center text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-white text-center text-lg opacity-0 group-hover:opacity-70 transition-opacity duration-300 bg-black rounded-lg m-5 p-5">
               {description}
             </span>
           </div>
         </div>
         <button
-          className="absolute bottom-2 right-2 bg-mmblue text-white px-4 py-2 rounded hover:bg-black"
+          className="absolute bottom-2 right-2 bg-mmblue text-white px-4 py-2
+          rounded hover:bg-black"
           onClick={() => {
             setCheckoutModalIsOpen(true);
           }}

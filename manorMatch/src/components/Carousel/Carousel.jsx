@@ -27,45 +27,34 @@ const Carousel = ({}) => {
   axios.get(`${apiUrl}/services`)
   .then((response) => {
     setServiceData(response.data);
-    console.log('Am i getting this back?', response.data);
   });
 
   }, []);
   const settings = {
     dots: true,
-    customPaging: (i) => <div className="dot">{i + 1}</div>,
+    customPaging: (i) => <div className="text-white">{i + 1}</div>,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    rows:2,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1400,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
           dots: true,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -75,15 +64,17 @@ const Carousel = ({}) => {
   };
   //category, description, serviceDetails
   return (
+    <div className='px-16'>
     <Slider className="relative px-10" {...settings}>
        {serviceData.map((service) => {
          return (
-           <div key={service._id} className="px-[8rem] py-[1rem]">
+           <div key={service._id} className="px-[2rem] py-[1rem]">
              <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} />
            </div>
          );
        })}
     </Slider>
+    </div>
   );
 };
 
