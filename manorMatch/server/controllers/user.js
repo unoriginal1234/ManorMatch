@@ -33,3 +33,14 @@ export const getAddresses = async (req, res) => {
     res.status(500).json({message: 'error getting addresses:', err})
   })
 }
+
+export const createAddress = async (req, res) => {
+  const { address } = req.body;
+  await models.user.createAddress(address.userId, address)
+  .then(response => {
+    res.status(200).json(response)
+  })
+  .catch(err => {
+    res.status(500).json({message: 'error creating address:', err})
+  })
+}
