@@ -69,9 +69,10 @@ function App() {
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
       <div>
-      <button onClick={toggleChatModal} className={buttonStyle}>
-        <MdOutlineRealEstateAgent size={24} />
-        <span className="text-lg">Talk to Concierge</span></button>
+      <button onClick={toggleChatModal} className={`${buttonStyle} absolute left-34 bottom-20`}>
+  <MdOutlineRealEstateAgent size={24} />
+  <span className="text-lg">Talk to Concierge</span>
+</button>
         {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal} setIsChatModalOpen={setIsChatModalOpen}/>}
       </div>
     </Router>
