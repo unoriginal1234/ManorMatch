@@ -18,14 +18,13 @@ import axios from 'axios';
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
-  const [buttonStyle, setButtonStyle] = useState("bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
-
+  const [buttonStyle, setButtonStyle] = useState("mb-2 ml-12 bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
 
   useEffect(() => {
     if (isChatModalOpen) {
-      setButtonStyle("bg-mmpurple text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg  text-xl border-2 border-white-500");
+      setButtonStyle("mb-1 ml-12 bg-mmpurple text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg  text-xl border-2 border-white-500");
     } else {
-      setButtonStyle("bg-mmblue hover:opacity-90 hover:bg-mmpurple text-white  py-4 px-8 rounded-full inline-flex items-center shadow-lg text-xl border-2 border-white-500");
+      setButtonStyle("mb-1 ml-12 bg-mmblue hover:opacity-90 hover:bg-mmpurple text-white  py-4 px-8 rounded-full inline-flex items-center shadow-lg text-xl border-2 border-white-500");
     }
   }, [isChatModalOpen]);
 
@@ -71,24 +70,20 @@ function App() {
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
-    <div>
-      <button
-    onClick={toggleChatModal}
-    className={`${buttonStyle} fixed left-34 bottom-20 z-10`}
-  >
+      <div className="fixed left-34 bottom-10 z-10">
+  <button onClick={toggleChatModal} className={buttonStyle}>
     <MdOutlineRealEstateAgent size={24} />
-    <span className="text-lg">Talk to Concierge</span>
+    <span className="ml-2 text-lg">Talk to Concierge</span>
   </button>
 
-          {isChatModalOpen && (
-            <ChatModal
-              socket={socket}
-              toggleChatModal={toggleChatModal}
-              setIsChatModalOpen={setIsChatModalOpen}
-
-            />
-          )}
-    </div>
+  {isChatModalOpen && (
+    <ChatModal
+      socket={socket}
+      toggleChatModal={toggleChatModal}
+      setIsChatModalOpen={setIsChatModalOpen}
+    />
+  )}
+      </div>
     </Router>
 
 
