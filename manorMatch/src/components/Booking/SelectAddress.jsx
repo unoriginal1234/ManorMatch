@@ -6,13 +6,13 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage, addresses }) => {
   const [selectedAddress, setSelectedAddress] = useState(null);
 
   const handleClick = () => {
-    if (selectedAddress !== null && selectedAddress !== 'Select Address') {
+    if (selectedAddress !== null && selectedAddress !== 'Select Address' && selectedAddress !== 'No Addresses') {
       goToNextPage();
     }
   }
 
   return (
-    <div className="w-full flex flex-col justify-between items-center p-8 text-3xl">
+    <div className="font-thin w-full flex flex-col justify-between items-center p-8 text-3xl">
       Select from saved addresses:
       <select
         onChange={(e) => setSelectedAddress(e.target.value)}

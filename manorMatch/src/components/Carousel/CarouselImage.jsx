@@ -22,7 +22,7 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category, addres
           }}
         >
           <img
-            className="w-80 h-80 object-cover object-center transition occacity-100 duration-500 ease-in-out group-hover:blur  group-hover:opacity-80"
+            className="w-[15rem] h-[15rem] object-cover object-center transition occacity-100 duration-500 ease-in-out group-hover:blur  group-hover:opacity-80"
             src={imageUrl}
             alt="Carousel Image"
           />

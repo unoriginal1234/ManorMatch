@@ -7,9 +7,11 @@ DB_NAME=''
 VITE_STRIPE_PUBLIC_KEY=
 STRIPE_SECRET_KEY=
 
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:3000 || deployed server
 
 //in client side, import.meta.env.VITE_API_URL
 //example to use in client side:
     // const apiUrl = import.meta.env.VITE_API_URL;
     // axios.get(`${apiUrl}/`)
+
+CORS_URL='deployed client'
