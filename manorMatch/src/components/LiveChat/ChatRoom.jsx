@@ -25,20 +25,21 @@ function ChatRoom({ socket, toggleChatModal, setIsChatModalOpen }) {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit('message', { id: socket.id.substring(0, 5), message });
+    const firstName = localStorage.getItem('userFirstName');
+    console.log('firstName:', firstName);
+    socket.emit('message', { id: firstName, message });
     setMessage('');
   };
-
   console.log('Socket connected:', socket.connected);
   return (
-    <div className="flex flex-col h-full relative">
-          <div className="bg-mmsand-200 text-mmsand p-2 pt-8 rounded-t-3xl text-4xl text-center font-bold">
+    <div className="flex flex-col h-full relative z-50">
+          <div className="bg-mmsand-200 text-mmblue p-2 pt-8 rounded-t-3xl text-4xl text-center font-bold">
       Live Chat Concierge
     </div>
       <div id="chat-window" className="bg-mmcream overflow-y-auto text-mmblue text-2xl flex-grow p-4 mb-5 border">
 
         {chat.map((payload, index) => (
-          <p key={index} className="bg-mmcream mb-2  ">USER {payload.id}: {payload.message}</p>
+          <p key={index} className="bg-mmcream mb-2  "> {payload.id}: {payload.message}</p>
         ))}
         <div ref={chatEndRef} />
       </div>

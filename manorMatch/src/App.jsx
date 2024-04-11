@@ -73,7 +73,7 @@ function App() {
     <div>
       <button
     onClick={toggleChatModal}
-    className={`${buttonStyle} fixed left-34 bottom-20`}
+    className={`${buttonStyle} fixed left-34 bottom-20 z-10`}
   >
     <MdOutlineRealEstateAgent size={24} />
     <span className="text-lg">Talk to Concierge</span>
@@ -84,6 +84,7 @@ function App() {
               socket={socket}
               toggleChatModal={toggleChatModal}
               setIsChatModalOpen={setIsChatModalOpen}
+
             />
           )}
     </div>
