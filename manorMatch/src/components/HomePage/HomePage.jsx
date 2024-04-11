@@ -6,18 +6,53 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart.jsx';
 import CartIcon from '../ShoppingCart/icons/CartIcon.jsx';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
+
 const HomePage = ({ }) => {
   // insert Carousel into return statement below
+  const [currentUser, setCurrentUser] = useState({});
+  const [addresses, setAddresses] = useState([]);
   const vendors = JSON.parse(localStorage.getItem('vendors') || '[]');
+//#30011E
+
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const userEmail = localStorage.getItem('userEmail');
+    axios.get(`${apiUrl}/user`, {
+      params: {
+        email: userEmail
+    }})
+    .then((response) => {
+      const user = response.data[0];
+      setCurrentUser(user);
+      getAddresses(user._id);
+    })
+  }, [])
 
   return (
     <div>
       <NavBar>
-        <span className="text-lg flex items-center">
-          <Link to="/profile" className="border-2 border-mmcream rounded px-4 py-1 mr-4">
-            The Den
-          </Link>
+        <span className="text-lg flex items-center height-fit">
+          <Link to="/profile" className="mr-4">
           Logged in as Sir Bool /
+          </Link>
           <Link to="/login" className="ml-2">
             Sign Out
           </Link>
@@ -31,7 +66,7 @@ const HomePage = ({ }) => {
         </Link>
         </span>
       </NavBar>
-      <Carousel />
+      <Carousel addresses={addresses} />
     </div>
   );
 };

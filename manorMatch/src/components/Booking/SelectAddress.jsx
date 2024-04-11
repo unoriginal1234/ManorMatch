@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 
-const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
+const SelectAddress = ({ goToPreviousPage, goToNextPage, addresses }) => {
 
   const [selectedAddress, setSelectedAddress] = useState(null);
 
@@ -16,11 +16,15 @@ const SelectAddress = ({ goToPreviousPage, goToNextPage }) => {
       Select from saved addresses:
       <select
         onChange={(e) => setSelectedAddress(e.target.value)}
-        className="text-black w-1/2 h-1/6">
-        <option value='Select Address'>Select Address</option>
-        <option value="address1">123 Main St</option>
-        <option value="address2">456 Elm St</option>
-        <option value="address3">789 Oak St</option>
+        className="text-black w-3/5 h-1/8 text-m">
+        <option value='Select Address'><span>Select Address</span></option>
+        {addresses.length > 0 ? addresses.map((address, index) => {
+          return (
+            <option key={index} value={address._id}>
+              {address.address1}, {address.city}, {address.state}
+            </option>
+          )
+        }) : <option value='No Addresses'>No Saved Addresses</option>}
       </select>
       <div className="flex w-full justify-between text-3xl">
         <button
