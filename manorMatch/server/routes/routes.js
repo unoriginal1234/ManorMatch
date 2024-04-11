@@ -33,8 +33,6 @@ router.get('*', (req, res) => {
   }
 });
 
-
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
   try {
