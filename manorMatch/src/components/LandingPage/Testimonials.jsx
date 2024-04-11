@@ -36,13 +36,13 @@ const Testimonials = () => {
   }
 
   return (
-    <div className="relative bottom-40"><div className="bg-mmblue h-12"></div>
-      <div className="bg-mmblue text-mmcream w-screen">
+    <div className="relative bottom-32 overflow-hidden w-full"><div className="bg-mmblue h-12"></div>
+      <div className="bg-mmblue text-mmcream w-full">
       <p className={`text-3xl font-bold text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-3000 translate-x-[25%]'}`}>
         {landingTestimonials[currentTestimonial].quote}
       </p>
       <p className={`text-xl text-center ${moveLeft ? 'transition-transform duration-3000 translate-x-[-25%]' : 'transition-transform duration-3000 translate-x-[25%]'}`}>
-        -{landingTestimonials[currentTestimonial].source}
+        - {landingTestimonials[currentTestimonial].source}
       </p>
     </div>
     <div className="bg-mmblue h-14"></div>
