@@ -21,38 +21,55 @@ const EnterAddress = ({ goToPreviousPage, address, setAddress, goToNextPage }) =
   }
 
   return (
-    <div className="w-full p-8 flex flex-col justify-between items-center text-black">
-      <div className="text-mmcream text-3xl">Please fill in the address for servicing:</div>
-      <input
-        placeholder="Address 1"
-        value={address1}
-        onChange={(e) => setAddress1(e.target.value)}
-        className="pl-2 w-1/3 h-8"
-      />
-      <input
-        placeholder="Address 2"
-        value={address2}
-        onChange={(e) => setAddress2(e.target.value)}
-        className="pl-2 w-1/3 h-8"
-      />
-      <input
-        placeholder="City"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        className="pl-2 w-1/3 h-8"
-      />
-      <input
-        placeholder="State"
-        value={usState}
-        onChange={(e) => setUsState(e.target.value)}
-        className="pl-2 w-1/3 h-8"
-      />
-      <input
-        placeholder="Zip"
-        value={zip}
-        onChange={(e) => setZip(e.target.value)}
-        className="pl-2 w-1/3 h-8"
-      />
+    <div className="w-full flex flex-col justify-between text-black">
+      <div className="text-mmcream text-3xl font-light">Please fill in the address for servicing:</div>
+      <div className='flex-col items-center p-16'>
+      <div className="flex flex-col">
+        <label className="text-mmcream text-2xl font-light">Address 1:</label>
+        <input
+          placeholder="Address 1"
+          value={address1}
+          onChange={(e) => setAddress1(e.target.value)}
+          className="pl-2 w-1/2 h-8"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-mmcream text-2xl font-light">Address 2:</label>
+        <input
+          placeholder="Address 2"
+          value={address2}
+          onChange={(e) => setAddress2(e.target.value)}
+          className="pl-2 w-1/2 h-8"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-mmcream text-2xl font-light">City:</label>
+        <input
+          placeholder="City"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          className="pl-2 w-1/2 h-8"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-mmcream text-2xl font-light">State:</label>
+        <input
+          placeholder="State"
+          value={usState}
+          onChange={(e) => setUsState(e.target.value)}
+          className="pl-2 w-1/2 h-8"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-mmcream text-2xl font-light">Zip:</label>
+        <input
+          placeholder="Zip"
+          value={zip}
+          onChange={(e) => setZip(e.target.value)}
+          className="pl-2 w-1/2 h-8"
+        />
+      </div>
+      </div>
       <div className="flex w-full justify-between text-3xl">
         <button
           onClick={() => goToPreviousPage()}
