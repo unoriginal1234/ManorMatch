@@ -42,7 +42,7 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
 
             <div className="w-7/12 flex-col my-4 ml-4">
               <div className="w-fill">
-                <h1 className="text-4xl mb-5">{category.toUpperCase()}</h1>
+                <h1 className="text-4xl mb-5 font-serif">{category.toUpperCase()}</h1>
               </div>
               <div>
                 <ul className="list-disc pl-4">
