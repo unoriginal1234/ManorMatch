@@ -24,5 +24,14 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-outline': {
+          textShadow: '0 0 2px #000, 0 0 3px #000',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }
