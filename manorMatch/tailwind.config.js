@@ -10,7 +10,8 @@ export default {
         'mmblue': '#053C5E',
         'mmsand': '#DFB48C',
         'mmcream': '#FFF4E0',
-        'mmpurple': '#30011E'
+        'mmpurple': '#30011E',
+        'mmgrey': '#2c2c2c'
       },
       fontFamily: {
         sans: ['Helvetica', 'sans-serif'],
