@@ -55,7 +55,7 @@ useEffect(() => {
         <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
           style={{ objectPosition: 'center 47%' }} />
         <div className="absolute inset-0 flex items-center justify-center font-thin">
-          <h1 className="text-white text-4xl font-bold">Truly refined services await.</h1>
+          <h1 className="text-white text-4xl font-bold">Your truly refined services await.</h1>
         </div>
       </div>
       <Carousel currentUser={currentUser} />
