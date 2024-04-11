@@ -13,6 +13,7 @@ import ChatModal from './components/LiveChat/ChatModal.jsx'
 import { MdOutlineRealEstateAgent } from 'react-icons/md';
 import { socket } from './socket.js'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
+import axios from 'axios';
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
@@ -34,6 +35,7 @@ function App() {
   const toggleChatModal = () => {
     setIsChatModalOpen(prevState => !prevState);
   };
+
 
 
   return (

@@ -22,3 +22,14 @@ export const getBookings = async (req, res) => {
     res.status(500).json({message: 'error getting bookings:', err})
   })
 };
+
+export const getAddresses = async (req, res) => {
+  const { userId } = req.query;
+  await models.user.getAddresses(userId)
+  .then(response => {
+    res.status(200).json(response)
+  })
+  .catch(err => {
+    res.status(500).json({message: 'error getting addresses:', err})
+  })
+}

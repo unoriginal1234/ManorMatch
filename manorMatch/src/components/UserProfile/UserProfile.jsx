@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import BookingHistory from './BookingHistory.jsx';
 import UserEstates from './UserEstates.jsx';
 
-const UserProfile = () => {
+const UserProfile = ({ currentUser, addresses }) => {
 
-  const [currentUser, setCurrentUser] = useState({});
   const [bookings, setBookings] = useState([]);
   const [previousBookings, setPreviousBookings] = useState([]);
   const [upcomingBookings, setUpcomingBookings] = useState([]);
   const [activeTab, setActiveTab] = useState('upcoming');
+  const [user, setUser] = useState({});
+  const [userAddresses, setUserAddresses] = useState([]);
 
   const getBookings = (id) => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -19,7 +20,7 @@ const UserProfile = () => {
         userId: id
     }})
     .then((response) => {
-      const bookings = response.data
+      const bookings = response.data;
 
       const vendorPromises = bookings.map((booking) => {
         return booking.services.map((service) => {
@@ -51,8 +52,23 @@ const UserProfile = () => {
     })
 }
 
+  // FUNCTION TO GET ADDRESSES, CURRENT USER, AND SET THEM TO STATE --> PASSED TO BOTH BOOKING AND USER PROFILE
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setUserAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
   useEffect(() => {
-    const getUserAndBookings = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
       const userEmail = localStorage.getItem('userEmail');
       axios.get(`${apiUrl}/user`, {
@@ -61,17 +77,11 @@ const UserProfile = () => {
       }})
       .then((response) => {
         const user = response.data[0];
-        setCurrentUser(user);
+        setUser(user);
+        getAddresses(user._id);
         getBookings(user._id)
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
-    }
-
-    getUserAndBookings();
-  }
-  , []);
+    })
+  }, []);
 
 
   return (
@@ -79,7 +89,7 @@ const UserProfile = () => {
     <div>
       <NavBar />
       <div className="font-bold text-3xl mb-2 text-center px-6 py-4 text-mmblue">
-        <h1>Welcome back, {currentUser.firstName} {currentUser.lastName}. </h1>
+        <h1>Welcome back, {user.firstName} {user.lastName}. </h1>
       </div>
       <div>
         <button onClick={() => setActiveTab('upcoming')} className={`p-2 rounded ${activeTab === 'upcoming' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Upcoming Bookings</button>

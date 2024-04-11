@@ -1,6 +1,6 @@
 import React from 'react';
 import CarouselImage from './CarouselImage';
-const CarouselTile = ({ imageUrl, category, description, serviceDetails }) => {
+const CarouselTile = ({ imageUrl, category, description, serviceDetails, addresses, currentUser }) => {
   return (
     <div className="bg-mmcream px-4 pt-0 pb-5 flex flex-col justify-center items-center h-[37rem] rounded-lg" style={{maxWidth: '20rem'}}>
       <CarouselImage imageUrl={imageUrl} description={description} serviceDetails={serviceDetails} category={category}/>
