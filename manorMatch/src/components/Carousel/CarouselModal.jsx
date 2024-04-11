@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { MdClose } from "react-icons/md";
 const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, category }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
