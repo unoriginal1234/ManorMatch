@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { MdClose } from "react-icons/md";
 
 function ChatRoom({ socket, toggleChatModal, setIsChatModalOpen }) {
   const [message, setMessage] = useState('');
@@ -33,13 +34,13 @@ function ChatRoom({ socket, toggleChatModal, setIsChatModalOpen }) {
   console.log('Socket connected:', socket.connected);
   return (
     <div className="flex flex-col h-full relative z-50">
-          <div className="bg-mmsand-200 text-mmblue p-2 pt-8 rounded-t-3xl text-4xl text-center font-bold">
+          <div className="bg-mmcream text-mmblue p-2 pt-8 rounded-t-3xl text-4xl text-center font-bold border-mmpurple border-5">
       Live Chat Concierge
     </div>
-      <div id="chat-window" className="bg-mmcream overflow-y-auto text-mmblue text-2xl flex-grow p-4 mb-5 border">
+      <div id="chat-window" className="bg-mmblue overflow-y-auto text-mmsand text-2xl flex-grow p-4 mb-5 border">
 
         {chat.map((payload, index) => (
-          <p key={index} className="bg-mmcream mb-2  "> {payload.id}: {payload.message}</p>
+          <p key={index} className="bg-mmblue mb-2  "> {payload.id}: {payload.message}</p>
         ))}
         <div ref={chatEndRef} />
       </div>
@@ -50,12 +51,12 @@ function ChatRoom({ socket, toggleChatModal, setIsChatModalOpen }) {
           onChange={(e) => setMessage(e.target.value)}
           className="flex-grow border rounded p-2 mr-2"
           placeholder="Type your message here..."
-        /><FaTimes
+        /><MdClose
         onClick={() => {
           toggleChatModal();
           setIsChatModalOpen(false);
         }}
-        className="absolute top-2 right-2 cursor-pointer fa-2x"
+        className="absolute top-2 right-2 cursor-pointer text-mmblue text-4xl"
         />
         <button type="submit"
         className="bg-mmblue text-mmsand rounded p-2">Send</button>
