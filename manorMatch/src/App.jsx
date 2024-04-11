@@ -13,10 +13,13 @@ import ChatModal from './components/LiveChat/ChatModal.jsx'
 import { MdOutlineRealEstateAgent } from 'react-icons/md';
 import { socket } from './socket.js'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
+import axios from 'axios';
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   const [buttonStyle, setButtonStyle] = useState("bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
+  const [currentUser, setCurrentUser] = useState({});
+  const [addresses, setAddresses] = useState([]);
 
 
   useEffect(() => {
@@ -35,6 +38,36 @@ function App() {
     setIsChatModalOpen(prevState => !prevState);
   };
 
+  // FUNCTION TO GET ADDRESSES, CURRENT USER, AND SET THEM TO STATE --> PASSED TO BOTH BOOKING AND USER PROFILE
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const userEmail = localStorage.getItem('userEmail');
+    axios.get(`${apiUrl}/user`, {
+      params: {
+        email: userEmail
+    }})
+    .then((response) => {
+      const user = response.data[0];
+      setCurrentUser(user);
+      getAddresses(user._id);
+    })
+  }, [])
+
 
   return (
     <Router>
@@ -51,7 +84,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
             <>
-              <HomePage />
+              <HomePage currentUser={currentUser} assresses={addresses}/>
               {/* Currently all these components will be rendered on the "/home" path */}
               {/*
               <Carousel />
@@ -66,7 +99,7 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile currentUser={currentUser} addresses={addresses}/>} />
       </Routes>
       <div>
       <button onClick={toggleChatModal} className={`${buttonStyle} absolute left-34 bottom-20`}>
