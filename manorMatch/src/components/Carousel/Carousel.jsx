@@ -21,7 +21,7 @@ function PrevArrow(props) {
   );
 }
 
-const Carousel = ({}) => {
+const Carousel = ({ addresses }) => {
   const [serviceData, setServiceData] = useState([]);
   useEffect(() => {
   axios.get(`${apiUrl}/services`)
@@ -33,21 +33,21 @@ const Carousel = ({}) => {
   }, []);
   const settings = {
     dots: true,
-    //customPaging: (i) => <div className="dot">{i + 1}</div>,
+    customPaging: (i) => <div className="dot">{i + 1}</div>,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 3,
     rows:2,
-    slidesToScroll: 5,
+    slidesToScroll: 3,
     initialSlide: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 1600,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -55,8 +55,8 @@ const Carousel = ({}) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -64,8 +64,8 @@ const Carousel = ({}) => {
       {
         breakpoint: 500,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -78,8 +78,8 @@ const Carousel = ({}) => {
     <Slider className="relative px-10" {...settings}>
        {serviceData.map((service) => {
          return (
-           <div key={service._id} className="p-1">
-             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} />
+           <div key={service._id} className="px-[8rem] py-[1rem]">
+             <CarouselTile imageUrl={service.photo} category={service.category} description={service.description} serviceDetails={service.serviceDetails} addresses={addresses}/>
            </div>
          );
        })}

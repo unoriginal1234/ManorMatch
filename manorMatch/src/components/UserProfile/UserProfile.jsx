@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import BookingHistory from './BookingHistory.jsx';
 import UserEstates from './UserEstates.jsx';
 
-const UserProfile = () => {
+const UserProfile = ({ currentUser, addresses }) => {
 
-  const [currentUser, setCurrentUser] = useState({});
   const [bookings, setBookings] = useState([]);
   const [previousBookings, setPreviousBookings] = useState([]);
   const [upcomingBookings, setUpcomingBookings] = useState([]);
@@ -52,25 +51,8 @@ const UserProfile = () => {
 }
 
   useEffect(() => {
-    const getUserAndBookings = () => {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const userEmail = localStorage.getItem('userEmail');
-      axios.get(`${apiUrl}/user`, {
-        params: {
-          email: userEmail
-      }})
-      .then((response) => {
-        const user = response.data[0];
-        setCurrentUser(user);
-        getBookings(user._id)
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
+      getBookings(currentUser._id)
     }
-
-    getUserAndBookings();
-  }
   , []);
 
 

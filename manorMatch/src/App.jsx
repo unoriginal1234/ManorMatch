@@ -10,33 +10,63 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import SignUpPage from './components/UserAuthentication/SignUp.jsx'
 import PaymentSuccess from './components/ShoppingCart/PaymentSuccess.jsx'
 import ChatModal from './components/LiveChat/ChatModal.jsx'
-//import io from 'socket.io-client';
 import { MdOutlineRealEstateAgent } from 'react-icons/md';
 import { socket } from './socket.js'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
+import axios from 'axios';
 
 function App() {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
-  // const [socket, setSocket] = useState(null);
+  const [buttonStyle, setButtonStyle] = useState("bg-30011E hover:bg-yellow-500 text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg opacity-100 text-xl");
+  const [currentUser, setCurrentUser] = useState({});
+  const [addresses, setAddresses] = useState([]);
+
+
+  useEffect(() => {
+    if (isChatModalOpen) {
+      setButtonStyle("bg-mmpurple text-white font-bold py-4 px-8 rounded-full inline-flex items-center shadow-lg  text-xl border-2 border-white-500");
+    } else {
+      setButtonStyle("bg-mmblue hover:opacity-90 hover:bg-mmpurple text-white  py-4 px-8 rounded-full inline-flex items-center shadow-lg text-xl border-2 border-white-500");
+    }
+  }, [isChatModalOpen]);
 
   if (!localStorage.getItem('vendors')) {
     localStorage.setItem('vendors', '[]');
   }
 
-  useEffect(() => {
-    if (socket) {
-      socket.on('connect', () => {
-        console.log('Socket connected!!!! ID:', socket.id.substring(0, 5))
-      });
-      socket.on('message', (message) => {
-        console.log('Received message:', message);
-      });
-    }
-  }, []);
-
   const toggleChatModal = () => {
     setIsChatModalOpen(prevState => !prevState);
   };
+
+  // FUNCTION TO GET ADDRESSES, CURRENT USER, AND SET THEM TO STATE --> PASSED TO BOTH BOOKING AND USER PROFILE
+  const getAddresses = (id) => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    axios.get(`${apiUrl}/addresses`, {
+      params: {
+        userId: id
+    }})
+    .then((response) => {
+      const addresses = response.data;
+      setAddresses(addresses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
+  }
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const userEmail = localStorage.getItem('userEmail');
+    axios.get(`${apiUrl}/user`, {
+      params: {
+        email: userEmail
+    }})
+    .then((response) => {
+      const user = response.data[0];
+      setCurrentUser(user);
+      getAddresses(user._id);
+    })
+  }, [])
 
 
   return (
@@ -54,7 +84,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/home" element={
             <>
-              <HomePage />
+              <HomePage currentUser={currentUser} assresses={addresses}/>
               {/* Currently all these components will be rendered on the "/home" path */}
               {/*
               <Carousel />
@@ -69,12 +99,14 @@ function App() {
         />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/success" element={<PaymentSuccess />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile currentUser={currentUser} addresses={addresses}/>} />
       </Routes>
       <div>
-      <button onClick={toggleChatModal} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-3 px-6 rounded-full inline-flex items-center opacity-70"><MdOutlineRealEstateAgent size={24} />
-<span className="text-lg">Talk to concierge</span></button>
-        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal}/>}
+      <button onClick={toggleChatModal} className={`${buttonStyle} absolute left-34 bottom-20`}>
+  <MdOutlineRealEstateAgent size={24} />
+  <span className="text-lg">Talk to Concierge</span>
+</button>
+        {isChatModalOpen && <ChatModal socket={socket} toggleChatModal={toggleChatModal} setIsChatModalOpen={setIsChatModalOpen}/>}
       </div>
     </Router>
 

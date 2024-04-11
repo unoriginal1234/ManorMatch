@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { MdClose } from "react-icons/md";
 const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, category }) => {
   const settings = {
     dots: true,
@@ -27,16 +28,16 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto"
+        className="text-mmcream fixed inset-0 flex items-center justify-center outline-none overflow-auto"
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
       >
         <div className="relative w-8/12 h-fit bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
           <div className="w-full h-full border border-mmsand flex">
             <button
               onClick={() => handleClose()}
-              className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue"
+              className="absolute top-6 right-6 p-1 rounded text-3xl text-mmcream"
             >
-              X
+              < MdClose />
             </button>
 
             <div className="w-7/12 flex-col my-4 ml-4">
@@ -45,7 +46,7 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
               </div>
               <div>
                 <ul className="list-disc pl-4">
-                <h2 className="text-2xl mb-2 break-word">{Object.keys(serviceDetails).map((k)=>{
+                <h2 className="text-2xl mb-2 break-word font-thin">{Object.keys(serviceDetails).map((k)=>{
                   return <li key={k}>{format(serviceDetails[k])}</li>
                 })}</h2></ul>
               </div>
