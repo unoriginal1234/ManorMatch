@@ -8,6 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Checkout from './Checkout';
 import axios from 'axios';
+import UserControls from '../../utils/UserControlls.jsx';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -29,8 +30,6 @@ const ShoppingCart = ({}) => {
     setServices(updatedVendors);
   };
 
-
-
   // Calculate the total amount of the services
   const total = useMemo(() => {
     return services.reduce((acc, service) => acc + service.price, 0);
@@ -44,9 +43,6 @@ const ShoppingCart = ({}) => {
       const { data: session } = await axios.post(`${apiUrl}/checkout`, {
         totalAmount: total,
       });
-      console.log(session);
-      console.log(session.sessionId);
-
       // proceed with stripe.redirectToCheckout
       const result = await stripe.redirectToCheckout({
         sessionId: session.sessionId,
@@ -63,7 +59,9 @@ const ShoppingCart = ({}) => {
   if (services.length === 0) {
     return (
       <>
-      <NavBar />
+      <NavBar>
+        <UserControls />
+      </NavBar>
       <section className='bg-mmblue min-h-screen'>
         <div className='my-4 flex flex-col gap-4 items-center'>
           <p className='text-3xl font-semibold text-mmcream mt-6'>Your Service Cart is Empty</p>
@@ -79,7 +77,9 @@ const ShoppingCart = ({}) => {
 
   return (
     <>
-    <NavBar />
+    <NavBar>
+      <UserControls/>
+    </NavBar>
     <section className="bg-mmblue min-h-screen px-8">
       <div className="flex justify-between gap-8">
         <div className="w-full lg:w-2/3 xl:w-1/2 mt-6">
