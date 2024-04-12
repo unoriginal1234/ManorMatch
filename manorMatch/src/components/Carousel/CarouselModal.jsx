@@ -55,17 +55,22 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
             <div className="serviceModal w-5/12 flex flex-col justify-center pl-10 m-10">
               <Slider {...settings}>
                 <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
-                 <img
+                <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
-                 <img
+                <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
+
+
               </Slider>
             </div>
           </div>
