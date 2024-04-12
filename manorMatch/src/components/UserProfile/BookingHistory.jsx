@@ -1,7 +1,6 @@
 const BookingHistory = ({ title, bookings }) => {
   return (
-    <div className="w-1/2">
-    <h2 className="text-center my-4">{title}</h2>
+    <div className="p-6 bg-gray-100git">
     <div>
       {bookings.map((booking, i) => {
         const date = new Date(booking.jobDate);
