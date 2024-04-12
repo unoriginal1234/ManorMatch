@@ -38,7 +38,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       <div className="pt-16">
           <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
             <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto">
-                <div className="w-full h-full border border-mmsand flex flex-col">
+                <div className="w-full h-full flex flex-col">
                     {/* <button onClick={() => setModalIsOpen(false)} className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue">X</button> */}
                     <div className="flex">
                       <div className="ml-5 mt-12">
