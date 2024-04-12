@@ -33,8 +33,8 @@ const CarouselImage = ({ imageUrl, description, serviceDetails, category, addres
           </div>
         </div>
         <button
-          className="absolute bottom-2 right-2 bg-[#30011E] text-mmcream px-4 py-2
-          rounded-lg hover:bg-gray-900 text-lg font-thin transition duration-300 ease-in-out border-mmcream border"
+          className="absolute bottom-3 right-3 bg-[#30011E] text-mmcream px-4 py-2
+          rounded-lg hover:bg-gray-900 text-lg font-bold transition duration-300 ease-in-out border-mmcream border shadow-reservebtn hover:scale-110"
           onClick={() => {
             setCheckoutModalIsOpen(true);
           }}
