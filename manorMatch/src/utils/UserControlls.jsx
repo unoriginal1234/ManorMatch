@@ -9,21 +9,27 @@ const UserControls = () => {
   const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
   return (
-    <span className="text-lg flex items-center height-fit">
-      <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">
-        Welcome, {currentUser.firstName} {currentUser.lastName}
+    <div className="flex justify-between items-center w-full">
+      <Link to="/home" className="text-2xl px-3 py-1 rounded hover:text-mmcream font-semibold transition-colors">
+        Home
       </Link>
-      <Link to="/" onClick={signOut} className="ml-2">
-        Sign Out
-      </Link>
-      <Link to="/cart" className="ml-4 mr-4 relative hover:text-mmcream">
-        <CartIcon />
-        {vendors.length > 0 &&
-          <span className='w-5 h-5 rounded-full bg-mmsand text-mmblue hover:bg-mmcream text-xs flex items-center justify-center absolute -right-2 -top-2 text-center'>
-            {vendors.length}
-          </span>}
-      </Link>
-    </span>
+      <span className="flex items-center">
+        <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">
+          Welcome, {currentUser.firstName} {currentUser.lastName}
+        </Link>
+        <Link to="/" onClick={signOut} className="ml-2">
+          Sign Out
+        </Link>
+        <Link to="/cart" className="ml-2 mr-4 relative hover:text-mmcream">
+          <CartIcon />
+          {vendors.length > 0 && (
+            <span className='w-5 h-5 rounded-full bg-mmsand text-mmblue hover:bg-mmcream text-xs flex items-center justify-center absolute -right-2 -top-2 text-center'>
+              {vendors.length}
+            </span>
+          )}
+        </Link>
+      </span>
+    </div>
   );
 };
 
