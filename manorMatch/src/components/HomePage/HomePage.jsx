@@ -33,7 +33,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <><div className='overflow-visible bg-gray-900 h-[95vh] w-[95wh]'>
+    <><div className='overflow-visible bg-gray-900 h-[95vh] w-[90wh]'>
       <NavBar>
         <span className="text-lg flex items-center height-fit">
           <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">

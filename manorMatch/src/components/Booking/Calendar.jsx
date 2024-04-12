@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight} from "react-icons/fa";
 
-const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNextPage }) => {
-
-  const [date, setDate] = useState(null);
-  const [time, setTime] = useState(null);
+const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNextPage, date, time, handleDate, handleTime }) => {
 
   const handleClick = () => {
     if (date !== null && time !== null && time !== 'Select Time') {
       setSelectedDate(date);
       setSelectedTime(time);
+      console.log(date, time);
       goToNextPage();
     }
   }
@@ -31,14 +29,14 @@ const Calendar = ({ goToPreviousPage, setSelectedDate, setSelectedTime, goToNext
           // className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
           type="date"
           min={minDate}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => handleDate(e)}
         />
       </div>
       <div className="flex items-center font-light">
         <label htmlFor="time" className="mr-4">Time:</label>
         <select
           id="time"
-          onChange={(e) => setTime(e.target.value)}
+          onChange={(e) => handleTime(e)}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           // className="text-black w-1/3 h-8 border border-gray-300 rounded px-2"
         >

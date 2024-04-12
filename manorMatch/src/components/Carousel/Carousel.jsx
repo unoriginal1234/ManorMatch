@@ -68,7 +68,7 @@ const handlePageChange = (current) => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1400,
+        breakpoint: 1500,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,

@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { MdClose } from "react-icons/md";
 const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, category }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -55,17 +55,22 @@ const CarouselModal = ({ modalIsOpen, closeModal, serviceDetails, imageUrl, cate
             <div className="serviceModal w-5/12 flex flex-col justify-center pl-10 m-10">
               <Slider {...settings}>
                 <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
-                 <img
+                <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
-                 <img
+                <img
+                  className='w-full h-full object-cover object-center rounded-lg border-4 border-mmcream'
                   src={imageUrl}
                   alt="Service Image"
                 />
+
+
               </Slider>
             </div>
           </div>
