@@ -25,6 +25,16 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen, currentUser }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedVendor, setSelectedVendor] = useState({});
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
+
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  }
+
+  const handleTime = (e) => {
+    setTime(e.target.value);
+  }
 
   const goToNextPage = () => {
     setModalPage(modalPage + 1);
@@ -73,6 +83,10 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen, currentUser }) => {
             setSelectedDate={setSelectedDate}
             setSelectedTime={setSelectedTime}
             goToNextPage={goToNextPage}
+            date={date}
+            time={time}
+            handleDate={handleDate}
+            handleTime={handleTime}
           />
         )}
         {modalPage === 4 && (
@@ -88,6 +102,9 @@ const Booking = ({ category, modalIsOpen, setModalIsOpen, currentUser }) => {
             selectedVendor={selectedVendor}
             goToNextPage={goToNextPage}
             goToPreviousPage={goToPreviousPage}
+            currentUser={currentUser}
+            date={date}
+            time={time}
           />
         )}
         {modalPage === 6 && (

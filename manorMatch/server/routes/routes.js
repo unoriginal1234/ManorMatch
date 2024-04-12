@@ -24,6 +24,7 @@ router.get('/user', controllers.user.getUserInfo)
 router.get('/bookings', controllers.user.getBookings)
 router.get('/addresses', controllers.user.getAddresses)
 router.post('/address', controllers.user.createAddress)
+router.post('/bookings', controllers.bookings.createBooking)
 
 router.get('*', verifyAuthorized, (req, res) => {
     console.log('routed to req.path', req.path)
