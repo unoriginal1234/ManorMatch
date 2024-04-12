@@ -73,7 +73,7 @@ function App() {
       <div className="fixed left-34 bottom-10 z-10">
   <button onClick={toggleChatModal} className={buttonStyle}>
     <MdOutlineRealEstateAgent size={24} />
-    <span className="ml-2 text-lg">Talk to Concierge</span>
+    <span className="ml-2 text-lg">Concierge</span>
   </button>
 
   {isChatModalOpen && (
