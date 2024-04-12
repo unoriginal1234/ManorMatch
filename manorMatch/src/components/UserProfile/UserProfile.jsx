@@ -86,23 +86,29 @@ const UserProfile = ({ currentUser, addresses }) => {
 
   return (
 
-    <div>
+    <div className="bg-gray-900 h-screen">
       <NavBar />
-      <div className="font-bold text-3xl mb-2 text-center px-6 py-4 text-mmblue">
-        <h1>Welcome back, {user.firstName} {user.lastName}. </h1>
+      <div className='h-40 relative flex items-center justify-center'>
+        <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
+          style={{ objectPosition: 'center 47%' }} />
+        <div className="absolute inset-0 flex items-center justify-center font-thin">
+          <h1 className="text-white text-4xl font-bold">The Control Room</h1>
+        </div>
       </div>
-      <div>
-        <button onClick={() => setActiveTab('upcoming')} className={`p-2 rounded ${activeTab === 'upcoming' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Upcoming Bookings</button>
+      <div className="font-bold text-3xl mb-2 text-center px-6 py-4 text-mmblue">
+      </div>
+      <div className="border-b border-mmcream transform translate-y-1">
+        <button onClick={() => setActiveTab('upcoming')} className={`p-2 rounded ml-4 ${activeTab === 'upcoming' ? 'bg-mmpurple text-mmcream' : 'bg-mmcream text-black' }`}>Upcoming Bookings</button>
 
-        <button onClick={() => setActiveTab('previous')} className={`p-2 rounded ${activeTab === 'previous' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Previous Bookings</button>
-        <button onClick={() => setActiveTab('favorites')} className={`p-2 rounded ${activeTab === 'favorites' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Favorite Vendors</button>
-        <button onClick={() => setActiveTab('addresses')} className={`p-2 rounded ${activeTab === 'addresses' ? 'bg-mmblue text-mmcream' : 'bg-gray-200 text-black' }`}>Estates</button>
+        <button onClick={() => setActiveTab('previous')} className={`p-2 rounded ${activeTab === 'previous' ? 'bg-mmpurple text-mmcream' : 'bg-mmcream text-black' }`}>Previous Bookings</button>
+        {/* <button onClick={() => setActiveTab('favorites')} className={`p-2 rounded ${activeTab === 'favorites' ? 'bg-mmpurple text-mmcream' : 'bg-mmcream text-black' }`}>Favorite Vendors</button> */}
+        <button onClick={() => setActiveTab('addresses')} className={`p-2 rounded ${activeTab === 'addresses' ? 'bg-mmpurple text-mmcream' : 'bg-mmcream text-black' }`}>Your Properties</button>
       </div>
       <div className="flex">
         {activeTab === 'upcoming' && <BookingHistory title="Upcoming Bookings" bookings={upcomingBookings} />}
         {activeTab === 'previous' && <BookingHistory title="Previous Bookings" bookings={previousBookings} />}
         {activeTab === 'favorites' && <div>Favorite Vendors</div>}
-        {activeTab === 'addresses' && <UserEstates currentUser={currentUser}/>}
+        {activeTab === 'addresses' && <UserEstates userAddresses={userAddresses} />}
       </div>
 
   </div>
