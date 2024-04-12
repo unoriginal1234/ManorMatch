@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import axios from 'axios';
 
-const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
+const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage, currentUser, date, time }) => {
   // Add your component logic here
     // const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -15,7 +16,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
 
     useEffect(() => {
       setServiceDescription(capitalize(selectedVendor.serviceDescription));
-      setSpecialties(Object.values(selectedVendor.specialties[0]).filter((specialty) => !/d/.test(specialty)).map((specialty) => capitalize(specialty)));
+      setSpecialties(Object.values(selectedVendor.specialties[0]).filter((specialty) => !/\d/.test(specialty)).map((specialty) => capitalize(specialty)));
     }, [selectedVendor]);
 
     const getListOfSpecialties = () => {
@@ -25,20 +26,39 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       })
     }
 
-    const handleClick = () => {
+    const handleClick = async () => {
       let currentVendors = JSON.parse(localStorage.getItem('vendors'));
       currentVendors.push(selectedVendor);
       console.log(currentVendors);
       localStorage.setItem('vendors', JSON.stringify(currentVendors));
+      const apiUrl = import.meta.env.VITE_API_URL;
+      console.log('date', date, 'time', time)
+      const dateTime = new Date(`${date} ${time}`);
+
+      try {
+        await axios.post(`${apiUrl}/bookings`, {
+          services: [
+            {vendorId: selectedVendor._id,
+            category: selectedVendor.category,
+            price: selectedVendor.price}
+          ],
+          customerId: currentUser._id,
+          jobDate: dateTime.toISOString(),
+          completed: false
+        });
+        console.log('Booking successful');
+      } catch (error) {
+        console.log('Error booking', error);
+      }
       goToNextPage();
-    }
+    };
 
     return (
       // Add your JSX code here
-      <div className="pt-16">
+      <div>
           <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
-            <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto">
-                <div className="w-full h-full border border-mmsand flex flex-col">
+            <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
+                <div className="w-full h-full flex flex-col">
                     {/* <button onClick={() => setModalIsOpen(false)} className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue">X</button> */}
                     <div className="flex">
                       <div className="ml-5 mt-12">
