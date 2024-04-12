@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { signOut } from '../UserAuthentication/SignOut.jsx'
 
 
 const HomePage = ({}) => {
@@ -31,15 +32,14 @@ useEffect(() => {
 })
 }, []);
 
-
   return (
-    <><div className='overflow-visible bg-gray-900 h-[95vh] w-[95wh]'>
+    <><div className='overflow-visible bg-gray-900 h-[95vh] w-[90wh]'>
       <NavBar>
         <span className="text-lg flex items-center height-fit">
           <Link to="/profile" className="mr-4 border border-mmcream p-2 rounded hover:bg-mmblue">
           Welcome, {currentUser.firstName} {currentUser.lastName}
           </Link>
-          <Link to="/login" className="ml-2">
+          <Link to="/" className="ml-2" onClick={signOut}>
             Sign Out
           </Link>
           <Link to="/cart" className="ml-4 mr-4 relative hover:text-mmcream">
@@ -55,7 +55,7 @@ useEffect(() => {
         <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
           style={{ objectPosition: 'center 47%' }} />
         <div className="absolute inset-0 flex items-center justify-center font-thin">
-          <h1 className="text-white text-4xl font-bold">Truly refined services await.</h1>
+          <h1 className="text-white text-4xl font-bold">Your truly refined services await.</h1>
         </div>
       </div>
       <Carousel currentUser={currentUser} />

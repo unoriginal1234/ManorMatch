@@ -46,6 +46,7 @@ const SignUpPage = () => {
         .then((response) => {
           return new Promise((resolve) => {
             localStorage.setItem("userEmail", email);
+            localStorage.setItem("userFirstName", firstName);
             resolve();
           })
           .then(() => {
