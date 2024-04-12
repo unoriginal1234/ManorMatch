@@ -1,4 +1,5 @@
 import NavBar from '../../utils/NavBar.jsx';
+import UserControls from '../../utils/UserControlls.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import BookingHistory from './BookingHistory.jsx';
@@ -87,7 +88,9 @@ const UserProfile = ({ currentUser, addresses }) => {
   return (
 
     <div className="bg-gray-900 h-screen">
-      <NavBar />
+      <NavBar>
+        <UserControls/>
+      </NavBar>
       <div className='h-40 relative flex items-center justify-center'>
         <img id='hero' src="https://i.imgur.com/MmpBx3n.jpeg" alt="Hero Image" className="absolute object-cover h-40 w-full blur-md contrast-1.25"
           style={{ objectPosition: 'center 47%' }} />
