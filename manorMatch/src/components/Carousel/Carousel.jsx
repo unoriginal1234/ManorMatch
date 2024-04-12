@@ -44,7 +44,7 @@ const Carousel = ({ currentUser }) => {
   });
 
   }, []);
-  //style={{ color: i === currentSlide ? 'white' : 'grey' }
+
 const handlePageChange = (current) => {
   const currentPage = Math.ceil(current / settings.slidesToShow);
   console.log(currentPage);
@@ -85,10 +85,8 @@ const handlePageChange = (current) => {
           dots: true,
         },
       },
-      // You can add more responsive settings
     ],
   };
-  //category, description, serviceDetails
   return (
     <div className='px-16'>
     <Slider className="relative px-10" {...settings}>
