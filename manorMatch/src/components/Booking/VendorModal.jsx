@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import axios from 'axios';
 
-const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
+const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage, currentUser, date, time }) => {
   // Add your component logic here
     // const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -30,15 +31,33 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
       currentVendors.push(selectedVendor);
       console.log(currentVendors);
       localStorage.setItem('vendors', JSON.stringify(currentVendors));
-      
+      const apiUrl = import.meta.env.VITE_API_URL;
+      console.log('date', date, 'time', time)
+      const dateTime = new Date(`${date} ${time}`);
+
+      try {
+        await axios.post(`${apiUrl}/bookings`, {
+          services: [
+            {vendorId: selectedVendor._id,
+            category: selectedVendor.category,
+            price: selectedVendor.price}
+          ],
+          customerId: currentUser._id,
+          jobDate: dateTime.toISOString(),
+          completed: false
+        });
+        console.log('Booking successful');
+      } catch (error) {
+        console.log('Error booking', error);
+      }
       goToNextPage();
-    }
+    };
 
     return (
       // Add your JSX code here
-      <div className="pt-16">
+      <div>
           <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
-            <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto">
+            <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
                 <div className="w-full h-full border border-mmsand flex flex-col">
                     {/* <button onClick={() => setModalIsOpen(false)} className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue">X</button> */}
                     <div className="flex">
@@ -46,6 +65,7 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                         <h1 className="text-4xl font-thin whitespace-normal mb-1 border-b">{selectedVendor.name}</h1>
                         <h2 className="text-2xl mt-1 mb-7 font-extralight">{selectedVendor.category}</h2>
                       </div>
+                      <button className="bg-mmcream text-mmblue p-2 rounded whitespace-nowrap absolute top-0 right-0 mr-6 mt-6" onClick={() => handleClick()}>Book Now</button>
                     </div>
                 <div className="flex items-start">
                   <div className="w-2/5 flex flex-col justify-center items-center">
@@ -59,18 +79,9 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage }) => {
                     </ul>
                   </div>
                 </div>
-                <div className="flex items-center justify-between absolute bottom-6 left-6 right-6">
-                  <button
-                    className="text-3xl transform -translate-y-1/2 hover:scale-110 transition duration-200 ease-in-out"
-                    onClick={() => goToPreviousPage()}>
-                    <FaLongArrowAltLeft />
-                  </button>
-                </div>
-                <button
-                  className="bg-mmcream text-xl text-mmblue hover:bg-mmsand p-2 rounded transform -translate-x-1/2 -translate-y-1/2 absolute left-1/2 bottom-6"
-                  onClick={() => handleClick()}>
-                  Book Now
-                </button>
+                  <div>
+                    <button className="bg-mmcream text-mmblue p-2 rounded absolute bottom-0 left-0 mb-9 ml-9" onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
+                  </div>
                 </div>
               </view>
           </div>

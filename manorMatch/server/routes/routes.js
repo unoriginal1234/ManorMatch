@@ -24,6 +24,7 @@ router.get('/user', controllers.user.getUserInfo)
 router.get('/bookings', controllers.user.getBookings)
 router.get('/addresses', controllers.user.getAddresses)
 router.post('/address', controllers.user.createAddress)
+router.post('/bookings', controllers.bookings.createBooking)
 
 router.get('*', (req, res) => {
   const restrictedRoutes = ['/logout'];
