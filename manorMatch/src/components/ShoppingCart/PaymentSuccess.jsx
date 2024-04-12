@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../../utils/NavBar.jsx';
+import UserControls from '../../utils/UserControlls.jsx';
 
 const PaymentSuccess = () => {
   const location = useLocation();
@@ -16,7 +17,9 @@ const PaymentSuccess = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar>
+        <UserControls/>
+      </NavBar>
       <div style={{"position":"absolute","top":"40%","left":"50%","transform":"translate(-50%, -50%)"}}>
         <div className="animate-bounce text-center text-mmcream text-8xl -z-9 font-serif">M | M</div>
       </div>

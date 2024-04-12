@@ -58,14 +58,13 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage, currentUs
       <div>
           <div className="text-mmcream font-serif fixed inset-0 flex items-center justify-center outline-none overflow-auto">
             <view className="relative w-1/2 h-3/5 bg-mmblue p-6 rounded shadow-lg h-quto mx-auto flex">
-                <div className="w-full h-full border border-mmsand flex flex-col">
+                <div className="w-full h-full flex flex-col">
                     {/* <button onClick={() => setModalIsOpen(false)} className="absolute top-9 right-9 bg-mmcream p-1 rounded text-mmblue">X</button> */}
                     <div className="flex">
                       <div className="ml-5 mt-12">
                         <h1 className="text-4xl font-thin whitespace-normal mb-1 border-b">{selectedVendor.name}</h1>
                         <h2 className="text-2xl mt-1 mb-7 font-extralight">{selectedVendor.category}</h2>
                       </div>
-                      <button className="bg-mmcream text-mmblue p-2 rounded whitespace-nowrap absolute top-0 right-0 mr-6 mt-6" onClick={() => handleClick()}>Book Now</button>
                     </div>
                 <div className="flex items-start">
                   <div className="w-2/5 flex flex-col justify-center items-center">
@@ -79,9 +78,18 @@ const VendorModal = ({ selectedVendor, goToNextPage, goToPreviousPage, currentUs
                     </ul>
                   </div>
                 </div>
-                  <div>
-                    <button className="bg-mmcream text-mmblue p-2 rounded absolute bottom-0 left-0 mb-9 ml-9" onClick={() => goToPreviousPage()}><FaLongArrowAltLeft /></button>
-                  </div>
+                <div className="flex items-center justify-between absolute bottom-6 left-6 right-6">
+                  <button
+                    className="text-3xl transform -translate-y-1/2 hover:scale-110 transition duration-200 ease-in-out"
+                    onClick={() => goToPreviousPage()}>
+                    <FaLongArrowAltLeft />
+                  </button>
+                </div>
+                <button
+                  className="bg-mmcream text-xl text-mmblue hover:bg-mmsand p-2 rounded transform -translate-x-1/2 -translate-y-1/2 absolute left-1/2 bottom-6"
+                  onClick={() => handleClick()}>
+                  Book Now
+                </button>
                 </div>
               </view>
           </div>
