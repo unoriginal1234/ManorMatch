@@ -90,7 +90,7 @@
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 ```sh
-npm install npm@latest -g
+npm install
 ```
 
 ### Installation
