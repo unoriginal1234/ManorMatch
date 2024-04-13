@@ -125,37 +125,21 @@ Run linter: `npm run lint `
 
 ## Roadmap
 
-- [x] Include a client landing page with folder/file navigation
-- [x] Develop a file preview page with enlarge image previews
-- [x] Implement client new message notification system
-- [x] Integrate upload file to a specified directory
-- [x] Inovate a cleat client managment gui for admin to navigate/create clients, folders and files
-- [ ] Leverage Stripe API for subscriptions
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Optimizations
 
-1.  Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen with 0% error rate and 100 RPS throughput
-1.  Modernized the user experience with responsive layouts allowing for mobile and desktop usage
-1.  Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
 
 <!-- CONTRIBUTING -->
 
 ## Contributing
 
-Feel free to join in! Whether its fixing bugs, improving documentation, or
-simply spreading the word!
 
 <!-- CONTACT -->
 
-## Contact
+## Developers
 
-<h3 align='center'> Luke</h3>
-<h4 align='center'>
-  <a href="https://www.linkedin.com/in/lucas-m-larson/">Linkedin</a> |
-  <a href="https://github.com/LukeLarson2">GitHub</a>
-</h4>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
