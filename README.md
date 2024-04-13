@@ -97,27 +97,44 @@ npm install npm@latest -g
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/LukeLarson2/project-pixel-pouch.git
+   git clone https://github.com/ManorMatch/ManorMatch.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-3. Enter your port, API URL, and Github Token in `.env.local` file
+3. Make a copy of the `.exampleenv` file and rename it to `.env`. Enter the following in the `.env` file. 
    ```sh
-    NEXT_PUBLIC_SUPABASE_URL = (your supabase database URL)
-    NEXT_PUBLIC_SUPABASE_ANON_KEY = (your supabase token)
+    PORT= (your local server port)
+    FRONTEND_PORT= (your Vite port)
+
+    MONGODB_URI= (your local mongodb url)
+    DB_NAME= (your chosen DB name)
+
+    VITE_STRIPE_PUBLIC_KEY=
+    STRIPE_SECRET_KEY=
+
+    VITE_API_URL= http://localhost:3000 || deployed server
+
+    CORS_URL='deployed client'
+
    ```
 4. Run in dev environment.
    ```sh
    npm run dev
    ```
+5. Run the server environment from the root directory.
+   ```sh
+   node server/index.js
+   ```
+6. Populate the database.
+   ```sh
+   npm run seed
+   ```
 
 ## Usage
 
-Pixel Pouch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
-
-Run linter: `npm run lint `
+Manor Match is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,7 +142,18 @@ Run linter: `npm run lint `
 
 ## Roadmap
 
-
+- [x] Establish the backend using Express and MongoDB to handle data management and API requests
+- [x] Implement secure login and registration processes to manage user access and data security
+- [x] Design a landing page using React and Tailwind CSS that reflects the sophistication of the ManorMatch brand
+- [x] Integrate a user-friendly booking modal that allows clients to easily schedule appointments with service vendors
+- [x] Enable users to view upcoming and past bookings and manage their saved addresses
+- [x] Showcase available services and their details through a service carousel
+- [x] Integrate WebSocket to incorporate a live chat feature enabling users to receive real-time assistance and personalized service recommendations
+- [x] Create an intuitive process for booking services
+- [x] Leverage Stripe’s payment platform to build a secure checkout and payment process
+- [ ] Look into integrating Google Maps’ API for vendor location tracking
+- [ ] Build a portal for administrators to see and manage clients, bookings, and vendor relationships more efficiently
+      
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Optimizations
