@@ -2,21 +2,6 @@
 
 <a id='readme-top'> </a>
 
-<br />
-<div align="center">
-  <a href="https://github.com/LukeLarson2/project-pixel-pouch">
-    <!-- <img src="" alt="finance tracker logo" width="50" height="50" /> -->
-  </a>
-  <h3 align="center">
-    Pixel Pouch
-  </h3>
-  <p align="center">
-    <br />
-    <a href="https://github.com/LukeLarson2/project-pixel-pouch"><strong>Explore the docs »</strong></a>
-    <br />
-  </p>
-</div>
-
 <details>
   <summary>Table of Contents</summary>
   <ol>
