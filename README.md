@@ -57,7 +57,7 @@
 
 <br />
 <p>
-  Pixel Pouch is a desktop and mobile friendly app utilizing Next.js and Supabase that is a web-developer to client file sharing and communication platform that is not just functional, but also intuitive and user-friendly, catering to clients who found existing services like Dropbox overly complex.
+  ManorMatch is a platform leveraging React, Tailwind, Express, and MongoDB to connect clientele with luxury estate and lifestyle services. We provide an inviting design, intuitive booking and checkout processes, and live chat catering to the needs of busy, high-end users.
 </p>
 
 ### Built With
