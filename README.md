@@ -81,10 +81,6 @@
 
 ## Getting Started
 
-<p>
-    Instructions to setup Pixel Pouch on your local machine below.
-</p>
-
 ### Prerequisites
 
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
