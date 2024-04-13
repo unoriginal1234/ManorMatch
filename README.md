@@ -163,7 +163,52 @@ Manor Match is run on the designated port. It can also be accessed utilizing loc
 <!-- CONTACT -->
 
 ## Developers
-
+<tbody>
+<tr>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+</tr>
+<tr>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+  <td>
+    <h1> NAME </h1>
+    <p>LINKED IN </p>
+    <p>GITHUB </p>
+  </td>
+</tr>
+</tbody>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
