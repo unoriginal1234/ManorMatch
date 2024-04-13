@@ -62,11 +62,18 @@
 
 ### Built With
 
-![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
-![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
-![Nextjs](https://img.shields.io/badge/next.js-%23000000.svg?style=for-the-badge&logo=next.js)
-![Supabase](https://img.shields.io/badge/supabase-%23000000.svg?style=for-the-badge&logo=supabase)
-![Typescript](https://img.shields.io/badge/typescript-%23000000.svg?style=for-the-badge&logo=typescript)
+![JavaScript](https://img.shields.io/badge/javascript-black?style=for-the-badge&logo=javascript)
+![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react)
+![React Router](https://img.shields.io/badge/react_router-black?style=for-the-badge&logo=react-router)
+![Express](https://img.shields.io/badge/express-black?style=for-the-badge&logo=express)
+![Node.js](https://img.shields.io/badge/node.js-black?style=for-the-badge&logo=node.js)
+![MongoDB](https://img.shields.io/badge/mongodb-black?style=for-the-badge&logo=mongodb)
+![Mongoose](https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose)
+![Axios](https://img.shields.io/badge/axios-black?style=for-the-badge&logo=axios)
+![Tailwind](https://img.shields.io/badge/tailwind-black?style=for-the-badge&logo=tailwindcss)
+![Vite](https://img.shields.io/badge/vite-black?style=for-the-badge&logo=vite)
+![Stripe](https://img.shields.io/badge/stripe-black?style=for-the-badge&logo=stripe)
+![Socket.io](https://img.shields.io/badge/socket.io-black?style=for-the-badge&logo=socket.io)
 
 <p align="right">
   (<a href="#readme-top">back to top</a>)
