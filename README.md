@@ -168,41 +168,41 @@ Manor Match is run on the designated port. It can also be accessed utilizing loc
     <tr>
       <td>
         <h2> Styles Kim </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/styles-kim/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/stylescode">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
       <td>
         <h2> Eric Roth </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/eric-roth-6b259b136/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/unoriginal1234">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
       <td>
         <h2> Maysie Ocera </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/maysieo/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/maysieo">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
       <td>
         <h2> Amarin Sam </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/amarinsam/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/amarinsam">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
@@ -210,31 +210,31 @@ Manor Match is run on the designated port. It can also be accessed utilizing loc
     <tr>
       <td>
         <h2> Greg Jenkins </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/gregoryericjenkins/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/G-Jenkins">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
       <td>
         <h2> Chris Cheng </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/chengtchris/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/chengtchris1">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
       <td>
         <h2> Flora Zhang </h2>
-        <a href="www.google.com">
+        <a href="https://www.linkedin.com/in/flora-z-583014b0/">
           <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
           />
         </a>
-        <a href="www.google.com">
+        <a href="https://github.com/FloraLZhang">
           <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
         </a>
       </td>
