@@ -130,7 +130,7 @@ npm install
 
 ## Usage
 
-Manor Match is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
+ManorMatch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
