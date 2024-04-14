@@ -165,7 +165,7 @@ Manor Match is run on the designated port. It can also be accessed utilizing loc
 ## Developers
 <table align="center">
   <tbody>
-    <tr>
+    <tr align="center">
       <td>
         <h2> Styles Kim </h2>
         <a href="https://www.linkedin.com/in/styles-kim/">
@@ -207,7 +207,7 @@ Manor Match is run on the designated port. It can also be accessed utilizing loc
         </a>
       </td>
     </tr>
-    <tr>
+    <tr align="center">
       <td>
         <h2> Greg Jenkins </h2>
         <a href="https://www.linkedin.com/in/gregoryericjenkins/">
