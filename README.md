@@ -62,11 +62,18 @@
 
 ### Built With
 
-![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
-![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
-![Nextjs](https://img.shields.io/badge/next.js-%23000000.svg?style=for-the-badge&logo=next.js)
-![Supabase](https://img.shields.io/badge/supabase-%23000000.svg?style=for-the-badge&logo=supabase)
-![Typescript](https://img.shields.io/badge/typescript-%23000000.svg?style=for-the-badge&logo=typescript)
+![JavaScript](https://img.shields.io/badge/javascript-black?style=for-the-badge&logo=javascript)
+![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react)
+![React Router](https://img.shields.io/badge/react_router-black?style=for-the-badge&logo=react-router)
+![Express](https://img.shields.io/badge/express-black?style=for-the-badge&logo=express)
+![Node.js](https://img.shields.io/badge/node.js-black?style=for-the-badge&logo=node.js)
+![MongoDB](https://img.shields.io/badge/mongodb-black?style=for-the-badge&logo=mongodb)
+![Mongoose](https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose)
+![Axios](https://img.shields.io/badge/axios-black?style=for-the-badge&logo=axios)
+![Tailwind](https://img.shields.io/badge/tailwind-black?style=for-the-badge&logo=tailwindcss)
+![Vite](https://img.shields.io/badge/vite-black?style=for-the-badge&logo=vite)
+![Stripe](https://img.shields.io/badge/stripe-black?style=for-the-badge&logo=stripe)
+![Socket.io](https://img.shields.io/badge/socket.io-black?style=for-the-badge&logo=socket.io)
 
 <p align="right">
   (<a href="#readme-top">back to top</a>)
@@ -74,43 +81,56 @@
 
 ## Getting Started
 
-<p>
-    Instructions to setup Pixel Pouch on your local machine below.
-</p>
-
 ### Prerequisites
 
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 
 ```sh
-npm install npm@latest -g
+npm install
 ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/LukeLarson2/project-pixel-pouch.git
+   git clone https://github.com/ManorMatch/ManorMatch.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-3. Enter your port, API URL, and Github Token in `.env.local` file
+3. Make a copy of the `.exampleenv` file and rename it to `.env`. Enter the following in the `.env` file. 
    ```sh
-    NEXT_PUBLIC_SUPABASE_URL = (your supabase database URL)
-    NEXT_PUBLIC_SUPABASE_ANON_KEY = (your supabase token)
+    PORT= (your local server port)
+    FRONTEND_PORT= (your Vite port)
+
+    MONGODB_URI= (your local mongodb url)
+    DB_NAME= (your chosen DB name)
+
+    VITE_STRIPE_PUBLIC_KEY=
+    STRIPE_SECRET_KEY=
+
+    VITE_API_URL= http://localhost:3000 || deployed server
+
+    CORS_URL='deployed client'
+
    ```
 4. Run in dev environment.
    ```sh
    npm run dev
    ```
+5. Run the server environment from the root directory.
+   ```sh
+   node server/index.js
+   ```
+6. Populate the database.
+   ```sh
+   npm run seed
+   ```
 
 ## Usage
 
-Pixel Pouch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
-
-Run linter: `npm run lint `
+ManorMatch is run on the designated port. It can also be accessed utilizing localhost:PORT directly in the browser.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -118,37 +138,110 @@ Run linter: `npm run lint `
 
 ## Roadmap
 
-- [x] Include a client landing page with folder/file navigation
-- [x] Develop a file preview page with enlarge image previews
-- [x] Implement client new message notification system
-- [x] Integrate upload file to a specified directory
-- [x] Inovate a cleat client managment gui for admin to navigate/create clients, folders and files
-- [ ] Leverage Stripe API for subscriptions
-
+- [x] Establish the backend using Express and MongoDB to handle data management and API requests
+- [x] Implement secure login and registration processes to manage user access and data security
+- [x] Design a landing page using React and Tailwind CSS that reflects the sophistication of the ManorMatch brand
+- [x] Integrate a user-friendly booking modal that allows clients to easily schedule appointments with service vendors
+- [x] Enable users to view upcoming and past bookings and manage their saved addresses
+- [x] Showcase available services and their details through a service carousel
+- [x] Integrate WebSocket to incorporate a live chat feature enabling users to receive real-time assistance and personalized service recommendations
+- [x] Create an intuitive process for booking services
+- [x] Leverage Stripe’s payment platform to build a secure checkout and payment process
+- [ ] Look into integrating Google Maps’ API for vendor location tracking
+- [ ] Build a portal for administrators to see and manage clients, bookings, and vendor relationships more efficiently
+      
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Optimizations
 
-1.  Reduction in query times leveraging the RDMBS structure of supabase reducing latency to 53ms on login screen with 0% error rate and 100 RPS throughput
-1.  Modernized the user experience with responsive layouts allowing for mobile and desktop usage
-1.  Refined the ease of use for clients with eliminating need of file navigation to upload to a particular file
 
 <!-- CONTRIBUTING -->
 
 ## Contributing
 
-Feel free to join in! Whether its fixing bugs, improving documentation, or
-simply spreading the word!
 
 <!-- CONTACT -->
 
-## Contact
+## Developers
+<table align="center">
+  <tbody>
+    <tr align="center">
+      <td>
+        <h2> Styles Kim </h2>
+        <a href="https://www.linkedin.com/in/styles-kim/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/stylescode">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+      <td>
+        <h2> Eric Roth </h2>
+        <a href="https://www.linkedin.com/in/eric-roth-6b259b136/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/unoriginal1234">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+      <td>
+        <h2> Maysie Ocera </h2>
+        <a href="https://www.linkedin.com/in/maysieo/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/maysieo">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+      <td>
+        <h2> Amarin Sam </h2>
+        <a href="https://www.linkedin.com/in/amarinsam/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/amarinsam">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+    </tr>
+    <tr align="center">
+      <td>
+        <h2> Greg Jenkins </h2>
+        <a href="https://www.linkedin.com/in/gregoryericjenkins/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/G-Jenkins">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+      <td>
+        <h2> Chris Cheng </h2>
+        <a href="https://www.linkedin.com/in/chengtchris/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/chengtchris1">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+      <td>
+        <h2> Flora Zhang </h2>
+        <a href="https://www.linkedin.com/in/flora-z-583014b0/">
+          <img src="https://img.shields.io/badge/linkedin-blue?style=for-the-badge&logo=linkedin"
+          />
+        </a>
+        <a href="https://github.com/FloraLZhang">
+          <img src="https://img.shields.io/badge/github-black?style=for-the-badge&logo=github" />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<h3 align='center'> Luke</h3>
-<h4 align='center'>
-  <a href="https://www.linkedin.com/in/lucas-m-larson/">Linkedin</a> |
-  <a href="https://github.com/LukeLarson2">GitHub</a>
-</h4>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
